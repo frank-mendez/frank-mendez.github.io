@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+body{
+    font-family: 'Source Code Pro', monospace;
+}
+.home {
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../img/hk.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+.questions{
+    padding-top: 50px;
+}
+.about{
+    background-color: #F8F9F9;
+    min-height: 720px;
+    text-align: center;
+}
+.heading{
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.typewrite > .wrap{
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+}
+a.typewrite:hover{
+    text-decoration: none;
+}
+.services{
+    min-height: 720px;
+    text-align: center;
+    padding-top: 50px;
+}
+.contact{
+    min-height: 720px;
+    text-align: center;
+    color: white;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(../img/table.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+.iframe-container{
+    margin-top: 92px;
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+}
+.iframe-container > *{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+.footer{
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+    min-height: 50px;
+    text-align: center;
+}
+.footer-text{
+    margin-top: 15px;
+}
