@@ -7,6 +7,10 @@ function autoAdjustHeight() {
     var home = $.find('.home');
     $(home).css('min-height', currentHeight);
 }
+$(window).on('load', function() {
+    $('.preloader').delay(500).fadeOut('slow');
+		$('body').delay(500).css({'overflow':'visible'});
+});
 
 var TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;
