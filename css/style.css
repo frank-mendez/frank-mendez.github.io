@@ -89,3 +89,9 @@ a.typewrite:hover{
   background-repeat: no-repeat;
   background-image: url('../img/loading-gears-dim.gif');
 }
+
+img:hover {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
