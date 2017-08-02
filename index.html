@@ -189,5 +189,9 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
+    <script type="text/javascript">
+      $(document).bind('keydown keypress', 'ctrl+s', function(){return false;});
+      $(document).on("contextmenu",function(){return false});
+    </script>
   </body>
 </html>
