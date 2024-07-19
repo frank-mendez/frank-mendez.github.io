@@ -2,11 +2,14 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import { router } from './routes/router.tsx'
+import AppLayout from './layout/AppLayout.tsx'
 
 function App() {
 
   return (
-      <RouterProvider router={router} />
+      <AppLayout>
+          <RouterProvider router={router} />
+      </AppLayout>
   )
 }
 
