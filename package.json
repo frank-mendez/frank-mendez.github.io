@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://frank-mendez.github.io/",
+  "homepage": "https://frank-mendez.github.io",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
