@@ -1,12 +1,12 @@
+import {
+    RouterProvider,
+} from "react-router-dom";
+import { router } from './routes/router.tsx'
+
 function App() {
 
   return (
-    <div>
-        <h1>Hello, World!</h1>
-        <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-    </div>
+      <RouterProvider router={router} />
   )
 }
 
