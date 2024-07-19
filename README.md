@@ -50,7 +50,7 @@ Install dependencies
 Start the server
 
 ```bash
-  npm start
+  npm run dev
 ```
 
 ## Contributing
