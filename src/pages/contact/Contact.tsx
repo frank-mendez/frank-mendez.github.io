@@ -1,11 +1,18 @@
+import { Link } from 'react-router-dom'
+import AppLayout from '../../layout/AppLayout.tsx'
+
 const Contact = () => {
     return (
-        <div>
-            <h1>Contact</h1>
-            <p>Phone: 123-456-7890</p>
-            <p>Email: </p>
-        </div>
+        <AppLayout>
+            <>
+                <h1>Contact</h1>
+                <p>Welcome to my website</p>
+                <Link to="/about">About</Link>
+                <Link to="/contact">Contact</Link>
+                <Link to="/projects">Projects</Link>
+            </>
+        </AppLayout>
     )
 }
 
-export default Contact;
+export default Contact

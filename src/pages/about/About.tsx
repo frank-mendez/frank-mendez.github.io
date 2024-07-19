@@ -1,10 +1,18 @@
+import { Link } from 'react-router-dom'
+import AppLayout from '../../layout/AppLayout.tsx'
+
 const About = () => {
     return (
-        <div>
-            <h1>About</h1>
-            <p>This is the about page</p>
-        </div>
-    );
+        <AppLayout>
+            <>
+                <h1>About</h1>
+                <p>Welcome to my website</p>
+                <Link to="/about">About</Link>
+                <Link to="/contact">Contact</Link>
+                <Link to="/projects">Projects</Link>
+            </>
+        </AppLayout>
+    )
 }
 
-export default About;
+export default About

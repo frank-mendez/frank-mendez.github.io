@@ -1,12 +1,13 @@
 import { ReactElement } from 'react'
+import Navbar from '../components/Navbar.tsx'
 
-const AppLayout = ({ children }: {children: ReactElement}) => {
+const AppLayout = ({ children }: { children: ReactElement }) => {
     return (
-        <div>
-            <h1>App Layout</h1>
+        <div className="container ">
+            <Navbar />
             {children}
         </div>
     )
 }
 
-export default AppLayout;
+export default AppLayout
