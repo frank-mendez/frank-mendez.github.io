@@ -1,7 +1,7 @@
 # ReactJS Web Portfolio
 
 This is a simple web portfolio built with ReactJS, Vite, Typescript and TailwindCSS using Daisy UI. It is a static site that is hosted on
-Github.
+Github pages.
 
 If you want to use this project, you can fork it and update the content of the `src/data.json` file with your own
 information.
@@ -19,9 +19,15 @@ frameworks and have contributed to open source projects.
 ## Features
 
 - Light/dark mode toggle
+- Theme switcher
+- Responsive design using TailwindCSS
+- Pre-commit hooks with Husky
+- Linting with ESLint
+- Formatting with Prettier
+- Unit testing with React Testing Library and Vitest
+- React Router for navigation
+- Github Pages deployment
 - Up-to-date technologies
-- Unit tests
-- Responsive design
 
 ## Environment Variables
 
@@ -51,6 +57,22 @@ Start the server
 
 ```bash
   npm run dev
+```
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npm run test
+```
+
+## Deployment
+
+To deploy this project run
+
+```bash
+  npm run deploy
 ```
 
 ## Contributing
