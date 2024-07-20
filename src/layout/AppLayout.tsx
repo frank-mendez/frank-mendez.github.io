@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar.tsx'
 
 const AppLayout = ({ children }: { children: ReactElement }) => {
     return (
-        <div className="container ">
+        <div className="w-full">
             <Navbar />
             {children}
         </div>
