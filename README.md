@@ -29,10 +29,6 @@ frameworks and have contributed to open source projects.
 - Github Pages deployment
 - Up-to-date technologies
 
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to your `.env` file
-
 ## Run Locally
 
 Clone the project
