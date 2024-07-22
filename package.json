@@ -15,12 +15,17 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^5.16.4",
+    "@mui/material": "^5.16.4",
     "@tailwindcss/typography": "^0.5.13",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-router-hash-link": "^2.4.9",
     "happy-dom": "^14.12.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-parallax-mouse": "^2.1.0",
     "react-router-dom": "^6.25.1",
     "react-router-hash-link": "^2.4.3"
   },
