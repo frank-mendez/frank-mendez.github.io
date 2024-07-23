@@ -7,6 +7,6 @@ import { router } from './router'
 describe('Router', () => {
     it('renders the home page correctly', () => {
         render(<RouterProvider router={router} />)
-        expect(screen.getByText('Home')).toBeInTheDocument()
+        expect(screen.getByText('Frank')).toBeInTheDocument()
     })
 })
