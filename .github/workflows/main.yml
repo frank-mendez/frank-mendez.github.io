@@ -5,16 +5,27 @@ on:
       - main
   pull_request:
     types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
 jobs:
   setup:
     runs-on: ubuntu-latest
     outputs:
       cache-key: ${{ steps.cache-deps.outputs.cache-key }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Cache node modules
         id: cache-deps
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             node_modules
@@ -23,38 +34,47 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Install dependencies
-        run: npm install
+        run: npm ci
   eslint:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
       - name: Install dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: npm install
+        run: npm ci
       - name: ESLint
         run: npm run lint
   test:
     needs: eslint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
       - name: Install dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: npm install
+        run: npm ci
       - name: Test
         run: npm run test
   build:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
       - name: Install dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: npm install
+        run: npm ci
       - name: Build
         run: npm run build
   deploy:
@@ -65,12 +85,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
       - name: Install dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
-        run: npm install
+        run: npm ci
       - name: Build
         run: npm run build
       - name: Setup Pages
