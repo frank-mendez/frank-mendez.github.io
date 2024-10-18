@@ -127,7 +127,7 @@ const Home = () => {
                             </p>
                             <h1 className="mb-10 text-xl font-bold">Personal Projects 🦹‍♂️</h1>
                             <div className="flex flex-col md:flex-row gap-4 m-auto">
-                                <div className="card bg-base-100 w-48 md:w-80">
+                                <div className="card bg-base-100 w-80 md:w-80">
                                     <figure>
                                         <img src="/images/medical.jpg" alt="medical!" />
                                     </figure>
@@ -140,7 +140,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="card bg-base-100 w-48 md:w-80">
+                                <div className="card bg-base-100 w-80 md:w-80">
                                     <figure>
                                         <img src="/images/music.png" alt="music" />
                                     </figure>
@@ -153,7 +153,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="card bg-base-100 w-48 md:w-80">
+                                <div className="card bg-base-100 w-80 md:w-80">
                                     <figure>
                                         <img src="/images/car.png" alt="acr" />
                                     </figure>
@@ -168,8 +168,8 @@ const Home = () => {
                                 </div>
                             </div>
                             <h1 className="mx-10 text-xl font-bold">Open Source Projects 🪄</h1>
-                            <div className="flex flex-col md:flex-row gap-4">
-                                <div className="card bg-base-100 w-48 md:w-60">
+                            <div className="flex flex-col md:flex-row gap-4 m-auto">
+                                <div className="card bg-base-100 w-80 md:w-60">
                                     <figure>
                                         <img src="/images/formbricks.png" alt="formbrick" />
                                     </figure>
@@ -182,7 +182,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="card bg-base-100 w-48 md:w-60">
+                                <div className="card bg-base-100 w-80 md:w-60">
                                     <figure>
                                         <img src="/images/elastic.png" alt="medical!" />
                                     </figure>
@@ -195,7 +195,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="card bg-base-100 w-48 md:w-60">
+                                <div className="card bg-base-100 w-80 md:w-60">
                                     <figure>
                                         <img src="/images/refine.png" alt="refine" />
                                     </figure>
@@ -208,7 +208,7 @@ const Home = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="card bg-base-100 w-48 md:w-60">
+                                <div className="card bg-base-100 w-80 md:w-60">
                                     <figure>
                                         <img src="/images/tailwindblog.png" alt="tailwind" />
                                     </figure>
