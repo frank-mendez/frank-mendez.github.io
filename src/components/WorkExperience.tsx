@@ -126,8 +126,39 @@ const WorkExperience = () => {
                     </svg>
                 </div>
                 <div className="timeline-start mb-10 md:text-end">
-                    <time className="font-mono italic">October 2021 - Present</time>
+                    <time className="font-mono italic">October 2021 - September 2024</time>
                     <div className="text-lg font-black">Arcanys</div>
+                    Arcanys is a leading Swiss software development outsourcing company based in the Philippines,
+                    specializing in assembling and nurturing highly skilled dedicated developer teams for both startups
+                    and established enterprises. I was tasked with an account from New Zealand called NomosOne, which is
+                    responsible for developing a Lease Management System for clients worldwide. In this role, I
+                    contribute to the frontend development of the system&apos;s new version by introducing new features
+                    and maintaining existing ones. Additionally, I assist in managing certain backend endpoints,
+                    embodying a Fullstack role. Our development process follows SCRUM and agile methodologies. The
+                    technologies utilized include Typescript, ReactJS, AWS, NodeJS, Charka UI, Zustand, Jest, Mocha,
+                    Github Actions, Jenkins, and Jira.
+                </div>
+                <hr className="bg-primary" />
+            </li>
+            <li>
+                <hr className="bg-primary" />
+                <div className="timeline-middle">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="text-primary h-5 w-5"
+                    >
+                        <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                            clipRule="evenodd"
+                        />
+                    </svg>
+                </div>
+                <div className="timeline-end mb-10 md:text-start">
+                    <time className="font-mono italic">September 2024 - Present</time>
+                    <div className="text-lg font-black">Virtido</div>
                     Arcanys is a leading Swiss software development outsourcing company based in the Philippines,
                     specializing in assembling and nurturing highly skilled dedicated developer teams for both startups
                     and established enterprises. I was tasked with an account from New Zealand called NomosOne, which is
