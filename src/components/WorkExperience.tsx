@@ -158,16 +158,11 @@ const WorkExperience = () => {
                 </div>
                 <div className="timeline-end mb-10 md:text-start">
                     <time className="font-mono italic">September 2024 - Present</time>
-                    <div className="text-lg font-black">Virtido</div>
-                    Arcanys is a leading Swiss software development outsourcing company based in the Philippines,
-                    specializing in assembling and nurturing highly skilled dedicated developer teams for both startups
-                    and established enterprises. I was tasked with an account from New Zealand called NomosOne, which is
-                    responsible for developing a Lease Management System for clients worldwide. In this role, I
-                    contribute to the frontend development of the system&apos;s new version by introducing new features
-                    and maintaining existing ones. Additionally, I assist in managing certain backend endpoints,
-                    embodying a Fullstack role. Our development process follows SCRUM and agile methodologies. The
-                    technologies utilized include Typescript, ReactJS, AWS, NodeJS, Charka UI, Zustand, Jest, Mocha,
-                    Github Actions, Jenkins, and Jira.
+                    <div className="text-lg font-black">Virtido AG</div>
+                    Virtido is an innovative, Swiss-based company specializing in IT staff augmentation, software
+                    development, and business process outsourcing (BPO). Established in 2015, Virtido assists clients in
+                    transforming ideas into reality, offering services that span from strategic concept development to
+                    technical implementation.
                 </div>
             </li>
         </ul>
