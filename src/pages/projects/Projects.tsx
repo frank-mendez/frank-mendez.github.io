@@ -1,133 +1,65 @@
 import AppLayout from '../../layout/AppLayout.tsx'
-import { Link } from 'react-router-dom'
-import GitHubIcon from '@mui/icons-material/GitHub'
+import ProjectCard from '../../components/ProjectCard.tsx'
+
+const projects = [
+    {
+        title: 'Modern Movie Browser',
+        type: 'Frontend',
+        description: 'A modern movie browser using TMDB movie API, Vite, React, TypeScript, and TailwindCSS.',
+        techStack: 'ReactJS, TypeScript, Vite, TailwindCSS, daisyUI',
+        links: {
+            detailsUrl: 'https://modern-movie-browser.vercel.app/',
+            repoUrl: 'https://github.com/frank-mendez/movie-browser',
+        },
+    },
+    {
+        title: 'React TypeScript Spotify',
+        type: 'Frontend',
+        description: 'A music web app built with React, TypeScript, and Vite using the Spotify API.',
+        techStack: 'ReactJS, TypeScript, Vite, TailwindCSS, Spotify Web API, Material UI',
+        links: {
+            detailsUrl: 'https://react-typescript-spotify.vercel.app/',
+            repoUrl: 'https://github.com/frank-mendez/react-typescript-spotify',
+        },
+    },
+    {
+        title: 'Advanced Architecture',
+        type: 'Backend',
+        description:
+            'NestJS advanced architecture covering event sourcing, CQRS, layered and hexagonal patterns.',
+        techStack: 'NestJS, TypeScript, MikroOrm, MongoDB',
+        links: {
+            repoUrl: 'https://github.com/frank-mendez/advanced-architecture',
+        },
+    },
+    {
+        title: 'Socket IO Chat',
+        type: 'Frontend',
+        description: 'Chat app with React, NestJS, Socket.IO, TailwindCSS, and daisyUI.',
+        techStack: 'ReactJS, TailwindCSS, daisyUI, NestJS, MikroORM, PostgreSQL, JWT, Socket.IO, Docker',
+        links: {
+            detailsUrl: 'https://socketio-chat-omega.vercel.app/',
+            repoUrl: 'https://github.com/frank-mendez/socketio-chat',
+        },
+    },
+]
 
 const Projects = () => {
     return (
         <AppLayout>
-            <div className="container m-auto contain-layout">
+            <div className="container m-auto contain-layout font-dm-sans">
                 <h1 className="font-bold text-5xl text-center my-10">Projects</h1>
-                <div className="overflow-x-auto">
-                    <table className="table">
-                        {/* head */}
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Type</th>
-                                <th>Description</th>
-                                <th>Tech Stack</th>
-                                <th>Link</th>
-                                <th>
-                                    <GitHubIcon />
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* row 1 */}
-                            <tr>
-                                <th>1</th>
-                                <td>Modern Movie Browser</td>
-                                <td>Frontend</td>
-                                <td>
-                                    A modern movie browser using TMDB movie api, Vite, React, Typescript and
-                                    TailwindCSS.
-                                </td>
-                                <td>ReactJS, Typescript, Vite, TailwindCSS, Daisy UI</td>
-                                <td>
-                                    <Link target="_blank" to="https://modern-movie-browser.vercel.app/">
-                                        https://modern-movie-browser.vercel.app/
-                                    </Link>
-                                </td>
-                                <td>
-                                    <Link target="_blank" to="https://github.com/frank-mendez/movie-browser">
-                                        https://github.com/frank-mendez/movie-browser
-                                    </Link>
-                                </td>
-                            </tr>
-                            {/* row 2 */}
-                            <tr>
-                                <th>2</th>
-                                <td>React Typescript Spotify</td>
-                                <td>Frontend</td>
-                                <td>
-                                    A Music Web App that is built in React, Typescript and Vite. This will use the
-                                    Spotify API
-                                </td>
-                                <td>ReactJS, Typescript, Vite, TailwindCSS, Spotify Web API, Material UI</td>
-                                <td>
-                                    <Link target="_blank" to="https://react-typescript-spotify.vercel.app/">
-                                        https://react-typescript-spotify.vercel.app/
-                                    </Link>
-                                </td>
-                                <td>
-                                    <Link target="_blank" to="https://github.com/frank-mendez/react-typescript-spotify">
-                                        https://github.com/frank-mendez/react-typescript-spotify
-                                    </Link>
-                                </td>
-                            </tr>
-                            {/* row 3 */}
-                            <tr>
-                                <th>3</th>
-                                <td>Advanced Architecture</td>
-                                <td>Backend</td>
-                                <td>
-                                    NestJS Advanced Architecture. Adding an Event Store, Extra Autowire Event,
-                                    Rehydrating Aggregates, Command Query Responsibility Segregation, Eventual
-                                    Consistency Introduction to Event Sourcing, Three Layered Architecture, Hexagonal
-                                    Architecture, Onion Architecture
-                                </td>
-                                <td>NestJS, Typescript, MikroOrm, MongoDB</td>
-                                <td>N / A</td>
-                                <td>
-                                    <Link target="_blank" to="https://github.com/frank-mendez/advanced-architecture">
-                                        https://github.com/frank-mendez/advanced-architecture
-                                    </Link>
-                                </td>
-                            </tr>
-                            {/* row 4 */}
-                            <tr>
-                                <th>4</th>
-                                <td>Socket IO Chat</td>
-                                <td>Frontend</td>
-                                <td>
-                                    Chat App with ReactJS, NestJS and socket.io, TailwindCSS, Daisy UI. This is a simple
-                                    chat app
-                                </td>
-                                <td>
-                                    ReactJS - TailwindCSS - Daisy UI NestJS - MikroORM - PostgreSQL JWT - Socket IO -
-                                    Docker
-                                </td>
-                                <td>https://socketio-chat-omega.vercel.app/</td>
-                                <td>
-                                    <Link target="_blank" to="https://github.com/frank-mendez/socketio-chat">
-                                        https://github.com/frank-mendez/socketio-chat
-                                    </Link>
-                                </td>
-                            </tr>
-                            {/* row 5 */}
-                            <tr>
-                                <th>1</th>
-                                <td>Modern Movie Browser</td>
-                                <td>Frontend</td>
-                                <td>
-                                    A modern movie browser using TMDB movie api, Vite, React, Typescript and
-                                    TailwindCSS.
-                                </td>
-                                <td>ReactJS, Typescript, Vite, TailwindCSS, Daisy UI</td>
-                                <td>
-                                    <Link target="_blank" to="https://modern-movie-browser.vercel.app/">
-                                        https://modern-movie-browser.vercel.app/
-                                    </Link>
-                                </td>
-                                <td>
-                                    <Link target="_blank" to="https://github.com/frank-mendez/movie-browser">
-                                        https://github.com/frank-mendez/movie-browser
-                                    </Link>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                    {projects.map((project) => (
+                        <ProjectCard
+                            key={project.title}
+                            title={project.title}
+                            type={project.type}
+                            description={project.description}
+                            techStack={project.techStack}
+                            links={project.links}
+                        />
+                    ))}
                 </div>
             </div>
         </AppLayout>
