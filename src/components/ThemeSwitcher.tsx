@@ -1,8 +1,41 @@
+import { useEffect, useState } from 'react'
+
+const THEME_STORAGE_KEY = 'theme'
+
+const getInitialTheme = (): 'light' | 'dark' => {
+    if (typeof window === 'undefined') {
+        return 'dark'
+    }
+
+    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY)
+    if (storedTheme === 'light' || storedTheme === 'dark') {
+        return storedTheme
+    }
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    return prefersDark ? 'dark' : 'light'
+}
+
 const ThemeSwitcher = () => {
+    const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme)
+
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme)
+        localStorage.setItem(THEME_STORAGE_KEY, theme)
+    }, [theme])
+
+    const isDark = theme === 'dark'
+
     return (
         <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
-            <input type="checkbox" className="theme-controller" value="light" />
+            <input
+                type="checkbox"
+                className="theme-controller"
+                value="dark"
+                checked={isDark}
+                onChange={() => setTheme(isDark ? 'light' : 'dark')}
+            />
 
             {/* sun icon */}
             <svg className="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

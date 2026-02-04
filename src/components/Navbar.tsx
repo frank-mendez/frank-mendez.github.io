@@ -1,5 +1,5 @@
 import ThemeSwitcher from './ThemeSwitcher.tsx'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const Navbar = () => {
     return (
@@ -27,18 +27,28 @@ const Navbar = () => {
                         className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-dm-sans"
                     >
                         <li>
-                            <Link to="#about">About</Link>
+                            <NavLink
+                                to="/about"
+                                className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
+                            >
+                                About
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/project">Projects</Link>
+                            <NavLink
+                                to="/projects"
+                                className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
+                            >
+                                Projects
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/contact">Contact</Link>
-                        </li>
-                        <li>
-                            <Link target="_blank" to="https://frank-tech-blog.vercel.app/">
-                                Blog
-                            </Link>
+                            <NavLink
+                                to="/contact"
+                                className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
+                            >
+                                Contact
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
@@ -49,26 +59,34 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 font-dm-sans">
                     <li>
-                        <Link to="/about">About</Link>
+                        <NavLink
+                            to="/about"
+                            className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
+                        >
+                            About
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/projects">Projects</Link>
+                        <NavLink
+                            to="/projects"
+                            className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
+                        >
+                            Projects
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/contact">Contact</Link>
-                    </li>
-                    <li>
-                        <Link target="_blank" to="https://frank-tech-blog.vercel.app/">
-                            Blog
-                        </Link>
+                        <NavLink
+                            to="/contact"
+                            className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
+                        >
+                            Contact
+                        </NavLink>
                     </li>
                 </ul>
-                <ThemeSwitcher />
+                
             </div>
             <div className="navbar-end hidden lg:flex font-dm-sans">
-                <Link target="_blank" to="files/FrankMendez.pdf" className="btn ml-1">
-                    Resume
-                </Link>
+                <ThemeSwitcher />
             </div>
         </div>
     )
