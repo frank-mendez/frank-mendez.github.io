@@ -1,6 +1,36 @@
+import { type FormEvent, useState } from 'react'
 import AppLayout from '../../layout/AppLayout.tsx'
 
 const Contact = () => {
+    const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        setStatus('sending')
+
+        const form = event.currentTarget
+        const formData = new FormData(form)
+
+        try {
+            const response = await fetch('https://formspree.io/f/mojlgzrd', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    Accept: 'application/json'
+                }
+            })
+
+            if (!response.ok) {
+                throw new Error('Form submission failed')
+            }
+
+            form.reset()
+            setStatus('success')
+        } catch {
+            setStatus('error')
+        }
+    }
+
     return (
         <AppLayout>
             <section className="bg-base-100 m-auto font-dm-sans">
@@ -15,8 +45,23 @@ const Contact = () => {
                     </div>
 
                     <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[1.3fr_0.7fr]">
-                        <form className="card bg-base-200 shadow-xl">
+                        <form
+                            className="card bg-base-200 shadow-xl"
+                            action="https://formspree.io/f/mojlgzrd"
+                            method="POST"
+                            onSubmit={handleSubmit}
+                        >
                             <div className="card-body gap-6">
+                                {status === 'success' && (
+                                    <div className="alert alert-success">
+                                        <span>Thanks! Your message has been sent successfully.</span>
+                                    </div>
+                                )}
+                                {status === 'error' && (
+                                    <div className="alert alert-error">
+                                        <span>Sorry, something went wrong. Please try again.</span>
+                                    </div>
+                                )}
                                 <div className="grid gap-6 md:grid-cols-2">
                                     <label className="form-control">
                                         <div className="label">
@@ -26,6 +71,7 @@ const Contact = () => {
                                             type="text"
                                             placeholder="Your name"
                                             className="input input-bordered"
+                                            name="name"
                                             required
                                         />
                                     </label>
@@ -37,6 +83,7 @@ const Contact = () => {
                                             type="email"
                                             placeholder="you@email.com"
                                             className="input input-bordered"
+                                            name="email"
                                             required
                                         />
                                     </label>
@@ -47,13 +94,18 @@ const Contact = () => {
                                         <div className="label">
                                             <span className="label-text">Company</span>
                                         </div>
-                                        <input type="text" placeholder="Company name" className="input input-bordered" />
+                                        <input
+                                            type="text"
+                                            placeholder="Company name"
+                                            className="input input-bordered"
+                                            name="company"
+                                        />
                                     </label>
                                     <label className="form-control">
                                         <div className="label">
                                             <span className="label-text">Project type</span>
                                         </div>
-                                        <select className="select select-bordered">
+                                        <select className="select select-bordered" name="projectType">
                                             <option>Web App</option>
                                             <option>Landing Page</option>
                                             <option>Portfolio</option>
@@ -69,17 +121,22 @@ const Contact = () => {
                                     <textarea
                                         className="textarea textarea-bordered min-h-[160px]"
                                         placeholder="Tell me about your goals, scope, and timeline."
+                                        name="message"
                                         required
                                     ></textarea>
                                 </label>
 
                                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                                     <label className="label cursor-pointer gap-3">
-                                        <input type="checkbox" className="checkbox checkbox-primary" />
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox checkbox-primary"
+                                            name="discoveryCall"
+                                        />
                                         <span className="label-text">I’m open to a discovery call</span>
                                     </label>
-                                    <button className="btn btn-primary" type="submit">
-                                        Send message
+                                    <button className="btn btn-primary" type="submit" disabled={status === 'sending'}>
+                                        {status === 'sending' ? 'Sending…' : 'Send message'}
                                     </button>
                                 </div>
                             </div>
