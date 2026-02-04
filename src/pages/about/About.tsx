@@ -5,49 +5,101 @@ const About = () => {
     return (
         <AppLayout>
             <div className="font-dm-sans">
-                <div className="flex flex-col items-center p-6 gap-4">
-                    <div className="w-full">
-                        <div className="hero-content m-auto flex-col lg:flex-row">
-                            <img
-                                className="mask mask-parallelogram-4 shadow-2xl shadow-black"
-                                alt="Frank"
-                                width={300}
-                                height={300}
-                                src="/images/frank2.jpg"
-                            />
-                            <div>
-                                <h1 className="text-5xl font-bold">About Me</h1>
-                                <p className="py-3">
-                                    I&apos;m Frank R. Mendez, 32 years old, and I&apos;m currently residing in Cebu City
-                                    Philippines. I grow up in Iligan City Philippines. I graduated with a Bachelor of
-                                    Science in Information Technology from the Mindanao State University - Iligan
-                                    Institute of Technology. I have been working in the software development industry
-                                    for over 10 years, with experience in both frontend and backend development.
+                <section className="bg-base-100">
+                    <div className="container mx-auto px-6 py-16">
+                        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+                            <div className="flex justify-center">
+                                <img
+                                    className="mask shadow-2xl shadow-black"
+                                    alt="Frank"
+                                    width={320}
+                                    height={320}
+                                    src="/images/frank2.jpg"
+                                />
+                            </div>
+                            <div className="space-y-4">
+                                <p className="text-sm uppercase tracking-[0.2em] text-primary">About</p>
+                                <h1 className="text-4xl md:text-5xl font-bold">Frank R. Mendez</h1>
+                                <p className="text-base text-base-content/80">
+                                    Frontend-focused engineer with 10+ years of experience delivering polished,
+                                    user-centered products. Based in Cebu City, Philippines, with a background in both
+                                    frontend and backend development.
                                 </p>
-                                <p className="py-3">
-                                    I&apos;m a husband and a proud father of two cats. In my free time, I enjoy playing
-                                    basketball and video games, traveling and exploring new places, and watching movies
-                                    and series. I&apos;m a fan of both Marvel and DC. Additionally, I love reading books
-                                    and comics.
+                                <p className="text-base text-base-content/80">
+                                    I specialize in building modern React applications with scalable UI systems,
+                                    thoughtful UX, and clean, maintainable code. I value collaboration, clear
+                                    communication, and pragmatic engineering decisions.
                                 </p>
-                                <p className="py-3">
-                                    I have a passion for learning new things and sharing my knowledge with others,
-                                    believing that knowledge is power and should be shared widely. I constantly seek new
-                                    opportunities to grow and enhance my skills. My ultimate goal is to become a
-                                    bonafide Full Stack Developer. Currently, I&apos;m learning NestJS and advanced
-                                    architecture patterns, with a particular focus on Design Patterns and Clean Code.
-                                    Additionally, I&apos;m delving into DevOps and CI/CD.
-                                </p>
+                                <div className="grid gap-4 pt-2 sm:grid-cols-2">
+                                    <div className="card bg-base-200 shadow">
+                                        <div className="card-body p-4">
+                                            <p className="text-xs uppercase tracking-wide text-base-content/60">Location</p>
+                                            <p className="text-sm font-semibold">Cebu City, Philippines</p>
+                                        </div>
+                                    </div>
+                                    <div className="card bg-base-200 shadow">
+                                        <div className="card-body p-4">
+                                            <p className="text-xs uppercase tracking-wide text-base-content/60">Focus</p>
+                                            <p className="text-sm font-semibold">React, TypeScript, UI Systems</p>
+                                        </div>
+                                    </div>
+                                    <div className="card bg-base-200 shadow">
+                                        <div className="card-body p-4">
+                                            <p className="text-xs uppercase tracking-wide text-base-content/60">Experience</p>
+                                            <p className="text-sm font-semibold">10+ Years</p>
+                                        </div>
+                                    </div>
+                                    <div className="card bg-base-200 shadow">
+                                        <div className="card-body p-4">
+                                            <p className="text-xs uppercase tracking-wide text-base-content/60">Availability</p>
+                                            <p className="text-sm font-semibold">Mon–Fri, GMT+8</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="hero bg-base-200 m-auto">
-                    <div className="container flex flex-col gap-4 items-center py-10 justify-between">
-                        <h1 className="text-4xl font-bold">Work Experience</h1>
+                </section>
+
+                <section className="bg-base-200">
+                    <div className="container mx-auto px-6 py-14">
+                        <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
+                            <div className="card bg-base-100 shadow-xl">
+                                <div className="card-body">
+                                    <h2 className="card-title">Professional summary</h2>
+                                    <p className="text-base-content/80">
+                                        I’ve contributed to startups and enterprise teams, delivering web platforms,
+                                        dashboards, and customer-facing experiences. My approach blends strong
+                                        front-end craftsmanship with a practical understanding of backend systems and
+                                        deployment workflows.
+                                    </p>
+                                    <p className="text-base-content/80">
+                                        I care about building products that are reliable, accessible, and maintainable,
+                                        while keeping a sharp focus on business outcomes and end-user needs.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="card bg-base-100 shadow-xl">
+                                <div className="card-body">
+                                    <h2 className="card-title">Core strengths</h2>
+                                    <ul className="list-disc pl-5 text-base-content/80 space-y-2">
+                                        <li>Design systems, component libraries, and responsive UI architecture</li>
+                                        <li>TypeScript-driven development and scalable front-end patterns</li>
+                                        <li>Cross-functional collaboration with product and design teams</li>
+                                        <li>Performance, accessibility, and quality-focused delivery</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="bg-base-200">
+                    <div className="container mx-auto px-6 flex flex-col gap-6 items-center py-10 justify-between text-center">
+                        <h2 className="text-4xl font-bold">Work Experience</h2>
                         <WorkExperience />
                     </div>
-                </div>
+                </section>
             </div>
         </AppLayout>
     )
