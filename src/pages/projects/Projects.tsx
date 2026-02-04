@@ -42,6 +42,25 @@ const projects = [
             repoUrl: 'https://github.com/frank-mendez/socketio-chat',
         },
     },
+    {
+        title: 'MFK LMS',
+        type: 'Full Stack',
+        description: 'A comprehensive loan management system built with Next.js 14, designed for microfinance operations and lending institutions. Features complete loan lifecycle management, borrower tracking, repayment scheduling, stash contributions, and detailed financial reporting with role-based access control.',
+        techStack: 'See repository',
+        links: {
+            detailsUrl: 'https://mfklms.vercel.app/',
+            repoUrl: 'https://github.com/frank-mendez/mfklms',
+        },
+    },
+    {
+        title: 'To Do-Py',
+        type: 'Backend',
+        description: 'todo-py 📝 | A Simple & Scalable To-Do API in Python todo-py is a lightweight and efficient backend for managing tasks, built with Python',
+        techStack: 'Python',
+        links: {
+            repoUrl: 'https://github.com/frank-mendez/todo-py',
+        },
+    },
 ]
 
 const Projects = () => {
