@@ -37,8 +37,17 @@ const Footer = () => {
                     </a>
                 </div>
             </nav>
+            <div>
+                <iframe
+                    src="https://github.com/sponsors/frank-mendez/button"
+                    title="Sponsor frank-mendez"
+                    height="32"
+                    width="114"
+                    style={{ border: 0, borderRadius: '6px' }}
+                />
+            </div>
             <aside>
-                <p>Copyright © 2024 - Frank Mendez</p>
+                <p>Copyright © 2026 - Frank Mendez</p>
             </aside>
         </footer>
     )
