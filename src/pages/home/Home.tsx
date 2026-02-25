@@ -1,6 +1,7 @@
 import AppLayout from '../../layout/AppLayout.tsx'
 import { MouseParallaxChild, MouseParallaxContainer } from 'react-parallax-mouse'
 import SkillSection from '../../components/SkillSection.tsx'
+import FrankChatBot from '../../components/FrankChatBot.tsx'
 import CodeIcon from '@mui/icons-material/Code'
 import StorageIcon from '@mui/icons-material/Storage'
 import ScienceIcon from '@mui/icons-material/Science'
@@ -91,15 +92,17 @@ const Home = () => {
                                 <div className="flex flex-col px-4 lg:flex-row items-center text-center lg:text-left flex-1  text-white">
                                     <div className="flex-1">
                                         <div className="font-dm-sans sm:mt-10 text-3xl md:text-[32px] text-white uppercase tracking-[0.03em]">
-                                            Software Engineer / Frontend Developer
+                                            Software Engineer / Frontend Engineer
                                         </div>
                                         <h1 className="text-4xl mt-4 lg:text-8xl font-dm-sans text-white drop-shadow-md">
                                             Frank Mendez
                                         </h1>
-                                        <p className="text-sm text-wrap font-dm-sans w-[20rem]">
+                                        <p className="text-sm text-center font-dm-sans w-[600px] m-auto">
                                             with a decade of experience in the tech industry. Throughout my career, I've
                                             worked with various technologies and frameworks and have contributed to open
-                                            source projects.
+                                            source projects. I'm constantly learning about AI and how it can be used to
+                                            improve the way we work. Aside from that, I'm also learning Cyber Security
+                                            and how to improve my security skills.
                                         </p>
                                     </div>
                                 </div>
@@ -123,6 +126,7 @@ const Home = () => {
                         className="bg-base-200"
                     />
                 </div>
+                <FrankChatBot />
             </div>
         </AppLayout>
     )
