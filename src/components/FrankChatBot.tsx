@@ -1,5 +1,5 @@
-import { ChatSender } from '../chat/types'
-import { useFrankChat } from '../chat/hooks/useFrankChat'
+import { useFrankChat } from '../hooks/useFrankChat'
+import { ChatSender } from '../types/chat'
 
 const FrankChatBot = () => {
     const { isOpen, toggleOpen, input, setInput, isLoading, messages, handleSubmit, loadingMessage } = useFrankChat()
@@ -77,4 +77,3 @@ const FrankChatBot = () => {
 }
 
 export default FrankChatBot
-

@@ -2,71 +2,13 @@ import AppLayout from '../../layout/AppLayout.tsx'
 import { MouseParallaxChild, MouseParallaxContainer } from 'react-parallax-mouse'
 import SkillSection from '../../components/SkillSection.tsx'
 import FrankChatBot from '../../components/FrankChatBot.tsx'
-import CodeIcon from '@mui/icons-material/Code'
-import StorageIcon from '@mui/icons-material/Storage'
-import ScienceIcon from '@mui/icons-material/Science'
-import CloudDoneIcon from '@mui/icons-material/CloudDone'
-import PsychologyIcon from '@mui/icons-material/Psychology'
-import HandshakeIcon from '@mui/icons-material/Handshake'
-import TrendingUpIcon from '@mui/icons-material/TrendingUp'
-import BuildCircleIcon from '@mui/icons-material/BuildCircle'
-
-const techStackGroups = [
-    {
-        title: 'Frontend',
-        icon: <CodeIcon />,
-        items: ['React', 'TypeScript', 'Next.js', 'Material UI', 'TailwindCSS', 'daisyUI', 'TanStack', 'Zustand'],
-    },
-    {
-        title: 'Backend',
-        icon: <StorageIcon />,
-        items: ['Node.js', 'NestJS', 'PostgreSQL', 'MongoDB', 'Firebase', 'MikroORM'],
-    },
-    {
-        title: 'Testing',
-        icon: <ScienceIcon />,
-        items: ['Jest', 'Cypress', 'Testing Library', 'Vitest'],
-    },
-    {
-        title: 'DevOps',
-        icon: <CloudDoneIcon />,
-        items: ['Docker', 'AWS', 'Azure', 'GitHub Actions', 'CI/CD'],
-    },
-]
-
-const softSkillsGroups = [
-    {
-        title: 'Communication',
-        icon: <HandshakeIcon />,
-        items: ['Stakeholder alignment', 'Clear documentation', 'Cross-team collaboration'],
-    },
-    {
-        title: 'Execution',
-        icon: <TrendingUpIcon />,
-        items: ['Ownership mindset', 'Deadline-focused delivery', 'Quality-first approach'],
-    },
-    {
-        title: 'Growth',
-        icon: <PsychologyIcon />,
-        items: ['Continuous learning', 'Adaptability', 'Mentorship & coaching'],
-    },
-    {
-        title: 'Tools',
-        icon: <BuildCircleIcon />,
-        items: ['GitHub', 'Jira', 'Slack', 'Figma', 'WebStorm'],
-    },
-]
+import { softSkillsGroups, techStackGroups } from './homeData'
 
 const Home = () => {
     return (
         <AppLayout>
             <div className="m-0">
-                <div
-                    className="hero min-h-screen"
-                    style={{
-                        backgroundImage: 'url(/images/background.jpg)',
-                    }}
-                >
+                <div className="hero min-h-screen home-hero-bg">
                     <div className="hero-overlay bg-opacity-60"></div>
                     <div className="hero-content flex-col lg:flex-row gap-4">
                         <MouseParallaxContainer
@@ -89,15 +31,15 @@ const Home = () => {
                                 </div>
                             </MouseParallaxChild>
                             <MouseParallaxChild factorX={0.2} factorY={0.3} className="relative">
-                                <div className="flex flex-col px-4 lg:flex-row items-center text-center lg:text-left flex-1  text-white">
-                                    <div className="flex-1">
-                                        <div className="font-dm-sans sm:mt-10 text-3xl md:text-[32px] text-white uppercase tracking-[0.03em]">
+                                <div className="flex flex-col px-4 sm:px-6 lg:flex-row items-center text-center lg:text-left flex-1 text-white">
+                                    <div className="flex-1 max-w-full lg:max-w-2xl p-5">
+                                        <div className="font-dm-sans sm:mt-10 text-xl sm:text-2xl md:text-[32px] text-white uppercase tracking-[0.03em]">
                                             Software Engineer / Frontend Engineer
                                         </div>
-                                        <h1 className="text-4xl mt-4 lg:text-8xl font-dm-sans text-white drop-shadow-md">
+                                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl mt-3 sm:mt-4 font-dm-sans text-white drop-shadow-md">
                                             Frank Mendez
                                         </h1>
-                                        <p className="text-sm text-center font-dm-sans w-[600px] m-auto">
+                                        <p className="text-sm sm:text-base text-center lg:text-left font-dm-sans max-w-prose mx-auto lg:mx-0">
                                             with a decade of experience in the tech industry. Throughout my career, I've
                                             worked with various technologies and frameworks and have contributed to open
                                             source projects. I'm constantly learning about AI and how it can be used to

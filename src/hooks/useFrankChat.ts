@@ -1,12 +1,8 @@
 import { FormEvent, useRef, useState } from 'react'
-import {
-    FRANK_INITIAL_MESSAGES,
-    FRANK_LOADING_MESSAGE,
-    FRANK_NOT_ABOUT_MESSAGE,
-} from '../constants'
 import { getFrankReply } from '../services/chatService'
 import { isAboutFrank } from '../services/intentService'
-import { ChatMessage, ChatSender } from '../types'
+import { FRANK_INITIAL_MESSAGES, FRANK_LOADING_MESSAGE, FRANK_NOT_ABOUT_MESSAGE } from '../constants/chat'
+import { ChatMessage, ChatSender } from '../types/chat'
 
 type UseFrankChatResult = {
     isOpen: boolean
@@ -26,7 +22,7 @@ export const useFrankChat = (): UseFrankChatResult => {
     const [messages, setMessages] = useState<ChatMessage[]>(FRANK_INITIAL_MESSAGES)
 
     const nextIdRef = useRef(
-        FRANK_INITIAL_MESSAGES.length > 0 ? Math.max(...FRANK_INITIAL_MESSAGES.map((m) => m.id)) + 1 : 1,
+        FRANK_INITIAL_MESSAGES.length > 0 ? Math.max(...FRANK_INITIAL_MESSAGES.map((m) => m.id)) + 1 : 1
     )
 
     const getNextId = () => {
@@ -92,4 +88,3 @@ export const useFrankChat = (): UseFrankChatResult => {
         loadingMessage: FRANK_LOADING_MESSAGE,
     }
 }
-

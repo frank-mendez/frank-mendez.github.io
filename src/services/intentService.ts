@@ -1,4 +1,4 @@
-import { FRANK_GREETING_KEYWORDS, FRANK_INTENT_KEYWORDS } from '../constants'
+import { FRANK_GREETING_KEYWORDS, FRANK_INTENT_KEYWORDS } from '../constants/chat'
 
 export const normalizeText = (text: string) => text.toLowerCase().trim()
 
@@ -13,4 +13,3 @@ export const isAboutFrank = (raw: string) => {
 
     return FRANK_INTENT_KEYWORDS.some((kw) => text.includes(kw))
 }
-

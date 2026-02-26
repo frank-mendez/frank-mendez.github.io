@@ -1,4 +1,4 @@
-import { ChatMessage, ChatSender } from './types'
+import { ChatMessage, ChatSender } from '../types/chat'
 
 export const FRANK_CHAT_API_ENDPOINT = 'https://frank-bot.vercel.app/api/chat'
 
@@ -68,4 +68,3 @@ export const FRANK_INTENT_KEYWORDS = [
     'about you',
     'about frank',
 ] as const
-

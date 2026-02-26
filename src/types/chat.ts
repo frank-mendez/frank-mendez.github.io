@@ -13,4 +13,3 @@ export type ChatApiMessage = {
     role: 'user' | 'assistant'
     content: string
 }
-

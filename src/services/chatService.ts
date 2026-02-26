@@ -1,9 +1,5 @@
-import {
-    FRANK_CHAT_API_ENDPOINT,
-    FRANK_ERROR_MESSAGE,
-    FRANK_FALLBACK_REPLY,
-} from '../constants'
-import { ChatApiMessage, ChatMessage } from '../types'
+import { FRANK_CHAT_API_ENDPOINT, FRANK_ERROR_MESSAGE, FRANK_FALLBACK_REPLY } from '../constants/chat'
+import { ChatApiMessage, ChatMessage } from '../types/chat'
 
 const mapToApiMessages = (messages: ChatMessage[]): ChatApiMessage[] =>
     messages.map((m) => ({
@@ -33,4 +29,3 @@ export const getFrankReply = async (history: ChatMessage[]): Promise<string> => 
         return FRANK_ERROR_MESSAGE
     }
 }
-
