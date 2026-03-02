@@ -1,6 +1,6 @@
 const GA_SCRIPT_ID = 'ga4-script'
 
-const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID
+const GA_MEASUREMENT_ID = 'G-WJNGK7ZYQF' // Replace with your actual GA4 Measurement ID
 
 type AnalyticsEventName =
     | 'navbar_click'
