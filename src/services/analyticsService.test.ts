@@ -13,7 +13,7 @@ describe('analyticsService', () => {
     })
 
     it('initializes GA when measurement ID is set', async () => {
-        vi.stubEnv('VITE_GA_MEASUREMENT_ID', 'G-TEST12345')
+        vi.stubEnv('VITE_GA_MEASUREMENT_ID', 'G-WJNGK7ZYQF')
 
         const { initializeAnalytics } = await import('./analyticsService')
         initializeAnalytics()
@@ -21,12 +21,12 @@ describe('analyticsService', () => {
         const script = document.getElementById('ga4-script') as HTMLScriptElement | null
 
         expect(script).toBeTruthy()
-        expect(script?.src).toContain('https://www.googletagmanager.com/gtag/js?id=G-TEST12345')
+        expect(script?.src).toContain('https://www.googletagmanager.com/gtag/js?id=G-WJNGK7ZYQF')
         expect(window.dataLayer?.length).toBe(2)
     })
 
     it('tracks custom events after initialization', async () => {
-        vi.stubEnv('VITE_GA_MEASUREMENT_ID', 'G-TEST12345')
+        vi.stubEnv('VITE_GA_MEASUREMENT_ID', 'G-WJNGK7ZYQF')
 
         const { initializeAnalytics, trackEvent } = await import('./analyticsService')
         initializeAnalytics()
