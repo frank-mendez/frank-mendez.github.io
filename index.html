@@ -1,22 +1,47 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WJNGK7ZYQF"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-WJNGK7ZYQF');
-    </script>
-    <title>Web Portfolio</title>
-</head>
-<body>
-<div id="root"></div>
-<script type="module" src="/src/main.tsx"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Frontend engineer portfolio of Frank Mendez featuring React, TypeScript, and product-focused web projects."
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="theme-color" content="#111827" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Frank Mendez | Frontend Engineer" />
+        <meta
+            property="og:description"
+            content="Frontend engineer portfolio of Frank Mendez featuring React, TypeScript, and product-focused web projects."
+        />
+        <meta property="og:image" content="https://frank-mendez.github.io/images/frank.jpg" />
+        <meta property="og:url" content="https://frank-mendez.github.io/" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Frank Mendez | Frontend Engineer" />
+        <meta
+            name="twitter:description"
+            content="Frontend engineer portfolio of Frank Mendez featuring React, TypeScript, and product-focused web projects."
+        />
+        <meta name="twitter:image" content="https://frank-mendez.github.io/images/frank.jpg" />
+        <link rel="canonical" href="https://frank-mendez.github.io/" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Frank R. Mendez",
+                "jobTitle": "Frontend Engineer",
+                "url": "https://frank-mendez.github.io/",
+                "image": "https://frank-mendez.github.io/images/frank.jpg",
+                "sameAs": ["https://github.com/frank-mendez", "https://www.linkedin.com/in/frankmendez/"],
+                "knowsAbout": ["React", "TypeScript", "Frontend Engineering", "UI Development"]
+            }
+        </script>
+        <title>Frank Mendez | Frontend Engineer</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="module" src="/src/main.tsx"></script>
+    </body>
 </html>

@@ -1,6 +1,7 @@
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LaunchIcon from '@mui/icons-material/Launch'
 import LanguageIcon from '@mui/icons-material/Language'
+import { trackEvent } from '../services/analyticsService'
 
 export type ProjectLinks = {
     detailsUrl?: string
@@ -17,6 +18,15 @@ export type ProjectCardProps = {
 }
 
 const ProjectCard = ({ title, type, description, techStack, links }: ProjectCardProps) => {
+    const handleProjectClick = (linkType: 'site' | 'live' | 'code', url: string) => {
+        trackEvent('project_click', {
+            project_title: title,
+            project_type: type,
+            link_type: linkType,
+            target_url: url,
+        })
+    }
+
     return (
         <div className="card bg-base-100 shadow-xl">
             <div className="card-body font-dm-sans">
@@ -36,19 +46,32 @@ const ProjectCard = ({ title, type, description, techStack, links }: ProjectCard
                             href={links.detailsUrl}
                             target="_blank"
                             rel="noreferrer"
+                            onClick={() => handleProjectClick('site', links?.detailsUrl || '')}
                         >
                             <LanguageIcon fontSize="small" />
                             Site
                         </a>
                     ) : null}
                     {links?.liveUrl ? (
-                        <a className="btn btn-sm" href={links.liveUrl} target="_blank" rel="noreferrer">
+                        <a
+                            className="btn btn-sm"
+                            href={links.liveUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={() => handleProjectClick('live', links?.liveUrl || '')}
+                        >
                             <LaunchIcon fontSize="small" />
                             Live
                         </a>
                     ) : null}
                     {links?.repoUrl ? (
-                        <a className="btn btn-sm" href={links.repoUrl} target="_blank" rel="noreferrer">
+                        <a
+                            className="btn btn-sm"
+                            href={links.repoUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={() => handleProjectClick('code', links?.repoUrl || '')}
+                        >
                             <GitHubIcon fontSize="small" />
                             Code
                         </a>

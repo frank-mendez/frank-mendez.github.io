@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { trackEvent } from '../services/analyticsService'
 
 const THEME_STORAGE_KEY = 'theme'
 
@@ -25,6 +26,13 @@ const ThemeSwitcher = () => {
     }, [theme])
 
     const isDark = theme === 'dark'
+    const handleThemeChange = () => {
+        const nextTheme = isDark ? 'light' : 'dark'
+        setTheme(nextTheme)
+        trackEvent('theme_change', {
+            theme: nextTheme,
+        })
+    }
 
     return (
         <label className="swap swap-rotate">
@@ -34,7 +42,7 @@ const ThemeSwitcher = () => {
                 className="theme-controller"
                 value="dark"
                 checked={isDark}
-                onChange={() => setTheme(isDark ? 'light' : 'dark')}
+                onChange={handleThemeChange}
             />
 
             {/* sun icon */}

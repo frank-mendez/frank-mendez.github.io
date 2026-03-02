@@ -1,5 +1,13 @@
 import ThemeSwitcher from './ThemeSwitcher.tsx'
 import { Link, NavLink } from 'react-router-dom'
+import { trackEvent } from '../services/analyticsService'
+
+const handleNavClick = (label: string, destination: string) => {
+    trackEvent('navbar_click', {
+        label,
+        destination,
+    })
+}
 
 const Navbar = () => {
     return (
@@ -30,6 +38,7 @@ const Navbar = () => {
                             <NavLink
                                 to="/about"
                                 className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
+                                onClick={() => handleNavClick('about', '/about')}
                             >
                                 About
                             </NavLink>
@@ -38,6 +47,7 @@ const Navbar = () => {
                             <NavLink
                                 to="/projects"
                                 className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
+                                onClick={() => handleNavClick('projects', '/projects')}
                             >
                                 Projects
                             </NavLink>
@@ -46,13 +56,14 @@ const Navbar = () => {
                             <NavLink
                                 to="/contact"
                                 className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
+                                onClick={() => handleNavClick('contact', '/contact')}
                             >
                                 Contact
                             </NavLink>
                         </li>
                     </ul>
                 </div>
-                <Link to="/" className="btn btn-ghost text-xl font-dm-sans">
+                <Link to="/" className="btn btn-ghost text-xl font-dm-sans" onClick={() => handleNavClick('home', '/')}>
                     Frank
                 </Link>
             </div>
@@ -62,6 +73,7 @@ const Navbar = () => {
                         <NavLink
                             to="/about"
                             className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
+                            onClick={() => handleNavClick('about', '/about')}
                         >
                             About
                         </NavLink>
@@ -70,6 +82,7 @@ const Navbar = () => {
                         <NavLink
                             to="/projects"
                             className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
+                            onClick={() => handleNavClick('projects', '/projects')}
                         >
                             Projects
                         </NavLink>
@@ -78,12 +91,12 @@ const Navbar = () => {
                         <NavLink
                             to="/contact"
                             className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
+                            onClick={() => handleNavClick('contact', '/contact')}
                         >
                             Contact
                         </NavLink>
                     </li>
                 </ul>
-                
             </div>
             <div className="navbar-end hidden lg:flex font-dm-sans">
                 <ThemeSwitcher />

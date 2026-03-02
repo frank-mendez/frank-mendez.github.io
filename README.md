@@ -18,16 +18,16 @@ frameworks and have contributed to open source projects.
 
 ## Features
 
-- Light/dark mode toggle
-- Theme switcher
-- Responsive design using TailwindCSS
-- Pre-commit hooks with Husky
-- Linting with ESLint
-- Formatting with Prettier
-- Unit testing with React Testing Library and Vitest
-- React Router for navigation
-- Github Pages deployment
-- Up-to-date technologies
+-   Light/dark mode toggle
+-   Theme switcher
+-   Responsive design using TailwindCSS
+-   Pre-commit hooks with Husky
+-   Linting with ESLint
+-   Formatting with Prettier
+-   Unit testing with React Testing Library and Vitest
+-   React Router for navigation
+-   Github Pages deployment
+-   Up-to-date technologies
 
 ## Run Locally
 
@@ -63,6 +63,16 @@ To run tests, run the following command
   npm run test
 ```
 
+## Analytics Setup
+
+Create a `.env` file in the project root and add your GA4 measurement ID:
+
+```bash
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+Analytics auto-initializes only when `VITE_GA_MEASUREMENT_ID` is present.
+
 ## Deployment
 
 To deploy this project run
@@ -75,4 +85,4 @@ To deploy this project run
 
 Contributions are always welcome!
 
-- Suggestions and feedback are always welcome! Please create an issue.
+-   Suggestions and feedback are always welcome! Please create an issue.

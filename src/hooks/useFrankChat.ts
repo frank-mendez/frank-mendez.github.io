@@ -3,6 +3,7 @@ import { getFrankReply } from '../services/chatService'
 import { isAboutFrank } from '../services/intentService'
 import { FRANK_INITIAL_MESSAGES, FRANK_LOADING_MESSAGE, FRANK_NOT_ABOUT_MESSAGE } from '../constants/chat'
 import { ChatMessage, ChatSender } from '../types/chat'
+import { trackEvent } from '../services/analyticsService'
 
 type UseFrankChatResult = {
     isOpen: boolean
@@ -31,12 +32,26 @@ export const useFrankChat = (): UseFrankChatResult => {
         return current
     }
 
-    const toggleOpen = () => setIsOpen((prev) => !prev)
+    const toggleOpen = () => {
+        setIsOpen((prev) => {
+            const next = !prev
+
+            trackEvent('chatbot_toggle', {
+                is_open: next,
+            })
+
+            return next
+        })
+    }
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         const trimmed = input.trim()
         if (!trimmed) return
+
+        trackEvent('chatbot_message_submit', {
+            message_length: trimmed.length,
+        })
 
         const userMessage: ChatMessage = {
             id: getNextId(),
@@ -52,6 +67,11 @@ export const useFrankChat = (): UseFrankChatResult => {
                 sender: ChatSender.Bot,
                 text: FRANK_NOT_ABOUT_MESSAGE,
             }
+
+            trackEvent('chatbot_message_blocked', {
+                reason: 'not_about_frank',
+            })
+
             setMessages((prev) => [...prev, userMessage, botMessage])
             setInput('')
             return
@@ -71,6 +91,10 @@ export const useFrankChat = (): UseFrankChatResult => {
                 sender: ChatSender.Bot,
                 text: replyText,
             }
+
+            trackEvent('chatbot_response_received', {
+                response_length: replyText.length,
+            })
 
             setMessages((prev) => [...prev, botMessage])
             setIsLoading(false)

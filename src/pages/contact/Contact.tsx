@@ -1,5 +1,6 @@
 import { type FormEvent, useState } from 'react'
 import AppLayout from '../../layout/AppLayout.tsx'
+import { trackEvent } from '../../services/analyticsService'
 
 const Contact = () => {
     const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
@@ -16,8 +17,8 @@ const Contact = () => {
                 method: 'POST',
                 body: formData,
                 headers: {
-                    Accept: 'application/json'
-                }
+                    Accept: 'application/json',
+                },
             })
 
             if (!response.ok) {
@@ -26,8 +27,14 @@ const Contact = () => {
 
             form.reset()
             setStatus('success')
+            trackEvent('contact_submit_success', {
+                form_provider: 'formspree',
+            })
         } catch {
             setStatus('error')
+            trackEvent('contact_submit_error', {
+                form_provider: 'formspree',
+            })
         }
     }
 
