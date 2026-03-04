@@ -50,7 +50,7 @@ const FrankChatBot = () => {
                         </div>
                         <form onSubmit={handleSubmit} className="flex gap-2 items-center">
                             <input
-                                className="input input-bordered input-sm flex-1"
+                                className="input input-sm flex-1"
                                 placeholder="Ask about Frank..."
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}

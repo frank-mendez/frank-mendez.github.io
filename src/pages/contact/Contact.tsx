@@ -70,68 +70,72 @@ const Contact = () => {
                                     </div>
                                 )}
                                 <div className="grid gap-6 md:grid-cols-2">
-                                    <label className="form-control">
-                                        <div className="label">
-                                            <span className="label-text">Full name</span>
-                                        </div>
+                                    <div className="flex flex-col gap-2">
+                                        <label className="label" htmlFor="contact-name">
+                                            Full name
+                                        </label>
                                         <input
+                                            id="contact-name"
                                             type="text"
                                             placeholder="Your name"
-                                            className="input input-bordered"
+                                            className="input"
                                             name="name"
                                             required
                                         />
-                                    </label>
-                                    <label className="form-control">
-                                        <div className="label">
-                                            <span className="label-text">Email address</span>
-                                        </div>
+                                    </div>
+                                    <div className="flex flex-col gap-2">
+                                        <label className="label" htmlFor="contact-email">
+                                            Email address
+                                        </label>
                                         <input
+                                            id="contact-email"
                                             type="email"
                                             placeholder="you@email.com"
-                                            className="input input-bordered"
+                                            className="input"
                                             name="email"
                                             required
                                         />
-                                    </label>
+                                    </div>
                                 </div>
 
                                 <div className="grid gap-6 md:grid-cols-2">
-                                    <label className="form-control">
-                                        <div className="label">
-                                            <span className="label-text">Company</span>
-                                        </div>
+                                    <div className="flex flex-col gap-2">
+                                        <label className="label" htmlFor="contact-company">
+                                            Company
+                                        </label>
                                         <input
+                                            id="contact-company"
                                             type="text"
                                             placeholder="Company name"
-                                            className="input input-bordered"
+                                            className="input"
                                             name="company"
                                         />
-                                    </label>
-                                    <label className="form-control">
-                                        <div className="label">
-                                            <span className="label-text">Project type</span>
-                                        </div>
-                                        <select className="select select-bordered" name="projectType">
+                                    </div>
+                                    <div className="flex flex-col gap-2">
+                                        <label className="label" htmlFor="contact-project-type">
+                                            Project type
+                                        </label>
+                                        <select id="contact-project-type" className="select" name="projectType">
                                             <option>Web App</option>
                                             <option>Landing Page</option>
                                             <option>Portfolio</option>
                                             <option>Other</option>
                                         </select>
-                                    </label>
+                                    </div>
                                 </div>
 
-                                <label className="form-control">
-                                    <div className="label">
-                                        <span className="label-text">Project brief</span>
-                                    </div>
+                                <div className="flex flex-col gap-2">
+                                    <label className="label" htmlFor="contact-message">
+                                        Project brief
+                                    </label>
                                     <textarea
-                                        className="textarea textarea-bordered min-h-[160px]"
+                                        id="contact-message"
+                                        className="textarea min-h-[160px]"
                                         placeholder="Tell me about your goals, scope, and timeline."
                                         name="message"
                                         required
                                     ></textarea>
-                                </label>
+                                </div>
 
                                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                                     <label className="label cursor-pointer gap-3">
@@ -140,7 +144,7 @@ const Contact = () => {
                                             className="checkbox checkbox-primary"
                                             name="discoveryCall"
                                         />
-                                        <span className="label-text">I’m open to a discovery call</span>
+                                        <span>I’m open to a discovery call</span>
                                     </label>
                                     <button className="btn btn-primary" type="submit" disabled={status === 'sending'}>
                                         {status === 'sending' ? 'Sending…' : 'Send message'}
