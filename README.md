@@ -1,6 +1,6 @@
 # ReactJS Web Portfolio
 
-This is a simple web portfolio built with ReactJS, Vite, Typescript and TailwindCSS using Daisy UI. It is a static site that is hosted on
+This is a simple web portfolio built with ReactJS, Vite, Typescript and Tailwind CSS 4 using daisyUI 5. It is a static site that is hosted on
 Github pages.
 
 If you want to use this project, you can fork it and update the content of the `src/data.json` file with your own
