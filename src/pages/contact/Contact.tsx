@@ -1,6 +1,9 @@
 import { type FormEvent, useState } from 'react'
 import AppLayout from '../../layout/AppLayout.tsx'
 import { trackEvent } from '../../services/analyticsService'
+import { sendContact } from '../../services/contactService'
+
+const asString = (value: FormDataEntryValue | null): string => (typeof value === 'string' ? value : '')
 
 const Contact = () => {
     const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
@@ -13,27 +16,24 @@ const Contact = () => {
         const formData = new FormData(form)
 
         try {
-            const response = await fetch('https://formspree.io/f/mojlgzrd', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    Accept: 'application/json',
-                },
+            await sendContact({
+                name: asString(formData.get('name')).trim(),
+                email: asString(formData.get('email')).trim(),
+                company: asString(formData.get('company')).trim(),
+                projectType: asString(formData.get('projectType')).trim(),
+                message: asString(formData.get('message')).trim(),
+                discoveryCall: formData.get('discoveryCall') === 'on',
             })
-
-            if (!response.ok) {
-                throw new Error('Form submission failed')
-            }
 
             form.reset()
             setStatus('success')
             trackEvent('contact_submit_success', {
-                form_provider: 'formspree',
+                form_provider: 'frank-bot',
             })
         } catch {
             setStatus('error')
             trackEvent('contact_submit_error', {
-                form_provider: 'formspree',
+                form_provider: 'frank-bot',
             })
         }
     }
@@ -52,12 +52,7 @@ const Contact = () => {
                     </div>
 
                     <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[1.3fr_0.7fr]">
-                        <form
-                            className="card bg-base-200 shadow-xl"
-                            action="https://formspree.io/f/mojlgzrd"
-                            method="POST"
-                            onSubmit={handleSubmit}
-                        >
+                        <form className="card bg-base-200 shadow-xl" onSubmit={handleSubmit}>
                             <div className="card-body gap-6">
                                 {status === 'success' && (
                                     <div className="alert alert-success">
