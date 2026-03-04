@@ -45,3 +45,4 @@
 
 -   Material UI icons are used for social links and buttons (@mui/icons-material).
 -   GitHub Pages hosting drives the hash-based routing and deploy workflow.
+-   Frank backend APIs power chatbot and contact form submissions (`https://frank-bot.vercel.app/api/chat` and `/api/contact`).

@@ -28,6 +28,8 @@ frameworks and have contributed to open source projects.
 -   React Router for navigation
 -   Github Pages deployment
 -   Up-to-date technologies
+-   AI chat endpoint integration (`/api/chat`)
+-   Contact form API integration (`/api/contact`)
 
 ## Run Locally
 
@@ -72,6 +74,19 @@ VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
 Analytics auto-initializes only when `VITE_GA_MEASUREMENT_ID` is present.
+
+## Backend API Integration
+
+Chatbot and contact form submissions are handled by the Frank backend service:
+
+-   Base URL: `https://frank-bot.vercel.app`
+-   Chat endpoint: `POST /api/chat`
+-   Contact endpoint: `POST /api/contact`
+
+Frontend service files:
+
+-   `src/services/chatService.ts`
+-   `src/services/contactService.ts`
 
 ## Deployment
 
