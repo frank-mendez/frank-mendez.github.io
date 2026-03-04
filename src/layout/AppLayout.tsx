@@ -1,6 +1,7 @@
 import { ReactElement, useEffect } from 'react'
 import Navbar from '../components/Navbar.tsx'
 import Footer from '../components/Footer.tsx'
+import FrankChatBot from '../components/FrankChatBot.tsx'
 import { useLocation } from 'react-router-dom'
 import { applyRouteMetadata } from '../services/seoService'
 import { trackPageView } from '../services/analyticsService'
@@ -18,6 +19,7 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
             <Navbar />
             {children}
             <Footer />
+            <FrankChatBot />
         </div>
     )
 }
