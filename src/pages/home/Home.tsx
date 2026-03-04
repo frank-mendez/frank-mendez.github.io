@@ -1,7 +1,6 @@
 import AppLayout from '../../layout/AppLayout.tsx'
 import { MouseParallaxChild, MouseParallaxContainer } from 'react-parallax-mouse'
 import SkillSection from '../../components/SkillSection.tsx'
-import FrankChatBot from '../../components/FrankChatBot.tsx'
 import { softSkillsGroups, techStackGroups } from './homeData'
 
 const Home = () => {
@@ -68,7 +67,6 @@ const Home = () => {
                         className="bg-base-200"
                     />
                 </div>
-                <FrankChatBot />
             </div>
         </AppLayout>
     )
