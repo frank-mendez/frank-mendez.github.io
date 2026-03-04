@@ -1,6 +1,9 @@
 import { ChatMessage, ChatSender } from '../types/chat'
 
-export const FRANK_CHAT_API_ENDPOINT = 'https://frank-bot.vercel.app/api/chat'
+export const FRANK_API_BASE = 'https://frank-bot.vercel.app'
+
+export const FRANK_CHAT_API_ENDPOINT = `${FRANK_API_BASE}/api/chat`
+export const FRANK_CONTACT_API_ENDPOINT = `${FRANK_API_BASE}/api/contact`
 
 export const FRANK_NOT_ABOUT_MESSAGE =
     'I can only answer questions about Frank Mendez. Please ask about his background, experience, tech stack, or life.'
