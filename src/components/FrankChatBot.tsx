@@ -8,7 +8,7 @@ const FrankChatBot = () => {
     return (
         <div className="fixed bottom-4 right-4 z-50">
             {isOpen ? (
-                <div className="card w-[calc(100vw-2rem)] max-w-80 sm:max-w-96 bg-base-200 shadow-2xl border border-base-300">
+                <div className="card w-[calc(100vw-2rem)] max-w-[20rem] sm:max-w-[24rem] bg-base-200 shadow-2xl border border-base-300">
                     <div className="card-body p-3 sm:p-4">
                         <div className="flex items-center justify-between mb-2">
                             <div>
@@ -66,7 +66,7 @@ const FrankChatBot = () => {
             ) : (
                 <button
                     type="button"
-                    className="btn btn-circle btn-primary h-14 w-14 border-0 shadow-lg md:h-16 md:w-16 lg:btn-wide lg:h-auto lg:w-auto lg:px-5"
+                    className="btn btn-circle btn-primary h-14 w-14 border-0 shadow-lg md:h-16 md:w-16 lg:btn-wide lg:h-10 lg:w-auto lg:px-5"
                     onClick={toggleOpen}
                     aria-label="Open chat about Frank"
                 >

@@ -8,7 +8,7 @@ type SocialIconLinkProps = {
 
 const SocialIconLink = ({ href, label, children }: SocialIconLinkProps) => {
     return (
-        <a target="_blank" rel="noreferrer" href={href} aria-label={label} className="rounded-full p-2">
+        <a target="_blank" rel="noopener noreferrer" href={href} aria-label={label} className="rounded-full p-2">
             {children}
         </a>
     )

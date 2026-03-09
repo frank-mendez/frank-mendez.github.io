@@ -18,7 +18,12 @@ const Footer = () => {
                 <Link to="/projects" className="link link-hover">
                     Projects
                 </Link>
-                <a target="_blank" href="https://frank-tech-blog.vercel.app/" className="link link-hover">
+                <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://frank-tech-blog.vercel.app/"
+                    className="link link-hover"
+                >
                     Blog
                 </a>
             </nav>
