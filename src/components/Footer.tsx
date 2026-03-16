@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Mail } from 'lucide-react'
+import { GitHub, LinkedIn } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 import { Separator } from './ui/separator'
 
@@ -22,7 +23,7 @@ const Footer = () => {
                                 aria-label="GitHub"
                                 className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-200 transition-colors"
                             >
-                                <Github className="h-4 w-4" />
+                                <GitHub sx={{ fontSize: 16 }} />
                             </a>
                             <a
                                 href="https://www.linkedin.com/in/frank-mendez-47b62090/"
@@ -31,7 +32,7 @@ const Footer = () => {
                                 aria-label="LinkedIn"
                                 className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-200 transition-colors"
                             >
-                                <Linkedin className="h-4 w-4" />
+                                <LinkedIn sx={{ fontSize: 16 }} />
                             </a>
                             <a
                                 href="mailto:frankmendezresources@gmail.com"

@@ -5,7 +5,8 @@ import { Button } from '../../components/ui/button'
 import { Badge } from '../../components/ui/badge'
 import { RetroGridBg } from '../../components/ui/retro-grid-bg'
 import { UnderwaterBg } from '../../components/ui/underwater-bg'
-import { Github, Linkedin, Mail, ArrowRight } from 'lucide-react'
+import { Mail, ArrowRight } from 'lucide-react'
+import { GitHub, LinkedIn } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
@@ -87,7 +88,7 @@ const Home = () => {
                                         className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
                                         aria-label="GitHub"
                                     >
-                                        <Github className="h-5 w-5" />
+                                        <GitHub sx={{ fontSize: 20 }} />
                                     </a>
                                     <a
                                         href="https://www.linkedin.com/in/frank-mendez-47b62090/"
@@ -96,7 +97,7 @@ const Home = () => {
                                         className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
                                         aria-label="LinkedIn"
                                     >
-                                        <Linkedin className="h-5 w-5" />
+                                        <LinkedIn sx={{ fontSize: 20 }} />
                                     </a>
                                     <a
                                         href="mailto:frankmendezresources@gmail.com"

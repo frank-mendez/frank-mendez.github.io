@@ -3,6 +3,7 @@ import { cn } from '../../lib/utils'
 
 const Label = React.forwardRef<HTMLLabelElement, React.LabelHTMLAttributes<HTMLLabelElement>>(
     ({ className, ...props }, ref) => (
+        // NOSONAR - htmlFor is passed via {...props} (LabelHTMLAttributes includes htmlFor)
         <label
             ref={ref}
             className={cn(

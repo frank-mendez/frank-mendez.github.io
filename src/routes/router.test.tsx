@@ -30,7 +30,7 @@ describe('Router', () => {
         await router.navigate(path)
         render(<RouterProvider router={router} />)
 
-        expect(await assertion()).toBeInTheDocument()
+        expect(assertion()).toBeInTheDocument()
         expect(screen.getByRole('button', { name: /open chat about frank/i })).toBeInTheDocument()
     })
 })
