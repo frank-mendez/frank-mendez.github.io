@@ -1,4 +1,6 @@
 import { ReactNode } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Badge } from './ui/badge'
 
 export type SkillGroup = {
     title: string
@@ -17,32 +19,37 @@ type SkillSectionProps = {
 const SkillSection = ({ eyebrow, title, description, groups, className }: SkillSectionProps) => {
     return (
         <section className={className ?? 'bg-base-200'}>
-            <div className="container mx-auto px-6 py-14">
-                <div className="mx-auto max-w-3xl text-center">
-                    {eyebrow ? (
-                        <p className="text-sm uppercase tracking-[0.2em] text-primary">{eyebrow}</p>
-                    ) : null}
-                    <h2 className="mt-3 text-4xl font-bold">{title}</h2>
-                    <p className="mt-4 text-base-content/70">{description}</p>
+            <div className="container mx-auto px-4 sm:px-6 py-16">
+                <div className="mx-auto max-w-3xl text-center mb-10">
+                    {eyebrow && (
+                        <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">{eyebrow}</p>
+                    )}
+                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">{title}</h2>
+                    <p className="mt-3 text-base-content/60 text-sm sm:text-base">{description}</p>
                 </div>
 
-                <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+                <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                     {groups.map((group) => (
-                        <div key={group.title} className="card bg-base-100 shadow-xl">
-                            <div className="card-body gap-4">
-                                <div className="flex items-center gap-3 text-primary">
-                                    {group.icon ? <span className="text-xl">{group.icon}</span> : null}
-                                    <h3 className="text-lg font-semibold">{group.title}</h3>
-                                </div>
-                                <div className="flex flex-wrap gap-2">
+                        <Card
+                            key={group.title}
+                            className="bg-base-100 border-base-content/10 hover:shadow-md transition-shadow"
+                        >
+                            <CardHeader className="pb-3">
+                                <CardTitle className="flex items-center gap-2 text-base">
+                                    {group.icon && <span className="text-primary">{group.icon}</span>}
+                                    {group.title}
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="flex flex-wrap gap-1.5">
                                     {group.items.map((item) => (
-                                        <span key={item} className="badge badge-ghost">
+                                        <Badge key={item} variant="secondary" className="text-xs font-normal">
                                             {item}
-                                        </span>
+                                        </Badge>
                                     ))}
                                 </div>
-                            </div>
-                        </div>
+                            </CardContent>
+                        </Card>
                     ))}
                 </div>
             </div>

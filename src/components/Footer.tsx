@@ -1,63 +1,102 @@
-import GitHubIcon from '@mui/icons-material/GitHub'
-import LinkedInIcon from '@mui/icons-material/LinkedIn'
-import FacebookIcon from '@mui/icons-material/Facebook'
-import InstagramIcon from '@mui/icons-material/Instagram'
+import { Mail } from 'lucide-react'
+import { GitHub, LinkedIn } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
-import SocialIconLink from './SocialIconLink.tsx'
+import { Separator } from './ui/separator'
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center footer-horizontal flex-wrap items-center justify-center gap-4 bg-base-100 px-4 py-8 text-base-content sm:gap-6 sm:px-6 lg:px-10">
-            <nav className="flex flex-row flex-wrap items-center justify-center gap-4 text-center sm:gap-6">
-                <Link to="/about" className="link link-hover">
-                    About
-                </Link>
-                <Link to="/contact" className="link link-hover">
-                    Contact
-                </Link>
-                <Link to="/projects" className="link link-hover">
-                    Projects
-                </Link>
-                <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href="https://frank-tech-blog.vercel.app/"
-                    className="link link-hover"
-                >
-                    Blog
-                </a>
-            </nav>
-            <nav>
-                <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-                    <SocialIconLink href="https://github.com/frank-mendez" label="Frank Mendez on GitHub">
-                        <GitHubIcon />
-                    </SocialIconLink>
-                    <SocialIconLink
-                        href="https://www.linkedin.com/in/frank-mendez-47b62090/"
-                        label="Frank Mendez on LinkedIn"
-                    >
-                        <LinkedInIcon />
-                    </SocialIconLink>
-                    <SocialIconLink href="https://www.facebook.com/frankmendezzz/" label="Frank Mendez on Facebook">
-                        <FacebookIcon />
-                    </SocialIconLink>
-                    <SocialIconLink href="https://www.instagram.com/frankmendezph/" label="Frank Mendez on Instagram">
-                        <InstagramIcon />
-                    </SocialIconLink>
+        <footer className="bg-base-100 border-t border-base-content/10">
+            <div className="container mx-auto px-4 sm:px-6 py-10">
+                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    {/* Brand */}
+                    <div className="space-y-3">
+                        <p className="font-semibold text-base-content">Frank Mendez</p>
+                        <p className="text-sm text-base-content/60 leading-relaxed max-w-xs">
+                            Senior Software Engineer. Building modern web apps with React, TypeScript, and a focus on
+                            clean, maintainable code.
+                        </p>
+                        <div className="flex items-center gap-2">
+                            <a
+                                href="https://github.com/frank-mendez"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="GitHub"
+                                className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-200 transition-colors"
+                            >
+                                <GitHub sx={{ fontSize: 16 }} />
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/frank-mendez-47b62090/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="LinkedIn"
+                                className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-200 transition-colors"
+                            >
+                                <LinkedIn sx={{ fontSize: 16 }} />
+                            </a>
+                            <a
+                                href="mailto:frankmendezresources@gmail.com"
+                                aria-label="Email"
+                                className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-200 transition-colors"
+                            >
+                                <Mail className="h-4 w-4" />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Navigation */}
+                    <div className="space-y-3">
+                        <p className="text-xs uppercase tracking-widest font-semibold text-base-content/40">
+                            Navigation
+                        </p>
+                        <nav className="flex flex-col gap-2">
+                            {[
+                                { label: 'About', to: '/about' },
+                                { label: 'Projects', to: '/projects' },
+                                { label: 'Contact', to: '/contact' },
+                            ].map(({ label, to }) => (
+                                <Link
+                                    key={to}
+                                    to={to}
+                                    className="text-sm text-base-content/60 hover:text-base-content transition-colors w-fit"
+                                >
+                                    {label}
+                                </Link>
+                            ))}
+                            <a
+                                href="https://frank-tech-blog.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm text-base-content/60 hover:text-base-content transition-colors w-fit"
+                            >
+                                Blog
+                            </a>
+                        </nav>
+                    </div>
+
+                    {/* Sponsor */}
+                    <div className="space-y-3">
+                        <p className="text-xs uppercase tracking-widest font-semibold text-base-content/40">Support</p>
+                        <p className="text-sm text-base-content/60">
+                            If you find my work valuable, consider sponsoring me on GitHub.
+                        </p>
+                        <iframe
+                            src="https://github.com/sponsors/frank-mendez/button"
+                            title="Sponsor frank-mendez"
+                            height="32"
+                            width="114"
+                            style={{ border: 0, borderRadius: '6px', maxWidth: '100%' }}
+                        />
+                    </div>
                 </div>
-            </nav>
-            <div className="flex w-full justify-center px-2">
-                <iframe
-                    src="https://github.com/sponsors/frank-mendez/button"
-                    title="Sponsor frank-mendez"
-                    height="32"
-                    width="114"
-                    style={{ border: 0, borderRadius: '6px', maxWidth: '100%' }}
-                />
+
+                <Separator className="my-8" />
+
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-base-content/40">
+                    <p>Copyright &copy; 2026 Frank Mendez. All rights reserved.</p>
+                    <p>Built with React + shadcn/ui + TailwindCSS</p>
+                </div>
             </div>
-            <aside>
-                <p className="text-center text-sm sm:text-base">Copyright © 2026 - Frank Mendez</p>
-            </aside>
         </footer>
     )
 }

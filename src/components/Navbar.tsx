@@ -1,107 +1,105 @@
 import ThemeSwitcher from './ThemeSwitcher.tsx'
 import { Link, NavLink } from 'react-router-dom'
 import { trackEvent } from '../services/analyticsService'
+import { Menu } from 'lucide-react'
+import { Button } from './ui/button'
+import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
+import { Separator } from './ui/separator'
+
+const NAV_LINKS = [
+    { label: 'About', to: '/about' },
+    { label: 'Projects', to: '/projects' },
+    { label: 'Contact', to: '/contact' },
+]
 
 const handleNavClick = (label: string, destination: string) => {
-    trackEvent('navbar_click', {
-        label,
-        destination,
-    })
+    trackEvent('navbar_click', { label, destination })
 }
 
 const Navbar = () => {
     return (
-        <div className="navbar flex-row">
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <div tabIndex={0} role="buthrefn" className="btn btn-ghost lg:hidden">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h8m-8 6h16"
-                            />
-                        </svg>
-                    </div>
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-dm-sans"
-                    >
-                        <li>
-                            <NavLink
-                                to="/about"
-                                className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
-                                onClick={() => handleNavClick('about', '/about')}
-                            >
-                                About
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/projects"
-                                className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
-                                onClick={() => handleNavClick('projects', '/projects')}
-                            >
-                                Projects
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                to="/contact"
-                                className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
-                                onClick={() => handleNavClick('contact', '/contact')}
-                            >
-                                Contact
-                            </NavLink>
-                        </li>
-                    </ul>
-                </div>
-                <Link to="/" className="btn btn-ghost text-xl font-dm-sans" onClick={() => handleNavClick('home', '/')}>
-                    Frank
+        <header className="sticky top-0 z-40 w-full border-b border-base-content/10 bg-base-100/80 backdrop-blur-md">
+            <div className="container mx-auto flex h-14 items-center justify-between px-4 sm:px-6">
+                {/* Logo */}
+                <Link
+                    to="/"
+                    className="text-lg font-semibold tracking-tight hover:opacity-80 transition-opacity"
+                    onClick={() => handleNavClick('home', '/')}
+                >
+                    Frank Mendez
                 </Link>
-            </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 font-dm-sans">
-                    <li>
+
+                {/* Desktop nav */}
+                <nav className="hidden md:flex items-center gap-1">
+                    {NAV_LINKS.map(({ label, to }) => (
                         <NavLink
-                            to="/about"
-                            className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
-                            onClick={() => handleNavClick('about', '/about')}
+                            key={to}
+                            to={to}
+                            className={({ isActive }) =>
+                                `px-3 py-1.5 rounded-md text-sm transition-colors ${
+                                    isActive
+                                        ? 'bg-base-200 font-semibold text-base-content'
+                                        : 'text-base-content/70 hover:text-base-content hover:bg-base-200'
+                                }`
+                            }
+                            onClick={() => handleNavClick(label.toLowerCase(), to)}
                         >
-                            About
+                            {label}
                         </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            to="/projects"
-                            className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
-                            onClick={() => handleNavClick('projects', '/projects')}
-                        >
-                            Projects
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            to="/contact"
-                            className={({ isActive }) => (isActive ? 'active font-semibold' : undefined)}
-                            onClick={() => handleNavClick('contact', '/contact')}
-                        >
-                            Contact
-                        </NavLink>
-                    </li>
-                </ul>
+                    ))}
+                </nav>
+
+                {/* Right side */}
+                <div className="flex items-center gap-2">
+                    <div className="hidden md:flex">
+                        <ThemeSwitcher />
+                    </div>
+
+                    {/* Mobile menu */}
+                    <Sheet>
+                        <SheetTrigger asChild>
+                            <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open menu">
+                                <Menu className="h-5 w-5" />
+                            </Button>
+                        </SheetTrigger>
+                        <SheetContent>
+                            <div className="flex flex-col h-full pt-10 px-2">
+                                <Link
+                                    to="/"
+                                    className="text-lg font-semibold mb-6"
+                                    onClick={() => handleNavClick('home', '/')}
+                                >
+                                    Frank Mendez
+                                </Link>
+                                <Separator className="mb-4" />
+                                <nav className="flex flex-col gap-1">
+                                    {NAV_LINKS.map(({ label, to }) => (
+                                        <NavLink
+                                            key={to}
+                                            to={to}
+                                            className={({ isActive }) =>
+                                                `px-3 py-2 rounded-md text-sm transition-colors ${
+                                                    isActive
+                                                        ? 'bg-base-200 font-semibold text-base-content'
+                                                        : 'text-base-content/70 hover:text-base-content hover:bg-base-200'
+                                                }`
+                                            }
+                                            onClick={() => handleNavClick(label.toLowerCase(), to)}
+                                        >
+                                            {label}
+                                        </NavLink>
+                                    ))}
+                                </nav>
+                                <div className="mt-auto pb-4">
+                                    <Separator className="mb-4" />
+                                    <ThemeSwitcher />
+                                </div>
+                            </div>
+                        </SheetContent>
+                    </Sheet>
+                </div>
             </div>
-            <div className="navbar-end hidden lg:flex font-dm-sans">
-                <ThemeSwitcher />
-            </div>
-        </div>
+        </header>
     )
 }
 

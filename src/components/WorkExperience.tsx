@@ -1,7 +1,7 @@
-import BusinessIcon from '@mui/icons-material/Business'
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
+import { Building2, Calendar, ExternalLink, Briefcase } from 'lucide-react'
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Badge } from './ui/badge'
+import { Button } from './ui/button'
 
 type ExperienceLink = {
     label: string
@@ -46,8 +46,7 @@ const experiences: ExperienceItem[] = [
     {
         company: 'Empower Associates',
         period: 'February 2020 - February 2021',
-        summary:
-            'Rebuilt the recruiter platform UI and integrated REST APIs for candidate data workflows.',
+        summary: 'Rebuilt the recruiter platform UI and integrated REST APIs for candidate data workflows.',
         techStack: ['ReactJS', 'Redux', 'NodeJS', 'Postgres', 'Jira', 'GitHub', 'Elastic UI', 'Docker'],
         links: [
             {
@@ -59,8 +58,7 @@ const experiences: ExperienceItem[] = [
     {
         company: 'Aerapass',
         period: 'February 2021 - September 2021',
-        summary:
-            'Built fintech features including KYC workflows and multi-currency transactions within Scrum teams.',
+        summary: 'Built fintech features including KYC workflows and multi-currency transactions within Scrum teams.',
         techStack: ['TypeScript', 'Angular', 'TypeORM', 'NodeJS', 'NgRx', 'Ant Design', 'Jest', 'Mocha', 'Docker'],
         links: [
             {
@@ -72,8 +70,7 @@ const experiences: ExperienceItem[] = [
     {
         company: 'Arcanys',
         period: 'October 2021 - September 2024',
-        summary:
-            'Delivered new lease management experiences and supported full-stack feature work for global clients.',
+        summary: 'Delivered new lease management experiences and supported full-stack feature work for global clients.',
         techStack: ['TypeScript', 'ReactJS', 'AWS', 'NodeJS', 'Chakra UI', 'Zustand', 'Jest', 'Jira'],
         links: [
             {
@@ -85,8 +82,7 @@ const experiences: ExperienceItem[] = [
     {
         company: 'Virtido AG',
         period: 'September 2024 - Present',
-        summary:
-            'Supporting Swiss clients with software development, staff augmentation, and product delivery.',
+        summary: 'Supporting Swiss clients with software development, staff augmentation, and product delivery.',
         techStack: ['TypeScript', 'ReactJS', 'NodeJS', 'AWS', 'Agile'],
         links: [
             {
@@ -99,47 +95,43 @@ const experiences: ExperienceItem[] = [
 
 const ExperienceCard = ({ experience }: { experience: ExperienceItem }) => {
     return (
-        <div className="card bg-base-100 shadow-xl max-w-xl">
-            <div className="card-body gap-4">
-                <div className="flex flex-wrap items-center gap-3">
-                    <div className="inline-flex items-center gap-2 text-primary">
-                        <BusinessIcon fontSize="small" />
-                        <h3 className="text-xl font-bold">{experience.company}</h3>
-                    </div>
-                    <div className="badge badge-outline">{experience.period}</div>
+        <Card className="bg-base-100 border-base-content/10 hover:shadow-md transition-shadow max-w-xl w-full">
+            <CardHeader className="pb-3">
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                    <CardTitle className="flex items-center gap-2 text-base text-primary">
+                        <Building2 className="h-4 w-4 shrink-0" />
+                        {experience.company}
+                    </CardTitle>
+                    <Badge variant="outline" className="text-xs shrink-0">
+                        {experience.period}
+                    </Badge>
                 </div>
-
-                <p className="text-sm text-base-content/80">{experience.summary}</p>
-
-                <div className="flex flex-wrap items-center gap-2 text-xs text-base-content/70">
-                    <CalendarMonthIcon fontSize="inherit" />
+            </CardHeader>
+            <CardContent className="space-y-3">
+                <p className="text-sm text-base-content/70">{experience.summary}</p>
+                <div className="flex items-center gap-1.5 text-xs text-base-content/50">
+                    <Calendar className="h-3 w-3" />
                     <span>{experience.period}</span>
                 </div>
-
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                     {experience.techStack.map((tech) => (
-                        <span key={tech} className="badge badge-ghost">
+                        <Badge key={tech} variant="secondary" className="text-xs font-normal">
                             {tech}
-                        </span>
+                        </Badge>
                     ))}
                 </div>
-
-                <div className="card-actions">
+                <div className="flex flex-wrap gap-2 pt-1">
                     {experience.links.map((link) => (
-                        <a
-                            key={link.label}
-                            className="btn btn-sm"
-                            href={link.href}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <OpenInNewIcon fontSize="small" />
-                            {link.label}
-                        </a>
+                        <Button key={link.label} asChild size="sm" variant="outline">
+                            <a href={link.href} target="_blank" rel="noreferrer">
+                                <ExternalLink className="h-3.5 w-3.5" />
+                                {link.label}
+                            </a>
+                        </Button>
                     ))}
                 </div>
-            </div>
-        </div>
+            </CardContent>
+        </Card>
     )
 }
 
@@ -151,10 +143,10 @@ const WorkExperience = () => {
                 const isLeft = index % 2 === 0
                 return (
                     <li key={`${experience.company}-${experience.period}`}>
-                        {index === 0 ? null : <hr className="bg-primary/40" />}
+                        {index === 0 ? null : <hr className="bg-primary/30" />}
                         <div className="timeline-middle">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                                <WorkOutlineIcon fontSize="small" />
+                            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary ring-2 ring-primary/20">
+                                <Briefcase className="h-4 w-4" />
                             </div>
                         </div>
                         <div className={`${isLeft ? 'timeline-start md:text-end' : 'timeline-end'} mb-10`}>
@@ -162,7 +154,7 @@ const WorkExperience = () => {
                                 <ExperienceCard experience={experience} />
                             </div>
                         </div>
-                        <hr className="bg-primary/40" />
+                        <hr className="bg-primary/30" />
                     </li>
                 )
             })}

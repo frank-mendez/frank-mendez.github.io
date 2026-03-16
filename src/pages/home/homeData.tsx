@@ -1,32 +1,25 @@
-import CodeIcon from '@mui/icons-material/Code'
-import StorageIcon from '@mui/icons-material/Storage'
-import ScienceIcon from '@mui/icons-material/Science'
-import CloudDoneIcon from '@mui/icons-material/CloudDone'
-import PsychologyIcon from '@mui/icons-material/Psychology'
-import HandshakeIcon from '@mui/icons-material/Handshake'
-import TrendingUpIcon from '@mui/icons-material/TrendingUp'
-import BuildCircleIcon from '@mui/icons-material/BuildCircle'
+import { Code2, Database, FlaskConical, Cloud, Brain, Handshake, TrendingUp, Wrench } from 'lucide-react'
 import { SkillGroup } from '../../components/SkillSection'
 
 export const techStackGroups: SkillGroup[] = [
     {
         title: 'Frontend',
-        icon: <CodeIcon />,
+        icon: <Code2 className="h-4 w-4" />,
         items: ['React', 'TypeScript', 'Next.js', 'Material UI', 'TailwindCSS', 'daisyUI', 'TanStack', 'Zustand'],
     },
     {
         title: 'Backend',
-        icon: <StorageIcon />,
+        icon: <Database className="h-4 w-4" />,
         items: ['Node.js', 'NestJS', 'PostgreSQL', 'MongoDB', 'Firebase', 'MikroORM'],
     },
     {
         title: 'Testing',
-        icon: <ScienceIcon />,
+        icon: <FlaskConical className="h-4 w-4" />,
         items: ['Jest', 'Cypress', 'Testing Library', 'Vitest'],
     },
     {
         title: 'DevOps',
-        icon: <CloudDoneIcon />,
+        icon: <Cloud className="h-4 w-4" />,
         items: ['Docker', 'AWS', 'Azure', 'GitHub Actions', 'CI/CD'],
     },
 ]
@@ -34,22 +27,22 @@ export const techStackGroups: SkillGroup[] = [
 export const softSkillsGroups: SkillGroup[] = [
     {
         title: 'Communication',
-        icon: <HandshakeIcon />,
+        icon: <Handshake className="h-4 w-4" />,
         items: ['Stakeholder alignment', 'Clear documentation', 'Cross-team collaboration'],
     },
     {
         title: 'Execution',
-        icon: <TrendingUpIcon />,
+        icon: <TrendingUp className="h-4 w-4" />,
         items: ['Ownership mindset', 'Deadline-focused delivery', 'Quality-first approach'],
     },
     {
         title: 'Growth',
-        icon: <PsychologyIcon />,
+        icon: <Brain className="h-4 w-4" />,
         items: ['Continuous learning', 'Adaptability', 'Mentorship & coaching'],
     },
     {
         title: 'Tools',
-        icon: <BuildCircleIcon />,
+        icon: <Wrench className="h-4 w-4" />,
         items: ['GitHub', 'Jira', 'Slack', 'Figma', 'WebStorm'],
     },
 ]
