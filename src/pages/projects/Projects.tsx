@@ -1,5 +1,6 @@
 import AppLayout from '../../layout/AppLayout.tsx'
 import ProjectCard from '../../components/ProjectCard.tsx'
+import { Separator } from '../../components/ui/separator'
 
 const projects = [
     {
@@ -25,8 +26,7 @@ const projects = [
     {
         title: 'Advanced Architecture',
         type: 'Backend',
-        description:
-            'NestJS advanced architecture covering event sourcing, CQRS, layered and hexagonal patterns.',
+        description: 'NestJS advanced architecture covering event sourcing, CQRS, layered and hexagonal patterns.',
         techStack: 'NestJS, TypeScript, MikroOrm, MongoDB',
         links: {
             repoUrl: 'https://github.com/frank-mendez/advanced-architecture',
@@ -45,8 +45,9 @@ const projects = [
     {
         title: 'MFK LMS',
         type: 'Full Stack',
-        description: 'A comprehensive loan management system built with Next.js 14, designed for microfinance operations and lending institutions. Features complete loan lifecycle management, borrower tracking, repayment scheduling, stash contributions, and detailed financial reporting with role-based access control.',
-        techStack: 'See repository',
+        description:
+            'A comprehensive loan management system built with Next.js 14, designed for microfinance operations. Features complete loan lifecycle management, borrower tracking, repayment scheduling, and detailed financial reporting.',
+        techStack: 'Next.js 14, TypeScript, PostgreSQL',
         links: {
             detailsUrl: 'https://mfklms.vercel.app/',
             repoUrl: 'https://github.com/frank-mendez/mfklms',
@@ -55,7 +56,8 @@ const projects = [
     {
         title: 'To Do-Py',
         type: 'Backend',
-        description: 'todo-py 📝 | A Simple & Scalable To-Do API in Python todo-py is a lightweight and efficient backend for managing tasks, built with Python',
+        description:
+            'A lightweight and efficient backend for managing tasks, built with Python. Simple, scalable To-Do API.',
         techStack: 'Python',
         links: {
             repoUrl: 'https://github.com/frank-mendez/todo-py',
@@ -66,9 +68,17 @@ const projects = [
 const Projects = () => {
     return (
         <AppLayout>
-            <div className="container m-auto contain-layout font-dm-sans">
-                <h1 className="font-bold text-5xl text-center my-10">Projects</h1>
-                <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div className="container mx-auto px-4 sm:px-6 py-14">
+                <div className="mb-8">
+                    <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Portfolio</p>
+                    <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Projects</h1>
+                    <p className="mt-3 text-base-content/60 max-w-xl">
+                        A selection of personal and professional projects spanning frontend, backend, and full-stack
+                        development.
+                    </p>
+                </div>
+                <Separator className="mb-10" />
+                <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
                     {projects.map((project) => (
                         <ProjectCard
                             key={project.title}

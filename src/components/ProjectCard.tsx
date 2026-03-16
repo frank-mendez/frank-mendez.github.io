@@ -1,7 +1,8 @@
-import GitHubIcon from '@mui/icons-material/GitHub'
-import LaunchIcon from '@mui/icons-material/Launch'
-import LanguageIcon from '@mui/icons-material/Language'
+import { Github, Globe, ExternalLink } from 'lucide-react'
 import { trackEvent } from '../services/analyticsService'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card'
+import { Badge } from './ui/badge'
+import { Button } from './ui/button'
 
 export type ProjectLinks = {
     detailsUrl?: string
@@ -27,58 +28,75 @@ const ProjectCard = ({ title, type, description, techStack, links }: ProjectCard
         })
     }
 
+    const techItems = techStack
+        .split(',')
+        .map((t) => t.trim())
+        .filter(Boolean)
+
     return (
-        <div className="card bg-base-100 shadow-xl">
-            <div className="card-body font-dm-sans">
-                <div className="flex items-center justify-between gap-4">
-                    <h2 className="card-title text-2xl">{title}</h2>
-                    <span className="badge badge-outline">{type}</span>
+        <Card className="flex flex-col hover:shadow-md transition-shadow bg-base-100">
+            <CardHeader className="pb-3">
+                <div className="flex items-start justify-between gap-3">
+                    <CardTitle className="text-base leading-snug">{title}</CardTitle>
+                    <Badge variant="outline" className="shrink-0 text-xs">
+                        {type}
+                    </Badge>
                 </div>
-                <p className="text-sm text-base-content/80">{description}</p>
-                <div className="mt-2">
-                    <p className="text-xs uppercase tracking-wide text-base-content/60">Tech Stack</p>
-                    <p className="text-sm">{techStack}</p>
+                <p className="text-sm text-base-content/60 leading-relaxed mt-1">{description}</p>
+            </CardHeader>
+
+            <CardContent className="flex-1 pb-3">
+                <div className="flex flex-wrap gap-1.5">
+                    {techItems.map((tech) => (
+                        <Badge key={tech} variant="secondary" className="text-xs font-normal">
+                            {tech}
+                        </Badge>
+                    ))}
                 </div>
-                <div className="card-actions mt-4 flex-wrap">
-                    {links?.detailsUrl ? (
-                        <a
-                            className="btn btn-sm btn-primary"
-                            href={links.detailsUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            onClick={() => handleProjectClick('site', links?.detailsUrl || '')}
-                        >
-                            <LanguageIcon fontSize="small" />
-                            Site
-                        </a>
-                    ) : null}
-                    {links?.liveUrl ? (
-                        <a
-                            className="btn btn-sm"
-                            href={links.liveUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            onClick={() => handleProjectClick('live', links?.liveUrl || '')}
-                        >
-                            <LaunchIcon fontSize="small" />
+            </CardContent>
+
+            <CardFooter className="gap-2 flex-wrap">
+                {links?.detailsUrl && (
+                    <Button
+                        asChild
+                        size="sm"
+                        variant="default"
+                        onClick={() => handleProjectClick('site', links?.detailsUrl ?? '')}
+                    >
+                        <a href={links.detailsUrl} target="_blank" rel="noreferrer">
+                            <Globe className="h-3.5 w-3.5" />
                             Live
                         </a>
-                    ) : null}
-                    {links?.repoUrl ? (
-                        <a
-                            className="btn btn-sm"
-                            href={links.repoUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            onClick={() => handleProjectClick('code', links?.repoUrl || '')}
-                        >
-                            <GitHubIcon fontSize="small" />
+                    </Button>
+                )}
+                {links?.liveUrl && (
+                    <Button
+                        asChild
+                        size="sm"
+                        variant="outline"
+                        onClick={() => handleProjectClick('live', links?.liveUrl ?? '')}
+                    >
+                        <a href={links.liveUrl} target="_blank" rel="noreferrer">
+                            <ExternalLink className="h-3.5 w-3.5" />
+                            Demo
+                        </a>
+                    </Button>
+                )}
+                {links?.repoUrl && (
+                    <Button
+                        asChild
+                        size="sm"
+                        variant="outline"
+                        onClick={() => handleProjectClick('code', links?.repoUrl ?? '')}
+                    >
+                        <a href={links.repoUrl} target="_blank" rel="noreferrer">
+                            <Github className="h-3.5 w-3.5" />
                             Code
                         </a>
-                    ) : null}
-                </div>
-            </div>
-        </div>
+                    </Button>
+                )}
+            </CardFooter>
+        </Card>
     )
 }
 

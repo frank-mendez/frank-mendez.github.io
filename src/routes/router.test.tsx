@@ -20,7 +20,7 @@ describe('Router', () => {
         },
         {
             path: '/contact',
-            assertion: () => screen.getByRole('heading', { name: 'Let’s build something great' }),
+            assertion: () => screen.getByRole('heading', { name: "Let's build something great" }),
         },
         {
             path: '/projects',
