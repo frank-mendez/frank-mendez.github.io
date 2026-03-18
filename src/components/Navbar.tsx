@@ -23,7 +23,7 @@ const handleNavClick = (label: string, destination: string) => {
     trackEvent('navbar_click', { label, destination })
 }
 
-const BASE_ITEM_CLS = 'px-3 rounded-md text-sm transition-colors'
+const BASE_ITEM_CLS = 'flex items-center px-3 rounded-md text-sm transition-colors'
 const INACTIVE_CLS = 'text-base-content/70 hover:text-base-content hover:bg-base-200'
 const ACTIVE_CLS = 'bg-primary/10 font-semibold text-primary'
 
@@ -90,9 +90,7 @@ const Navbar = () => {
 
                 {/* Right side */}
                 <div className="flex items-center gap-2">
-                    <div className="hidden md:flex">
-                        <ThemeSwitcher />
-                    </div>
+                    <ThemeSwitcher />
 
                     {/* Mobile menu */}
                     <Sheet>
@@ -116,10 +114,6 @@ const Navbar = () => {
                                         <NavItemRenderer key={'href' in link ? link.href : link.to} link={link} py="py-2" closeOnClick />
                                     ))}
                                 </nav>
-                                <div className="mt-auto pb-4">
-                                    <Separator className="mb-4" />
-                                    <ThemeSwitcher />
-                                </div>
                             </div>
                         </SheetContent>
                     </Sheet>
