@@ -24,17 +24,13 @@ const About = () => {
                                     <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">
                                         About
                                     </p>
-                                    <h1 id="bio-heading" className="text-4xl sm:text-5xl font-bold tracking-tight">Frank R. Mendez</h1>
+                                    <h1 id="bio-heading" className="text-4xl sm:text-5xl font-bold tracking-tight">
+                                        Frank R. Mendez
+                                    </h1>
                                 </div>
                                 <p className="text-base-content/70 text-base leading-relaxed max-w-2xl">
-<<<<<<< Updated upstream
                                     Senior Software Engineer with 10+ years specializing in frontend architecture,
                                     design systems, and full-stack TypeScript applications.
-=======
-                                    Frontend-focused engineer with 10+ years of experience delivering polished,
-                                    user-centered products. Based in Cagayan de Oro City, Philippines, with a background
-                                    in both frontend and backend development.
->>>>>>> Stashed changes
                                 </p>
                                 <p className="text-base-content/70 text-base leading-relaxed max-w-2xl">
                                     I architect scalable UIs with React and TypeScript — from component libraries to
@@ -51,10 +47,7 @@ const About = () => {
                                         { icon: Clock, label: 'Experience', value: '10+ Years' },
                                         { icon: CalendarDays, label: 'Availability', value: 'Mon-Fri, GMT+8' },
                                     ].map(({ icon: Icon, label, value }) => (
-                                        <div
-                                            key={label}
-                                            className="bg-base-200 border border-base-300 rounded-xl p-4"
-                                        >
+                                        <div key={label} className="bg-base-200 border border-base-300 rounded-xl p-4">
                                             <div className="flex items-center gap-2 mb-1">
                                                 <Icon className="h-3.5 w-3.5 text-primary" />
                                                 <p className="text-xs uppercase tracking-wide text-base-content/50 font-medium">
@@ -75,7 +68,9 @@ const About = () => {
                     <div className="container mx-auto px-4 sm:px-6 py-14">
                         <div className="mb-8 animate-fade-in-up">
                             <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Career</p>
-                            <h2 id="experience-heading" className="text-3xl sm:text-4xl font-bold tracking-tight">Experience</h2>
+                            <h2 id="experience-heading" className="text-3xl sm:text-4xl font-bold tracking-tight">
+                                Experience
+                            </h2>
                         </div>
                         <WorkExperience />
                     </div>
