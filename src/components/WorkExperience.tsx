@@ -1,5 +1,4 @@
-import { Building2, Calendar, ExternalLink, Briefcase } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { ExternalLink } from 'lucide-react'
 import { Badge } from './ui/badge'
 import { Button } from './ui/button'
 
@@ -95,70 +94,53 @@ const experiences: ExperienceItem[] = [
 
 const ExperienceCard = ({ experience }: { experience: ExperienceItem }) => {
     return (
-        <Card className="bg-base-100 border-base-content/10 hover:shadow-md transition-shadow max-w-xl w-full">
-            <CardHeader className="pb-3">
-                <div className="flex flex-wrap items-start justify-between gap-2">
-                    <CardTitle className="flex items-center gap-2 text-base text-primary">
-                        <Building2 className="h-4 w-4 shrink-0" />
-                        {experience.company}
-                    </CardTitle>
-                    <Badge variant="outline" className="text-xs shrink-0">
-                        {experience.period}
+        <div className="bg-base-200 border border-base-300 rounded-xl p-6 ml-8">
+            <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
+                <h3 className="text-base font-bold text-primary">{experience.company}</h3>
+                <span className="bg-base-200 text-base-content/50 text-xs px-2 py-0.5 rounded border border-base-300">
+                    {experience.period}
+                </span>
+            </div>
+            <p className="text-sm text-base-content/70 mb-3">{experience.summary}</p>
+            <div className="flex flex-wrap gap-1.5 mb-3">
+                {experience.techStack.map((tech) => (
+                    <Badge key={tech} variant="secondary" className="text-xs font-normal">
+                        {tech}
                     </Badge>
-                </div>
-            </CardHeader>
-            <CardContent className="space-y-3">
-                <p className="text-sm text-base-content/70">{experience.summary}</p>
-                <div className="flex items-center gap-1.5 text-xs text-base-content/50">
-                    <Calendar className="h-3 w-3" />
-                    <span>{experience.period}</span>
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                    {experience.techStack.map((tech) => (
-                        <Badge key={tech} variant="secondary" className="text-xs font-normal">
-                            {tech}
-                        </Badge>
-                    ))}
-                </div>
-                <div className="flex flex-wrap gap-2 pt-1">
-                    {experience.links.map((link) => (
-                        <Button key={link.label} asChild size="sm" variant="outline">
-                            <a href={link.href} target="_blank" rel="noreferrer">
-                                <ExternalLink className="h-3.5 w-3.5" />
-                                {link.label}
-                            </a>
-                        </Button>
-                    ))}
-                </div>
-            </CardContent>
-        </Card>
+                ))}
+            </div>
+            <div className="flex flex-wrap gap-2">
+                {experience.links.map((link) => (
+                    <Button key={link.label} asChild size="sm" variant="outline">
+                        <a href={link.href} target="_blank" rel="noreferrer">
+                            <ExternalLink className="h-3.5 w-3.5" />
+                            {link.label}
+                        </a>
+                    </Button>
+                ))}
+            </div>
+        </div>
     )
 }
 
 const WorkExperience = () => {
     const orderedExperiences = [...experiences].reverse()
     return (
-        <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
-            {orderedExperiences.map((experience, index) => {
-                const isLeft = index % 2 === 0
-                return (
-                    <li key={`${experience.company}-${experience.period}`}>
-                        {index === 0 ? null : <hr className="bg-primary/30" />}
-                        <div className="timeline-middle">
-                            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-primary ring-2 ring-primary/20">
-                                <Briefcase className="h-4 w-4" />
-                            </div>
+        <div className="relative">
+            {/* Vertical timeline line */}
+            <div className="absolute left-3 top-0 bottom-0 w-0.5 border-l-2 border-primary/30" />
+            <div className="space-y-8">
+                {orderedExperiences.map((experience) => (
+                    <div key={`${experience.company}-${experience.period}`} className="relative flex items-start">
+                        {/* Timeline dot */}
+                        <div className="absolute left-0 mt-6 h-2 w-2 rounded-full bg-primary translate-x-[9px]" />
+                        <div className="w-full">
+                            <ExperienceCard experience={experience} />
                         </div>
-                        <div className={`${isLeft ? 'timeline-start md:text-end' : 'timeline-end'} mb-10`}>
-                            <div className={isLeft ? 'md:flex md:justify-end' : ''}>
-                                <ExperienceCard experience={experience} />
-                            </div>
-                        </div>
-                        <hr className="bg-primary/30" />
-                    </li>
-                )
-            })}
-        </ul>
+                    </div>
+                ))}
+            </div>
+        </div>
     )
 }
 

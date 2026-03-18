@@ -20,7 +20,7 @@ describe('Router', () => {
     it.each([
         {
             path: '/about',
-            assertion: () => screen.getByRole('heading', { name: 'Work Experience' }),
+            assertion: () => screen.getByRole('heading', { name: 'Experience' }),
         },
         {
             path: '/contact',
