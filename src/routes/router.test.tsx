@@ -9,14 +9,18 @@ describe('Router', () => {
         await router.navigate('/')
         render(<RouterProvider router={router} />)
 
-        expect(await screen.findByRole('heading', { name: 'Frank Mendez' })).toBeInTheDocument()
+        expect(
+            await screen.findByRole('heading', {
+                name: /Senior Software Engineer building scalable systems and elegant UIs/i,
+            })
+        ).toBeInTheDocument()
         expect(screen.getByRole('button', { name: /open chat about frank/i })).toBeInTheDocument()
     })
 
     it.each([
         {
             path: '/about',
-            assertion: () => screen.getByRole('heading', { name: 'Work Experience' }),
+            assertion: () => screen.getByRole('heading', { name: 'Experience' }),
         },
         {
             path: '/contact',

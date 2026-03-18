@@ -220,7 +220,7 @@ const Contact = () => {
                                             <MapPin className="h-4 w-4 text-primary mt-0.5 shrink-0" />
                                             <div>
                                                 <p className="text-xs text-base-content/50 mb-0.5">Based in</p>
-                                                <p className="text-sm font-medium">Cebu City, Philippines</p>
+                                                <p className="text-sm font-medium">Cagayan de Oro City, Philippines</p>
                                             </div>
                                         </div>
                                         <Separator />

@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import ThemeSwitcher from './ThemeSwitcher.tsx'
 import { BLOG_URL } from '../constants/links'
 import { Link, NavLink } from 'react-router-dom'
@@ -22,9 +23,9 @@ const handleNavClick = (label: string, destination: string) => {
     trackEvent('navbar_click', { label, destination })
 }
 
-const BASE_ITEM_CLS = 'px-3 rounded-md text-sm transition-colors'
+const BASE_ITEM_CLS = 'flex items-center px-3 rounded-md text-sm transition-colors'
 const INACTIVE_CLS = 'text-base-content/70 hover:text-base-content hover:bg-base-200'
-const ACTIVE_CLS = 'bg-base-200 font-semibold text-base-content'
+const ACTIVE_CLS = 'bg-primary/10 font-semibold text-primary'
 
 const NavItemRenderer = ({ link, py, closeOnClick = false }: { link: NavItem; py: string; closeOnClick?: boolean }) => {
     const item =
@@ -54,8 +55,22 @@ const NavItemRenderer = ({ link, py, closeOnClick = false }: { link: NavItem; py
 }
 
 const Navbar = () => {
+    const [scrolled, setScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 10)
+        }
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
     return (
-        <header className="sticky top-0 z-40 w-full border-b border-base-content/10 bg-base-100/80 backdrop-blur-md">
+        <header
+            className={`sticky top-0 z-40 w-full bg-base-100/80 backdrop-blur-md transition-colors duration-200 border-b ${
+                scrolled ? 'border-base-300/70' : 'border-transparent'
+            }`}
+        >
             <div className="container mx-auto flex h-14 items-center justify-between px-4 sm:px-6">
                 {/* Logo */}
                 <Link
@@ -67,7 +82,7 @@ const Navbar = () => {
                 </Link>
 
                 {/* Desktop nav */}
-                <nav className="hidden md:flex items-center gap-1">
+                <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
                     {NAV_LINKS.map((link) => (
                         <NavItemRenderer key={'href' in link ? link.href : link.to} link={link} py="py-1.5" />
                     ))}
@@ -75,9 +90,7 @@ const Navbar = () => {
 
                 {/* Right side */}
                 <div className="flex items-center gap-2">
-                    <div className="hidden md:flex">
-                        <ThemeSwitcher />
-                    </div>
+                    <ThemeSwitcher />
 
                     {/* Mobile menu */}
                     <Sheet>
@@ -96,15 +109,34 @@ const Navbar = () => {
                                     Frank Mendez
                                 </Link>
                                 <Separator className="mb-4" />
-                                <nav className="flex flex-col gap-1">
-                                    {NAV_LINKS.map((link) => (
-                                        <NavItemRenderer key={'href' in link ? link.href : link.to} link={link} py="py-2" closeOnClick />
-                                    ))}
+                                <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
+                                    {NAV_LINKS.map((link) =>
+                                        'href' in link ? (
+                                            <a
+                                                key={link.href}
+                                                href={link.href}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={`block w-full px-3 py-2 rounded-md text-sm transition-colors ${INACTIVE_CLS}`}
+                                                onClick={() => handleNavClick(link.label.toLowerCase(), link.href)}
+                                            >
+                                                {link.label}
+                                            </a>
+                                        ) : (
+                                            <SheetClose key={link.to} asChild>
+                                                <NavLink
+                                                    to={link.to}
+                                                    className={({ isActive }) =>
+                                                        `block w-full px-3 py-2 rounded-md text-sm transition-colors ${isActive ? ACTIVE_CLS : INACTIVE_CLS}`
+                                                    }
+                                                    onClick={() => handleNavClick(link.label.toLowerCase(), link.to)}
+                                                >
+                                                    {link.label}
+                                                </NavLink>
+                                            </SheetClose>
+                                        )
+                                    )}
                                 </nav>
-                                <div className="mt-auto pb-4">
-                                    <Separator className="mb-4" />
-                                    <ThemeSwitcher />
-                                </div>
                             </div>
                         </SheetContent>
                     </Sheet>
