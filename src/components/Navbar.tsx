@@ -110,9 +110,32 @@ const Navbar = () => {
                                 </Link>
                                 <Separator className="mb-4" />
                                 <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
-                                    {NAV_LINKS.map((link) => (
-                                        <NavItemRenderer key={'href' in link ? link.href : link.to} link={link} py="py-2" closeOnClick />
-                                    ))}
+                                    {NAV_LINKS.map((link) =>
+                                        'href' in link ? (
+                                            <a
+                                                key={link.href}
+                                                href={link.href}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className={`block w-full px-3 py-2 rounded-md text-sm transition-colors ${INACTIVE_CLS}`}
+                                                onClick={() => handleNavClick(link.label.toLowerCase(), link.href)}
+                                            >
+                                                {link.label}
+                                            </a>
+                                        ) : (
+                                            <SheetClose key={link.to} asChild>
+                                                <NavLink
+                                                    to={link.to}
+                                                    className={({ isActive }) =>
+                                                        `block w-full px-3 py-2 rounded-md text-sm transition-colors ${isActive ? ACTIVE_CLS : INACTIVE_CLS}`
+                                                    }
+                                                    onClick={() => handleNavClick(link.label.toLowerCase(), link.to)}
+                                                >
+                                                    {link.label}
+                                                </NavLink>
+                                            </SheetClose>
+                                        )
+                                    )}
                                 </nav>
                             </div>
                         </SheetContent>
