@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 const Home = () => {
     return (
         <AppLayout>
-            <div>
+            <main>
                 {/* Hero Section */}
                 <section className="hero-gradient-bg dot-grid-bg relative min-h-[calc(100vh-3.5rem)] flex items-center">
                     <div className="relative container mx-auto px-4 sm:px-6 py-20">
@@ -40,18 +40,18 @@ const Home = () => {
                                 </p>
 
                                 {/* Main headline */}
-                                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-base-content animate-fade-in-up animation-delay-100">
+                                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-base-content animate-fade-in-up animation-delay-200">
                                     Senior Software Engineer building scalable systems and elegant UIs
                                 </h1>
 
                                 {/* Subheading */}
-                                <p className="text-base-content/60 text-base sm:text-lg max-w-md leading-relaxed animate-fade-in-up animation-delay-200">
+                                <p className="text-base-content/60 text-base sm:text-lg max-w-md leading-relaxed animate-fade-in-up animation-delay-300">
                                     10+ years crafting production-grade React applications, design systems, and backend
                                     APIs that scale.
                                 </p>
 
                                 {/* CTA buttons */}
-                                <div className="flex flex-wrap gap-3 animate-fade-in-up animation-delay-300">
+                                <div className="flex flex-wrap gap-3 animate-fade-in-up animation-delay-400">
                                     <Link to="/projects">
                                         <Button size="lg" className="font-semibold">
                                             View Projects
@@ -66,7 +66,7 @@ const Home = () => {
                                 </div>
 
                                 {/* Social links */}
-                                <div className="flex items-center gap-1 pt-2 animate-fade-in-up animation-delay-300">
+                                <div className="flex items-center gap-1 pt-2 animate-fade-in-up animation-delay-400">
                                     <a
                                         href="https://github.com/frank-mendez"
                                         target="_blank"
@@ -99,7 +99,7 @@ const Home = () => {
                             <div className="flex justify-center lg:justify-end order-1 lg:order-2 animate-fade-in animation-delay-200">
                                 <img
                                     src="/images/frank.jpg"
-                                    alt="Frank Mendez"
+                                    alt="Headshot of Frank Mendez, Senior Software Engineer"
                                     width={300}
                                     height={300}
                                     className="rounded-full shadow-2xl ring-2 ring-primary/30 w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 object-cover"
@@ -124,7 +124,7 @@ const Home = () => {
                     groups={softSkillsGroups}
                     className="bg-base-200"
                 />
-            </div>
+            </main>
         </AppLayout>
     )
 }
