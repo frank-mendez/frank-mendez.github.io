@@ -123,23 +123,38 @@ const ExperienceCard = ({ experience }: { experience: ExperienceItem }) => {
     )
 }
 
+const DELAY_CLASSES = [
+    '',
+    'animation-delay-100',
+    'animation-delay-200',
+    'animation-delay-300',
+    'animation-delay-400',
+]
+
 const WorkExperience = () => {
     const orderedExperiences = [...experiences].reverse()
     return (
         <div className="relative">
             {/* Vertical timeline line */}
             <div className="absolute left-3 top-0 bottom-0 w-0.5 border-l-2 border-primary/30" />
-            <div className="space-y-8">
-                {orderedExperiences.map((experience) => (
-                    <div key={`${experience.company}-${experience.period}`} className="relative flex items-start">
-                        {/* Timeline dot */}
-                        <div className="absolute left-0 mt-6 h-2 w-2 rounded-full bg-primary translate-x-[9px]" />
-                        <div className="w-full">
-                            <ExperienceCard experience={experience} />
-                        </div>
-                    </div>
-                ))}
-            </div>
+            <ul role="list" className="space-y-8">
+                {orderedExperiences.map((experience, index) => {
+                    const delayClass = DELAY_CLASSES[Math.min(index, DELAY_CLASSES.length - 1)]
+                    return (
+                        <li
+                            key={`${experience.company}-${experience.period}`}
+                            role="listitem"
+                            className={`relative flex items-start animate-fade-in-up ${delayClass}`}
+                        >
+                            {/* Timeline dot */}
+                            <div className="absolute left-0 top-7 h-2 w-2 rounded-full bg-primary translate-x-[9px]" />
+                            <div className="w-full">
+                                <ExperienceCard experience={experience} />
+                            </div>
+                        </li>
+                    )
+                })}
+            </ul>
         </div>
     )
 }

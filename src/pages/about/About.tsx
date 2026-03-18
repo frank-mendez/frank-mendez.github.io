@@ -5,14 +5,14 @@ import { MapPin, Code2, Clock, CalendarDays } from 'lucide-react'
 const About = () => {
     return (
         <AppLayout>
-            <div>
+            <main>
                 {/* Bio Section */}
-                <section className="bg-base-100">
+                <section className="bg-base-100" aria-labelledby="bio-heading">
                     <div className="container mx-auto px-4 sm:px-6 py-16">
                         <div className="grid gap-12 lg:grid-cols-[auto_1fr] lg:items-start">
                             <div className="flex justify-center lg:justify-start">
                                 <img
-                                    alt="Frank Mendez"
+                                    alt="Headshot of Frank Mendez, Senior Software Engineer"
                                     width={280}
                                     height={280}
                                     src="/images/frank2.jpg"
@@ -24,7 +24,7 @@ const About = () => {
                                     <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">
                                         About
                                     </p>
-                                    <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Frank R. Mendez</h1>
+                                    <h1 id="bio-heading" className="text-4xl sm:text-5xl font-bold tracking-tight">Frank R. Mendez</h1>
                                 </div>
                                 <p className="text-base-content/70 text-base leading-relaxed max-w-2xl">
                                     Senior Software Engineer with 10+ years specializing in frontend architecture,
@@ -65,16 +65,16 @@ const About = () => {
                 </section>
 
                 {/* Work Experience */}
-                <section className="bg-base-200">
+                <section className="bg-base-200" aria-labelledby="experience-heading">
                     <div className="container mx-auto px-4 sm:px-6 py-14">
                         <div className="mb-8 animate-fade-in-up">
                             <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Career</p>
-                            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Experience</h2>
+                            <h2 id="experience-heading" className="text-3xl sm:text-4xl font-bold tracking-tight">Experience</h2>
                         </div>
                         <WorkExperience />
                     </div>
                 </section>
-            </div>
+            </main>
         </AppLayout>
     )
 }
