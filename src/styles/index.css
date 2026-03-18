@@ -6,8 +6,32 @@
 @plugin '@tailwindcss/typography';
 @plugin 'daisyui' {
     themes:
-        light --default,
-        dark --prefersdark;
+        light,
+        dark --default --prefersdark;
+}
+
+@plugin "daisyui/theme" {
+    name: "dark";
+    default: true;
+    prefersdark: true;
+    color-scheme: dark;
+    --color-base-100: #0f0f0f;
+    --color-base-200: #161616;
+    --color-base-300: #1e1e1e;
+    --color-base-content: #e5e5e5;
+    --color-primary: #6366f1;
+    --color-primary-content: #ffffff;
+}
+
+@plugin "daisyui/theme" {
+    name: "light";
+    color-scheme: light;
+    --color-base-100: #ffffff;
+    --color-base-200: #f8f8f8;
+    --color-base-300: #f0f0f0;
+    --color-base-content: #0f0f0f;
+    --color-primary: #4f46e5;
+    --color-primary-content: #ffffff;
 }
 
 @theme {
@@ -35,16 +59,98 @@ body {
     position: relative;
 }
 
-/* Light theme: show underwater, hide retro grid */
-.hero-bg-retro-grid {
+/* Hero backgrounds — commented out in favour of CSS-only hero-gradient-bg */
+/* .hero-bg-retro-grid {
     display: none;
-}
+} */
 
-/* Dark theme: show retro grid, hide underwater */
-:root[data-theme='dark'] .hero-bg-underwater {
+/* :root[data-theme='dark'] .hero-bg-underwater {
     display: none;
-}
+} */
 
-:root[data-theme='dark'] .hero-bg-retro-grid {
+/* :root[data-theme='dark'] .hero-bg-retro-grid {
     display: block;
+} */
+
+/* Hide SVG-based hero backgrounds globally now that we use CSS-only gradient */
+.hero-bg-retro-grid,
+.hero-bg-underwater {
+    display: none;
+}
+
+/* ─── Hero gradient background ────────────────────────────────────────────── */
+
+.hero-gradient-bg {
+    background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99, 102, 241, 0.18) 0%, transparent 70%),
+        #0f0f0f;
+}
+
+:root[data-theme='light'] .hero-gradient-bg {
+    background: linear-gradient(160deg, #eef2ff 0%, #ffffff 60%);
+}
+
+/* ─── Dot grid background ─────────────────────────────────────────────────── */
+
+.dot-grid-bg {
+    background-image: radial-gradient(circle, rgba(229, 229, 229, 0.15) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+:root[data-theme='light'] .dot-grid-bg {
+    background-image: radial-gradient(circle, rgba(15, 15, 15, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+/* ─── Animation utilities ─────────────────────────────────────────────────── */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animation-delay-100 {
+    animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+    animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+    animation-delay: 300ms;
+}
+
+.animation-delay-400 {
+    animation-delay: 400ms;
+}
+
+/* ─── Glass morphism ──────────────────────────────────────────────────────── */
+
+.glass-card {
+    background: color-mix(in srgb, var(--color-base-100) 70%, transparent);
+    backdrop-filter: blur(12px);
+    border: 1px solid color-mix(in srgb, var(--color-base-content) 10%, transparent);
 }
