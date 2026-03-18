@@ -27,8 +27,14 @@ const About = () => {
                                     <h1 id="bio-heading" className="text-4xl sm:text-5xl font-bold tracking-tight">Frank R. Mendez</h1>
                                 </div>
                                 <p className="text-base-content/70 text-base leading-relaxed max-w-2xl">
+<<<<<<< Updated upstream
                                     Senior Software Engineer with 10+ years specializing in frontend architecture,
                                     design systems, and full-stack TypeScript applications.
+=======
+                                    Frontend-focused engineer with 10+ years of experience delivering polished,
+                                    user-centered products. Based in Cagayan de Oro City, Philippines, with a background
+                                    in both frontend and backend development.
+>>>>>>> Stashed changes
                                 </p>
                                 <p className="text-base-content/70 text-base leading-relaxed max-w-2xl">
                                     I architect scalable UIs with React and TypeScript — from component libraries to
@@ -40,7 +46,7 @@ const About = () => {
                                 </p>
                                 <div className="grid gap-3 sm:grid-cols-2 pt-2 max-w-md">
                                     {[
-                                        { icon: MapPin, label: 'Location', value: 'Cebu City, Philippines' },
+                                        { icon: MapPin, label: 'Location', value: 'Cagayan de Oro City, Philippines' },
                                         { icon: Code2, label: 'Focus', value: 'React, TypeScript, UI Systems' },
                                         { icon: Clock, label: 'Experience', value: '10+ Years' },
                                         { icon: CalendarDays, label: 'Availability', value: 'Mon-Fri, GMT+8' },
