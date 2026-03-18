@@ -8,22 +8,22 @@ import { Link } from 'react-router-dom'
 const techCategories = [
     {
         label: 'Frontend',
-        skills: ['React', 'TypeScript', 'Next.js', 'TailwindCSS', 'Zustand', 'TanStack Query'],
+        skills: ['React', 'TypeScript', 'Next.js', 'Angular', 'TailwindCSS', 'Zustand', 'Redux', 'TanStack Query', 'Vite', 'shadcn/ui'],
         primary: true,
     },
     {
         label: 'Backend',
-        skills: ['Node.js', 'NestJS', 'PostgreSQL', 'MongoDB', 'Firebase'],
+        skills: ['Node.js', 'NestJS', 'PostgreSQL', 'MongoDB', 'Firebase', 'Supabase', 'MikroORM', 'Prisma', 'WebSockets', 'REST APIs'],
         primary: false,
     },
     {
         label: 'DevOps & Cloud',
-        skills: ['AWS', 'Docker', 'GitHub Actions', 'Azure'],
+        skills: ['AWS', 'Docker', 'GitHub Actions', 'Azure', 'CI/CD', 'Vercel', 'Nginx'],
         primary: false,
     },
     {
         label: 'Testing',
-        skills: ['Vitest', 'Jest', 'Cypress', 'Testing Library'],
+        skills: ['Vitest', 'Jest', 'Cypress', 'Testing Library', 'Mocha', 'Playwright'],
         primary: false,
     },
 ]
