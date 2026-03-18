@@ -6,15 +6,14 @@ import { Separator } from './ui/separator'
 
 const Footer = () => {
     return (
-        <footer className="bg-base-100 border-t border-base-content/10">
+        <footer className="bg-base-200 border-t border-base-300">
             <div className="container mx-auto px-4 sm:px-6 py-10">
                 <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    {/* Brand */}
+                    {/* Col 1: Brand */}
                     <div className="space-y-3">
                         <p className="font-semibold text-base-content">Frank Mendez</p>
                         <p className="text-sm text-base-content/60 leading-relaxed max-w-xs">
-                            Senior Software Engineer. Building modern web apps with React, TypeScript, and a focus on
-                            clean, maintainable code.
+                            Senior Software Engineer · React · TypeScript · Node.js
                         </p>
                         <div className="flex items-center gap-2">
                             <a
@@ -22,7 +21,7 @@ const Footer = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="GitHub"
-                                className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-200 transition-colors"
+                                className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-300 transition-colors"
                             >
                                 <GitHub sx={{ fontSize: 16 }} />
                             </a>
@@ -31,21 +30,21 @@ const Footer = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="LinkedIn"
-                                className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-200 transition-colors"
+                                className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-300 transition-colors"
                             >
                                 <LinkedIn sx={{ fontSize: 16 }} />
                             </a>
                             <a
                                 href="mailto:frankmendezresources@gmail.com"
                                 aria-label="Email"
-                                className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-200 transition-colors"
+                                className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-300 transition-colors"
                             >
                                 <Mail className="h-4 w-4" />
                             </a>
                         </div>
                     </div>
 
-                    {/* Navigation */}
+                    {/* Col 2: Navigation */}
                     <div className="space-y-3">
                         <p className="text-xs uppercase tracking-widest font-semibold text-base-content/40">
                             Navigation
@@ -75,27 +74,32 @@ const Footer = () => {
                         </nav>
                     </div>
 
-                    {/* Sponsor */}
+                    {/* Col 3: Built with */}
                     <div className="space-y-3">
-                        <p className="text-xs uppercase tracking-widest font-semibold text-base-content/40">Support</p>
-                        <p className="text-sm text-base-content/60">
-                            If you find my work valuable, consider sponsoring me on GitHub.
+                        <p className="text-xs uppercase tracking-widest font-semibold text-base-content/40">
+                            Built with
                         </p>
-                        <iframe
-                            src="https://github.com/sponsors/frank-mendez/button"
-                            title="Sponsor frank-mendez"
-                            height="32"
-                            width="114"
-                            style={{ border: 0, borderRadius: '6px', maxWidth: '100%' }}
-                        />
+                        <ul className="flex flex-col gap-2">
+                            {[
+                                'React + Vite',
+                                'TypeScript',
+                                'Tailwind CSS',
+                                'daisyUI',
+                                'Deployed on GitHub Pages',
+                            ].map((item) => (
+                                <li key={item} className="text-sm text-base-content/60">
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
 
                 <Separator className="my-8" />
 
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-base-content/40">
-                    <p>Copyright &copy; 2026 Frank Mendez. All rights reserved.</p>
-                    <p>Built with React + shadcn/ui + TailwindCSS</p>
+                    <p>&copy; 2025 Frank Mendez. All rights reserved.</p>
+                    <p className="text-base-content/50">Available for new opportunities</p>
                 </div>
             </div>
         </footer>

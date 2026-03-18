@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import ThemeSwitcher from './ThemeSwitcher.tsx'
 import { BLOG_URL } from '../constants/links'
 import { Link, NavLink } from 'react-router-dom'
@@ -24,7 +25,7 @@ const handleNavClick = (label: string, destination: string) => {
 
 const BASE_ITEM_CLS = 'px-3 rounded-md text-sm transition-colors'
 const INACTIVE_CLS = 'text-base-content/70 hover:text-base-content hover:bg-base-200'
-const ACTIVE_CLS = 'bg-base-200 font-semibold text-base-content'
+const ACTIVE_CLS = 'bg-primary/10 font-semibold text-primary'
 
 const NavItemRenderer = ({ link, py, closeOnClick = false }: { link: NavItem; py: string; closeOnClick?: boolean }) => {
     const item =
@@ -54,8 +55,22 @@ const NavItemRenderer = ({ link, py, closeOnClick = false }: { link: NavItem; py
 }
 
 const Navbar = () => {
+    const [scrolled, setScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 10)
+        }
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
     return (
-        <header className="sticky top-0 z-40 w-full border-b border-base-content/10 bg-base-100/80 backdrop-blur-md">
+        <header
+            className={`sticky top-0 z-40 w-full bg-base-100/80 backdrop-blur-md transition-colors duration-200 border-b ${
+                scrolled ? 'border-base-300/70' : 'border-transparent'
+            }`}
+        >
             <div className="container mx-auto flex h-14 items-center justify-between px-4 sm:px-6">
                 {/* Logo */}
                 <Link
