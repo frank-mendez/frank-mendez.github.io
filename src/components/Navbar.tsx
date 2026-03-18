@@ -9,9 +9,9 @@ import { Separator } from './ui/separator'
 
 type InternalLink = { label: string; to: string }
 type ExternalLink = { label: string; href: string }
-type NavLink = InternalLink | ExternalLink
+type NavItem = InternalLink | ExternalLink
 
-const NAV_LINKS: NavLink[] = [
+const NAV_LINKS: NavItem[] = [
     { label: 'About', to: '/about' },
     { label: 'Projects', to: '/projects' },
     { label: 'Contact', to: '/contact' },
@@ -20,6 +20,37 @@ const NAV_LINKS: NavLink[] = [
 
 const handleNavClick = (label: string, destination: string) => {
     trackEvent('navbar_click', { label, destination })
+}
+
+const BASE_ITEM_CLS = 'px-3 rounded-md text-sm transition-colors'
+const INACTIVE_CLS = 'text-base-content/70 hover:text-base-content hover:bg-base-200'
+const ACTIVE_CLS = 'bg-base-200 font-semibold text-base-content'
+
+const NavItemRenderer = ({ link, py }: { link: NavItem; py: string }) => {
+    if ('href' in link) {
+        return (
+            <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${BASE_ITEM_CLS} ${py} ${INACTIVE_CLS}`}
+                onClick={() => handleNavClick(link.label.toLowerCase(), link.href)}
+            >
+                {link.label}
+            </a>
+        )
+    }
+    return (
+        <NavLink
+            to={link.to}
+            className={({ isActive }) =>
+                `${BASE_ITEM_CLS} ${py} ${isActive ? ACTIVE_CLS : INACTIVE_CLS}`
+            }
+            onClick={() => handleNavClick(link.label.toLowerCase(), link.to)}
+        >
+            {link.label}
+        </NavLink>
+    )
 }
 
 const Navbar = () => {
@@ -37,35 +68,9 @@ const Navbar = () => {
 
                 {/* Desktop nav */}
                 <nav className="hidden md:flex items-center gap-1">
-                    {NAV_LINKS.map((link) =>
-                        'href' in link ? (
-                            <a
-                                key={link.href}
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-3 py-1.5 rounded-md text-sm transition-colors text-base-content/70 hover:text-base-content hover:bg-base-200"
-                                onClick={() => handleNavClick(link.label.toLowerCase(), link.href)}
-                            >
-                                {link.label}
-                            </a>
-                        ) : (
-                            <NavLink
-                                key={link.to}
-                                to={link.to}
-                                className={({ isActive }) =>
-                                    `px-3 py-1.5 rounded-md text-sm transition-colors ${
-                                        isActive
-                                            ? 'bg-base-200 font-semibold text-base-content'
-                                            : 'text-base-content/70 hover:text-base-content hover:bg-base-200'
-                                    }`
-                                }
-                                onClick={() => handleNavClick(link.label.toLowerCase(), link.to)}
-                            >
-                                {link.label}
-                            </NavLink>
-                        )
-                    )}
+                    {NAV_LINKS.map((link) => (
+                        <NavItemRenderer key={'href' in link ? link.href : link.to} link={link} py="py-1.5" />
+                    ))}
                 </nav>
 
                 {/* Right side */}
@@ -92,35 +97,9 @@ const Navbar = () => {
                                 </Link>
                                 <Separator className="mb-4" />
                                 <nav className="flex flex-col gap-1">
-                                    {NAV_LINKS.map((link) =>
-                                        'href' in link ? (
-                                            <a
-                                                key={link.href}
-                                                href={link.href}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="px-3 py-2 rounded-md text-sm transition-colors text-base-content/70 hover:text-base-content hover:bg-base-200"
-                                                onClick={() => handleNavClick(link.label.toLowerCase(), link.href)}
-                                            >
-                                                {link.label}
-                                            </a>
-                                        ) : (
-                                            <NavLink
-                                                key={link.to}
-                                                to={link.to}
-                                                className={({ isActive }) =>
-                                                    `px-3 py-2 rounded-md text-sm transition-colors ${
-                                                        isActive
-                                                            ? 'bg-base-200 font-semibold text-base-content'
-                                                            : 'text-base-content/70 hover:text-base-content hover:bg-base-200'
-                                                    }`
-                                                }
-                                                onClick={() => handleNavClick(link.label.toLowerCase(), link.to)}
-                                            >
-                                                {link.label}
-                                            </NavLink>
-                                        )
-                                    )}
+                                    {NAV_LINKS.map((link) => (
+                                        <NavItemRenderer key={'href' in link ? link.href : link.to} link={link} py="py-2" />
+                                    ))}
                                 </nav>
                                 <div className="mt-auto pb-4">
                                     <Separator className="mb-4" />
