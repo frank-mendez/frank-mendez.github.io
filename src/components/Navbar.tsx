@@ -1,4 +1,5 @@
 import ThemeSwitcher from './ThemeSwitcher.tsx'
+import { BLOG_URL } from '../constants/links'
 import { Link, NavLink } from 'react-router-dom'
 import { trackEvent } from '../services/analyticsService'
 import { Menu } from 'lucide-react'
@@ -6,11 +7,15 @@ import { Button } from './ui/button'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 import { Separator } from './ui/separator'
 
-const NAV_LINKS = [
+type InternalLink = { label: string; to: string }
+type ExternalLink = { label: string; href: string }
+type NavLink = InternalLink | ExternalLink
+
+const NAV_LINKS: NavLink[] = [
     { label: 'About', to: '/about' },
     { label: 'Projects', to: '/projects' },
     { label: 'Contact', to: '/contact' },
-    { label: 'Blog', href: 'https://blog.frankmendez.site/blog' },
+    { label: 'Blog', href: BLOG_URL },
 ]
 
 const handleNavClick = (label: string, destination: string) => {
@@ -32,22 +37,22 @@ const Navbar = () => {
 
                 {/* Desktop nav */}
                 <nav className="hidden md:flex items-center gap-1">
-                    {NAV_LINKS.map(({ label, to, href }) =>
-                        href ? (
+                    {NAV_LINKS.map((link) =>
+                        'href' in link ? (
                             <a
-                                key={href}
-                                href={href}
+                                key={link.href}
+                                href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="px-3 py-1.5 rounded-md text-sm transition-colors text-base-content/70 hover:text-base-content hover:bg-base-200"
-                                onClick={() => handleNavClick(label.toLowerCase(), href)}
+                                onClick={() => handleNavClick(link.label.toLowerCase(), link.href)}
                             >
-                                {label}
+                                {link.label}
                             </a>
                         ) : (
                             <NavLink
-                                key={to}
-                                to={to!}
+                                key={link.to}
+                                to={link.to}
                                 className={({ isActive }) =>
                                     `px-3 py-1.5 rounded-md text-sm transition-colors ${
                                         isActive
@@ -55,9 +60,9 @@ const Navbar = () => {
                                             : 'text-base-content/70 hover:text-base-content hover:bg-base-200'
                                     }`
                                 }
-                                onClick={() => handleNavClick(label.toLowerCase(), to!)}
+                                onClick={() => handleNavClick(link.label.toLowerCase(), link.to)}
                             >
-                                {label}
+                                {link.label}
                             </NavLink>
                         )
                     )}
@@ -87,22 +92,22 @@ const Navbar = () => {
                                 </Link>
                                 <Separator className="mb-4" />
                                 <nav className="flex flex-col gap-1">
-                                    {NAV_LINKS.map(({ label, to, href }) =>
-                                        href ? (
+                                    {NAV_LINKS.map((link) =>
+                                        'href' in link ? (
                                             <a
-                                                key={href}
-                                                href={href}
+                                                key={link.href}
+                                                href={link.href}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="px-3 py-2 rounded-md text-sm transition-colors text-base-content/70 hover:text-base-content hover:bg-base-200"
-                                                onClick={() => handleNavClick(label.toLowerCase(), href)}
+                                                onClick={() => handleNavClick(link.label.toLowerCase(), link.href)}
                                             >
-                                                {label}
+                                                {link.label}
                                             </a>
                                         ) : (
                                             <NavLink
-                                                key={to}
-                                                to={to!}
+                                                key={link.to}
+                                                to={link.to}
                                                 className={({ isActive }) =>
                                                     `px-3 py-2 rounded-md text-sm transition-colors ${
                                                         isActive
@@ -110,9 +115,9 @@ const Navbar = () => {
                                                             : 'text-base-content/70 hover:text-base-content hover:bg-base-200'
                                                     }`
                                                 }
-                                                onClick={() => handleNavClick(label.toLowerCase(), to!)}
+                                                onClick={() => handleNavClick(link.label.toLowerCase(), link.to)}
                                             >
-                                                {label}
+                                                {link.label}
                                             </NavLink>
                                         )
                                     )}

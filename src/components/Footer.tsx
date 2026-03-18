@@ -1,4 +1,5 @@
 import { Mail } from 'lucide-react'
+import { BLOG_URL } from '../constants/links'
 import { GitHub, LinkedIn } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 import { Separator } from './ui/separator'
@@ -64,7 +65,7 @@ const Footer = () => {
                                 </Link>
                             ))}
                             <a
-                                href="https://frank-tech-blog.vercel.app/"
+                                href={BLOG_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-sm text-base-content/60 hover:text-base-content transition-colors w-fit"
