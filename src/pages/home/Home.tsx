@@ -1,11 +1,43 @@
 import AppLayout from '../../layout/AppLayout.tsx'
-import SkillSection from '../../components/SkillSection.tsx'
-import { softSkillsGroups, techStackGroups } from './homeData'
 import { Button } from '../../components/ui/button'
 import { Badge } from '../../components/ui/badge'
-import { Mail, ArrowRight } from 'lucide-react'
+import { Mail, ArrowRight, Check } from 'lucide-react'
 import { GitHub, LinkedIn } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
+
+const techCategories = [
+    {
+        label: 'Frontend',
+        skills: ['React', 'TypeScript', 'Next.js', 'TailwindCSS', 'Zustand', 'TanStack Query'],
+        primary: true,
+    },
+    {
+        label: 'Backend',
+        skills: ['Node.js', 'NestJS', 'PostgreSQL', 'MongoDB', 'Firebase'],
+        primary: false,
+    },
+    {
+        label: 'DevOps & Cloud',
+        skills: ['AWS', 'Docker', 'GitHub Actions', 'Azure'],
+        primary: false,
+    },
+    {
+        label: 'Testing',
+        skills: ['Vitest', 'Jest', 'Cypress', 'Testing Library'],
+        primary: false,
+    },
+]
+
+const softSkillTraits = [
+    'Ownership Mindset',
+    'Deadline-Focused',
+    'Cross-team Collaboration',
+    'Mentorship',
+    'Continuous Learning',
+    'Quality-First',
+    'Documentation',
+    'Adaptability',
+]
 
 const Home = () => {
     return (
@@ -109,21 +141,74 @@ const Home = () => {
                     </div>
                 </section>
 
-                {/* Skills Sections */}
-                <SkillSection
-                    eyebrow="Expertise"
-                    title="Tech Stack"
-                    description="Modern frontend expertise paired with a pragmatic backend and DevOps toolkit for full product delivery."
-                    groups={techStackGroups}
-                    className="bg-base-300"
-                />
-                <SkillSection
-                    eyebrow="Professional"
-                    title="Soft Skills & Tools"
-                    description="Collaborative, product-focused, and dependable — backed by a toolset that keeps teams aligned and shipping."
-                    groups={softSkillsGroups}
-                    className="bg-base-200"
-                />
+                {/* Technical Skills Section */}
+                <section className="bg-base-200">
+                    <div className="container mx-auto px-4 sm:px-6 py-16">
+                        {/* Section header */}
+                        <div className="mx-auto max-w-3xl text-center mb-10 animate-fade-in-up">
+                            <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-2">Stack</p>
+                            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-base-content">
+                                Technical Skills
+                            </h2>
+                            <p className="mt-3 text-base-content/60 text-sm sm:text-base">
+                                Technologies I use to ship production-grade products
+                            </p>
+                        </div>
+
+                        {/* Tech categories grid */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in-up animation-delay-100">
+                            {techCategories.map((category) => (
+                                <div key={category.label}>
+                                    <p className="text-xs font-semibold uppercase tracking-wider text-base-content/50 mb-3">
+                                        {category.label}
+                                    </p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {category.skills.map((skill) => (
+                                            <span
+                                                key={skill}
+                                                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium border ${
+                                                    category.primary
+                                                        ? 'bg-primary/10 border-primary/20 text-primary'
+                                                        : 'bg-base-300 border-base-content/10 text-base-content'
+                                                }`}
+                                            >
+                                                {skill}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Soft Skills Section */}
+                <section className="bg-base-300">
+                    <div className="container mx-auto px-4 sm:px-6 py-16">
+                        {/* Section header */}
+                        <div className="mx-auto max-w-3xl text-center mb-10 animate-fade-in-up">
+                            <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-2">
+                                Professional
+                            </p>
+                            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-base-content">
+                                Soft Skills
+                            </h2>
+                        </div>
+
+                        {/* Traits grid */}
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 animate-fade-in-up animation-delay-200">
+                            {softSkillTraits.map((trait) => (
+                                <div
+                                    key={trait}
+                                    className="bg-base-200 border border-base-content/10 rounded-xl px-4 py-3 text-sm font-medium text-center flex items-center justify-center gap-2 text-base-content"
+                                >
+                                    <Check className="h-3.5 w-3.5 text-primary shrink-0" />
+                                    {trait}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
             </main>
         </AppLayout>
     )
