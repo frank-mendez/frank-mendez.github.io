@@ -3,8 +3,6 @@ import SkillSection from '../../components/SkillSection.tsx'
 import { softSkillsGroups, techStackGroups } from './homeData'
 import { Button } from '../../components/ui/button'
 import { Badge } from '../../components/ui/badge'
-import { RetroGridBg } from '../../components/ui/retro-grid-bg'
-import { UnderwaterBg } from '../../components/ui/underwater-bg'
 import { Mail, ArrowRight } from 'lucide-react'
 import { GitHub, LinkedIn } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
@@ -14,78 +12,66 @@ const Home = () => {
         <AppLayout>
             <div>
                 {/* Hero Section */}
-                <section className="home-hero-bg relative min-h-[calc(100vh-3.5rem)] flex items-center">
-                    {/* Theme-aware backgrounds */}
-                    <div className="hero-bg-underwater">
-                        <UnderwaterBg />
-                    </div>
-                    <div className="hero-bg-retro-grid">
-                        <RetroGridBg />
-                    </div>
-                    {/* Subtle content overlay */}
-                    <div className="absolute inset-0 bg-black/30" />
+                <section className="hero-gradient-bg dot-grid-bg relative min-h-[calc(100vh-3.5rem)] flex items-center">
                     <div className="relative container mx-auto px-4 sm:px-6 py-20">
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             {/* Text content */}
-                            <div className="text-white space-y-6 order-2 lg:order-1">
-                                <div className="flex flex-wrap gap-2">
+                            <div className="space-y-6 order-2 lg:order-1">
+                                {/* Status badges */}
+                                <div className="flex flex-wrap gap-2 animate-fade-in-up">
                                     <Badge
                                         variant="outline"
-                                        className="border-white/40 text-white bg-white/10 backdrop-blur-sm"
+                                        className="border-primary/40 text-primary bg-primary/10 text-xs font-medium"
                                     >
+                                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-400 mr-1.5" />
                                         Available for hire
                                     </Badge>
                                     <Badge
                                         variant="outline"
-                                        className="border-white/40 text-white bg-white/10 backdrop-blur-sm"
+                                        className="border-base-content/20 text-base-content/60 bg-base-content/5 text-xs font-medium"
                                     >
                                         10+ Years Experience
                                     </Badge>
                                 </div>
 
-                                <div>
-                                    <p className="text-white/70 text-sm uppercase tracking-widest mb-2">
-                                        Software Engineer / Frontend Engineer
-                                    </p>
-                                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-none">
-                                        Frank
-                                        <br />
-                                        Mendez
-                                    </h1>
-                                </div>
-
-                                <p className="text-white/80 text-base sm:text-lg max-w-md leading-relaxed">
-                                    A decade of experience crafting modern web applications. Specializing in React,
-                                    TypeScript, and scalable frontend architecture. Passionate about AI and security.
+                                {/* Name eyebrow */}
+                                <p className="text-base-content/50 text-sm font-medium tracking-widest uppercase animate-fade-in-up animation-delay-100">
+                                    Frank Mendez
                                 </p>
 
-                                <div className="flex flex-wrap gap-3">
+                                {/* Main headline */}
+                                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-base-content animate-fade-in-up animation-delay-100">
+                                    Senior Software Engineer building scalable systems and elegant UIs
+                                </h1>
+
+                                {/* Subheading */}
+                                <p className="text-base-content/60 text-base sm:text-lg max-w-md leading-relaxed animate-fade-in-up animation-delay-200">
+                                    10+ years crafting production-grade React applications, design systems, and backend
+                                    APIs that scale.
+                                </p>
+
+                                {/* CTA buttons */}
+                                <div className="flex flex-wrap gap-3 animate-fade-in-up animation-delay-300">
                                     <Link to="/projects">
-                                        <Button
-                                            size="lg"
-                                            className="bg-white text-gray-900 hover:bg-white/90 font-semibold"
-                                        >
+                                        <Button size="lg" className="font-semibold">
                                             View Projects
                                             <ArrowRight className="h-4 w-4" />
                                         </Button>
                                     </Link>
                                     <Link to="/contact">
-                                        <Button
-                                            size="lg"
-                                            variant="outline"
-                                            className="border-white/60 text-white hover:bg-white/10 hover:border-white"
-                                        >
+                                        <Button size="lg" variant="outline">
                                             Get in Touch
                                         </Button>
                                     </Link>
                                 </div>
 
-                                <div className="flex items-center gap-3 pt-2">
+                                {/* Social links */}
+                                <div className="flex items-center gap-1 pt-2 animate-fade-in-up animation-delay-300">
                                     <a
                                         href="https://github.com/frank-mendez"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+                                        className="p-2 rounded-lg text-base-content/50 hover:text-base-content hover:bg-base-content/10 transition-colors"
                                         aria-label="GitHub"
                                     >
                                         <GitHub sx={{ fontSize: 20 }} />
@@ -94,14 +80,14 @@ const Home = () => {
                                         href="https://www.linkedin.com/in/frank-mendez-47b62090/"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+                                        className="p-2 rounded-lg text-base-content/50 hover:text-base-content hover:bg-base-content/10 transition-colors"
                                         aria-label="LinkedIn"
                                     >
                                         <LinkedIn sx={{ fontSize: 20 }} />
                                     </a>
                                     <a
                                         href="mailto:frankmendezresources@gmail.com"
-                                        className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+                                        className="p-2 rounded-lg text-base-content/50 hover:text-base-content hover:bg-base-content/10 transition-colors"
                                         aria-label="Email"
                                     >
                                         <Mail className="h-5 w-5" />
@@ -110,17 +96,14 @@ const Home = () => {
                             </div>
 
                             {/* Avatar */}
-                            <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-                                <div className="relative">
-                                    <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-white/20 to-white/5 blur-md" />
-                                    <img
-                                        src="/images/frank.jpg"
-                                        alt="Frank Mendez"
-                                        width={300}
-                                        height={300}
-                                        className="relative rounded-full shadow-2xl ring-2 ring-white/20 w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 object-cover"
-                                    />
-                                </div>
+                            <div className="flex justify-center lg:justify-end order-1 lg:order-2 animate-fade-in animation-delay-200">
+                                <img
+                                    src="/images/frank.jpg"
+                                    alt="Frank Mendez"
+                                    width={300}
+                                    height={300}
+                                    className="rounded-full shadow-2xl ring-2 ring-primary/30 w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 object-cover"
+                                />
                             </div>
                         </div>
                     </div>
