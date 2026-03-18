@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { trackEvent } from '../services/analyticsService'
 import { Menu } from 'lucide-react'
 import { Button } from './ui/button'
-import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from './ui/sheet'
 import { Separator } from './ui/separator'
 
 type InternalLink = { label: string; to: string }
@@ -26,9 +26,9 @@ const BASE_ITEM_CLS = 'px-3 rounded-md text-sm transition-colors'
 const INACTIVE_CLS = 'text-base-content/70 hover:text-base-content hover:bg-base-200'
 const ACTIVE_CLS = 'bg-base-200 font-semibold text-base-content'
 
-const NavItemRenderer = ({ link, py }: { link: NavItem; py: string }) => {
-    if ('href' in link) {
-        return (
+const NavItemRenderer = ({ link, py, closeOnClick = false }: { link: NavItem; py: string; closeOnClick?: boolean }) => {
+    const item =
+        'href' in link ? (
             <a
                 href={link.href}
                 target="_blank"
@@ -38,19 +38,19 @@ const NavItemRenderer = ({ link, py }: { link: NavItem; py: string }) => {
             >
                 {link.label}
             </a>
+        ) : (
+            <NavLink
+                to={link.to}
+                className={({ isActive }) =>
+                    `${BASE_ITEM_CLS} ${py} ${isActive ? ACTIVE_CLS : INACTIVE_CLS}`
+                }
+                onClick={() => handleNavClick(link.label.toLowerCase(), link.to)}
+            >
+                {link.label}
+            </NavLink>
         )
-    }
-    return (
-        <NavLink
-            to={link.to}
-            className={({ isActive }) =>
-                `${BASE_ITEM_CLS} ${py} ${isActive ? ACTIVE_CLS : INACTIVE_CLS}`
-            }
-            onClick={() => handleNavClick(link.label.toLowerCase(), link.to)}
-        >
-            {link.label}
-        </NavLink>
-    )
+
+    return closeOnClick ? <SheetClose asChild>{item}</SheetClose> : item
 }
 
 const Navbar = () => {
@@ -98,7 +98,7 @@ const Navbar = () => {
                                 <Separator className="mb-4" />
                                 <nav className="flex flex-col gap-1">
                                     {NAV_LINKS.map((link) => (
-                                        <NavItemRenderer key={'href' in link ? link.href : link.to} link={link} py="py-2" />
+                                        <NavItemRenderer key={'href' in link ? link.href : link.to} link={link} py="py-2" closeOnClick />
                                     ))}
                                 </nav>
                                 <div className="mt-auto pb-4">
