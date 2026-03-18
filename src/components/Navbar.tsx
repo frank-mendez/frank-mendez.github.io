@@ -82,7 +82,7 @@ const Navbar = () => {
                 </Link>
 
                 {/* Desktop nav */}
-                <nav className="hidden md:flex items-center gap-1">
+                <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
                     {NAV_LINKS.map((link) => (
                         <NavItemRenderer key={'href' in link ? link.href : link.to} link={link} py="py-1.5" />
                     ))}
@@ -111,7 +111,7 @@ const Navbar = () => {
                                     Frank Mendez
                                 </Link>
                                 <Separator className="mb-4" />
-                                <nav className="flex flex-col gap-1">
+                                <nav className="flex flex-col gap-1" aria-label="Mobile navigation">
                                     {NAV_LINKS.map((link) => (
                                         <NavItemRenderer key={'href' in link ? link.href : link.to} link={link} py="py-2" closeOnClick />
                                     ))}

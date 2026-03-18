@@ -49,7 +49,7 @@ const Footer = () => {
                         <p className="text-xs uppercase tracking-widest font-semibold text-base-content/40">
                             Navigation
                         </p>
-                        <nav className="flex flex-col gap-2">
+                        <nav className="flex flex-col gap-2" aria-label="Footer navigation">
                             {[
                                 { label: 'About', to: '/about' },
                                 { label: 'Projects', to: '/projects' },
@@ -98,7 +98,7 @@ const Footer = () => {
                 <Separator className="my-8" />
 
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-base-content/40">
-                    <p>&copy; 2025 Frank Mendez. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Frank Mendez. All rights reserved.</p>
                     <p className="text-base-content/50">Available for new opportunities</p>
                 </div>
             </div>
