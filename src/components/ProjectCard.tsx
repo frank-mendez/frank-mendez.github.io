@@ -1,8 +1,8 @@
-import { Globe, ExternalLink } from 'lucide-react'
-import { GitHub } from '@mui/icons-material'
+import { ExternalLink, Globe } from 'lucide-react'
 import { trackEvent } from '../services/analyticsService'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card'
 import { Badge } from './ui/badge'
+import { GithubIcon } from './ui/brand-icons'
 import { Button } from './ui/button'
 
 export type ProjectLinks = {
@@ -91,7 +91,7 @@ const ProjectCard = ({ title, type, description, techStack, links }: ProjectCard
                         onClick={() => handleProjectClick('code', links?.repoUrl ?? '')}
                     >
                         <a href={links.repoUrl} target="_blank" rel="noreferrer">
-                            <GitHub sx={{ fontSize: 14 }} />
+                            <GithubIcon className="h-3.5 w-3.5" />
                             Code
                         </a>
                     </Button>

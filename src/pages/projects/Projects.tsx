@@ -1,9 +1,8 @@
-import AppLayout from '../../layout/AppLayout.tsx'
 import { Separator } from '../../components/ui/separator'
 import { Badge } from '../../components/ui/badge'
 import { Button } from '../../components/ui/button'
-import { Globe, Code } from 'lucide-react'
-import { GitHub } from '@mui/icons-material'
+import { Code, Globe } from 'lucide-react'
+import { GithubIcon } from '../../components/ui/brand-icons'
 import { trackEvent } from '../../services/analyticsService'
 
 type Project = {
@@ -24,100 +23,179 @@ type Project = {
 const projects: Project[] = [
     {
         id: 1,
-        title: 'MFK Loan Management System',
+        title: 'Grow With Me',
         type: 'Full Stack',
         featured: true,
-        problem:
-            'Microfinance institution needed a digital platform to manage loan applications, disbursements, and repayment tracking across multiple branches.',
+        problem: 'Pregnancy trackers often reduce a deeply personal journey to clinical data and generic dashboards.',
         solution:
-            'Built a full-stack LMS with role-based access, automated repayment schedules, and a real-time dashboard for branch managers.',
-        impact: 'Digitized loan workflows for 5+ branches, reducing processing time by 60%.',
-        techStack: ['Next.js 14', 'TypeScript', 'PostgreSQL', 'Prisma', 'TailwindCSS'],
-        detailsUrl: 'https://mfklms.vercel.app/',
-        repoUrl: 'https://github.com/frank-mendez/mfklms',
-        tags: ['Full Stack', 'Next.js', 'PostgreSQL'],
+            'Built a web-first pregnancy journey with week-by-week visuals, voice memories, kick tracking, and a mood garden backed by Supabase.',
+        impact: 'Shipped a live, test-covered product focused on emotional connection, daily engagement, and family memories.',
+        techStack: ['Next.js 16', 'TypeScript', 'Supabase', 'Tailwind CSS', 'Framer Motion', 'Vitest'],
+        detailsUrl: 'https://www.growwithme.baby',
+        repoUrl: 'https://github.com/frank-mendez/grow-with-me',
+        tags: ['Product', 'Next.js', 'Supabase'],
     },
     {
         id: 2,
-        title: 'Real-Time Chat Platform',
+        title: 'MFK Lending Corp',
         type: 'Full Stack',
         featured: true,
         problem:
-            'Teams needed a lightweight, self-hosted real-time messaging solution with persistent chat history.',
+            'A Filipino co-op lending business needed to replace fragmented spreadsheets with one dependable operating system.',
         solution:
-            'Architected a WebSocket-based chat system with room management, message persistence, and containerized deployment.',
-        impact: 'Demonstrated production-grade real-time architecture with Docker orchestration and PostgreSQL persistence.',
-        techStack: ['React', 'NestJS', 'Socket.IO', 'PostgreSQL', 'Docker', 'TailwindCSS'],
-        detailsUrl: 'https://socketio-chat-omega.vercel.app/',
-        repoUrl: 'https://github.com/frank-mendez/socketio-chat',
-        tags: ['Real-time', 'WebSocket', 'Docker'],
+            'Built loan schedules, e-signed contracts, automated email and SMS reminders, partner funds, reports, and bank reconciliation.',
+        impact: 'Centralized the complete lending workflow while automating repetitive borrower and partner operations.',
+        techStack: ['Next.js 15', 'TypeScript', 'Supabase', 'TanStack Query', 'Zustand', 'Sentry'],
+        detailsUrl: 'https://mfklending.vercel.app',
+        repoUrl: 'https://github.com/frank-mendez/mfklending',
+        tags: ['Fintech', 'Production', 'Supabase'],
     },
     {
         id: 3,
-        title: 'Movie Discovery Browser',
-        type: 'Frontend',
+        title: 'PulseChat',
+        type: 'Full Stack',
         featured: true,
         problem:
-            'Movie enthusiasts needed a fast, modern browser experience to discover and search films using TMDB\'s catalog.',
+            'Typical chat demos hide the hard parts: authentication, shared contracts, persistence, reconnects, and scaling boundaries.',
         solution:
-            'Built a responsive movie discovery SPA with search, filtering, infinite scroll, and detailed movie pages.',
-        impact: 'Showcases production-grade frontend architecture: API integration, state management, and responsive design.',
-        techStack: ['React', 'TypeScript', 'Vite', 'TailwindCSS'],
-        detailsUrl: 'https://modern-movie-browser.vercel.app/',
-        repoUrl: 'https://github.com/frank-mendez/movie-browser',
-        tags: ['Frontend', 'API Integration', 'React'],
+            'Architected a typed monorepo with React, Fastify, raw WebSockets, shared Zod schemas, secure sessions, and repository-backed persistence.',
+        impact: 'Created a production-inspired foundation that can evolve from local in-memory testing to PostgreSQL and distributed messaging.',
+        techStack: ['React', 'Fastify', 'WebSockets', 'PostgreSQL', 'Drizzle', 'Turborepo'],
+        repoUrl: 'https://github.com/frank-mendez/pulse-chat-',
+        tags: ['WebSockets', 'Monorepo', 'Architecture'],
     },
     {
         id: 4,
-        title: 'Spotify Music Dashboard',
-        type: 'Frontend',
+        title: 'Food Delivery Observability',
+        type: 'Full Stack',
         featured: false,
         problem:
-            'Needed a demo of OAuth2 authentication flow with a third-party API integrated into a React application.',
-        solution:
-            'Built a Spotify dashboard with OAuth login, playlist browsing, and now-playing views using the Spotify Web API.',
-        impact: 'Demonstrates full OAuth2 PKCE flow with TypeScript and clean API abstraction.',
-        techStack: ['React', 'TypeScript', 'Vite', 'Spotify API'],
-        detailsUrl: 'https://react-typescript-spotify.vercel.app/',
-        repoUrl: 'https://github.com/frank-mendez/react-typescript-spotify',
-        tags: ['OAuth2', 'API', 'React'],
+            'Production-style delivery platform with customer, restaurant, and rider flows plus metrics, logs, traces, and containerized infrastructure.',
+        solution: '',
+        impact: '',
+        techStack: ['Next.js', 'NestJS', 'PostgreSQL', 'Redis', 'Docker', 'Grafana'],
+        repoUrl: 'https://github.com/frank-mendez/food-delivery-observability',
+        tags: ['Observability', 'DevOps', 'Full Stack'],
     },
     {
         id: 5,
-        title: 'NestJS Backend Architecture',
-        type: 'Backend',
+        title: 'Car Systems Explorer',
+        type: 'Frontend',
         featured: false,
-        problem: 'Showcase of scalable backend patterns for enterprise TypeScript applications.',
-        solution:
-            'Implemented clean architecture with NestJS modules, MikroORM repositories, MongoDB, and full test coverage.',
-        impact: 'Reference implementation for domain-driven NestJS architecture with ORM integration.',
-        techStack: ['NestJS', 'TypeScript', 'MikroORM', 'MongoDB'],
-        repoUrl: 'https://github.com/frank-mendez/advanced-architecture',
-        tags: ['Backend', 'NestJS', 'Architecture'],
+        problem:
+            'Interactive learning workspace for exploring modern vehicle systems through SVG hotspots, animated flows, filters, quizzes, and glossary content.',
+        solution: '',
+        impact: '',
+        techStack: ['Next.js 15', 'TypeScript', 'Tailwind CSS 4', 'Framer Motion', 'SVG'],
+        repoUrl: 'https://github.com/frank-mendez/interactive-car-systems',
+        tags: ['Education', 'Interactive', 'SVG'],
     },
     {
         id: 6,
-        title: 'ResumeIQ',
-        type: 'Full Stack',
-        featured: false,
-        problem: 'Job seekers struggle to optimize resumes for ATS systems and lack actionable feedback on gaps.',
-        solution: 'AI-powered resume analyzer that evaluates ATS compatibility, identifies gaps, and provides actionable improvements using modern LLMs.',
-        impact: 'Delivers instant, structured resume feedback powered by OpenAI, helping candidates improve their chances before applying.',
-        techStack: ['TypeScript', 'TanStack Start', 'Supabase', 'OpenAI', 'TailwindCSS'],
-        repoUrl: 'https://github.com/frank-mendez/ResumeIQ',
-        tags: ['AI', 'Full Stack', 'LLM'],
-    },
-    {
-        id: 7,
         title: 'Next.js Blog CMS',
         type: 'Full Stack',
         featured: false,
-        problem: 'Content teams needed a self-hosted blog platform with role-based access and a rich editing experience.',
-        solution: 'Built a modern blog CMS with Next.js, Supabase auth, role-based access control, and WYSIWYG editing.',
-        impact: 'Production-ready headless CMS demonstrating full-stack Next.js with Supabase and TailwindCSS.',
-        techStack: ['Next.js', 'TypeScript', 'Supabase', 'TailwindCSS'],
+        problem:
+            'Full-stack publishing platform with Supabase authentication, role-based access, rich editing, draft workflows, AI writing assistance, and a headless API.',
+        solution: '',
+        impact: '',
+        techStack: ['Next.js', 'Supabase', 'TipTap', 'OpenAI', 'Tailwind CSS', 'Vitest'],
+        detailsUrl: 'https://blog.frankmendez.site/',
         repoUrl: 'https://github.com/frank-mendez/nextjs-blog-cms',
-        tags: ['CMS', 'Next.js', 'Supabase'],
+        tags: ['CMS', 'AI', 'Supabase'],
+    },
+    {
+        id: 7,
+        title: 'Movie Discovery Browser',
+        type: 'Frontend',
+        featured: false,
+        problem:
+            'TMDB-powered browser for trending movies and TV, people search, detailed credits, and a persistent local watchlist.',
+        solution: '',
+        impact: '',
+        techStack: ['React', 'TypeScript', 'Vite', 'TanStack Query', 'Tailwind CSS', 'Vitest'],
+        detailsUrl: 'https://movie.frankmendez.site/',
+        repoUrl: 'https://github.com/frank-mendez/movie-browser',
+        tags: ['React', 'TMDB', 'Open Source'],
+    },
+    {
+        id: 8,
+        title: 'Spotify Web Client',
+        type: 'Frontend',
+        featured: false,
+        problem:
+            'Full-featured Spotify client with authentication, playback controls, music discovery, playlists, and library management.',
+        solution: '',
+        impact: '',
+        techStack: ['React', 'TypeScript', 'Vite', 'Spotify API', 'Tailwind CSS', 'Vitest'],
+        detailsUrl: 'https://spotify.frankmendez.site/',
+        repoUrl: 'https://github.com/frank-mendez/react-typescript-spotify',
+        tags: ['OAuth', 'Spotify API', 'React'],
+    },
+    {
+        id: 9,
+        title: 'ChatMesh',
+        type: 'Backend',
+        featured: false,
+        problem:
+            'Go-based WebSocket backend exploring concurrent room management and the architectural path from one server to horizontal scaling.',
+        solution: '',
+        impact: '',
+        techStack: ['Go', 'WebSockets', 'Goroutines', 'Channels'],
+        repoUrl: 'https://github.com/frank-mendez/chatmesh',
+        tags: ['Go', 'Distributed Systems', 'Real-time'],
+    },
+    {
+        id: 10,
+        title: 'ResumeIQ',
+        type: 'AI · Full Stack',
+        featured: false,
+        problem:
+            'AI-powered resume analyzer for ATS compatibility, gap detection, and actionable improvements using structured LLM feedback.',
+        solution: '',
+        impact: '',
+        techStack: ['TanStack Start', 'TypeScript', 'Supabase', 'OpenAI', 'Tailwind CSS'],
+        repoUrl: 'https://github.com/frank-mendez/ResumeIQ',
+        tags: ['AI', 'ATS', 'LLM'],
+    },
+    {
+        id: 11,
+        title: 'Frank Bot',
+        type: 'AI Backend',
+        featured: false,
+        problem:
+            'Next.js API powering this portfolio’s OpenAI chatbot and Resend contact workflow with origin controls and structured endpoints.',
+        solution: '',
+        impact: '',
+        techStack: ['Next.js 16', 'TypeScript', 'OpenAI SDK', 'Resend'],
+        repoUrl: 'https://github.com/frank-mendez/frank-bot',
+        tags: ['OpenAI', 'API', 'Serverless'],
+    },
+    {
+        id: 12,
+        title: 'MCP Dev Stack',
+        type: 'Developer Tooling',
+        featured: false,
+        problem:
+            'Open-source developer environment that connects AI assistants to development tools through the Model Context Protocol.',
+        solution: '',
+        impact: '',
+        techStack: ['MCP', 'AI Assistants', 'Developer Tools'],
+        repoUrl: 'https://github.com/frank-mendez/mcp-dev-stack',
+        tags: ['MCP', 'Open Source', 'Tooling'],
+    },
+    {
+        id: 13,
+        title: 'NestJS Advanced Architecture',
+        type: 'Backend',
+        featured: false,
+        problem:
+            'Reference backend architecture using NestJS and CQRS with MongoDB/Mongoose and PostgreSQL/TypeORM persistence.',
+        solution: '',
+        impact: '',
+        techStack: ['NestJS', 'TypeScript', 'CQRS', 'MongoDB', 'PostgreSQL', 'TypeORM'],
+        repoUrl: 'https://github.com/frank-mendez/advanced-architecture',
+        tags: ['NestJS', 'CQRS', 'Architecture'],
     },
 ]
 
@@ -155,7 +233,7 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
                 {/* Header */}
                 <div className="flex flex-wrap items-start gap-3 mb-6">
                     <div className="flex-1 min-w-0">
-                        <h3 className="text-xl sm:text-2xl font-bold tracking-tight leading-tight">{project.title}</h3>
+                        <h4 className="text-xl sm:text-2xl font-bold tracking-tight leading-tight">{project.title}</h4>
                     </div>
                     <div className="flex flex-wrap gap-2 shrink-0">
                         <Badge variant="outline" className="text-xs font-medium border-primary/30 text-primary">
@@ -241,7 +319,7 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
                                 }
                             >
                                 <a href={project.repoUrl} target="_blank" rel="noreferrer">
-                                    <GitHub sx={{ fontSize: 14 }} />
+                                    <GithubIcon className="h-3.5 w-3.5" />
                                     Code
                                 </a>
                             </Button>
@@ -262,7 +340,7 @@ function MoreProjectCard({ project, index }: { project: Project; index: number }
             className={`bg-base-200 border border-base-300 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 animate-fade-in-up ${delayClass} flex flex-col gap-4`}
         >
             <div className="flex items-start justify-between gap-2">
-                <h3 className="text-base font-semibold leading-snug">{project.title}</h3>
+                <h4 className="text-base font-semibold leading-snug">{project.title}</h4>
                 <Badge variant="outline" className="shrink-0 text-xs font-medium border-primary/30 text-primary">
                     {project.type}
                 </Badge>
@@ -285,9 +363,7 @@ function MoreProjectCard({ project, index }: { project: Project; index: number }
                             asChild
                             size="sm"
                             variant="default"
-                            onClick={() =>
-                                handleProjectClick(project.title, project.type, 'site', project.detailsUrl!)
-                            }
+                            onClick={() => handleProjectClick(project.title, project.type, 'site', project.detailsUrl!)}
                         >
                             <a href={project.detailsUrl} target="_blank" rel="noreferrer">
                                 <Globe className="h-3.5 w-3.5" />
@@ -300,12 +376,10 @@ function MoreProjectCard({ project, index }: { project: Project; index: number }
                             asChild
                             size="sm"
                             variant="outline"
-                            onClick={() =>
-                                handleProjectClick(project.title, project.type, 'code', project.repoUrl!)
-                            }
+                            onClick={() => handleProjectClick(project.title, project.type, 'code', project.repoUrl!)}
                         >
                             <a href={project.repoUrl} target="_blank" rel="noreferrer">
-                                <GitHub sx={{ fontSize: 14 }} />
+                                <GithubIcon className="h-3.5 w-3.5" />
                                 Code
                             </a>
                         </Button>
@@ -318,16 +392,25 @@ function MoreProjectCard({ project, index }: { project: Project; index: number }
 
 const Projects = () => {
     return (
-        <AppLayout>
-            <div className="container mx-auto px-4 sm:px-6 py-14">
+        <section id="projects" className="scroll-mt-14 bg-base-100" aria-labelledby="projects-heading">
+            <div className="container mx-auto px-4 sm:px-6 py-16">
                 {/* Page header */}
-                <div className="mb-8 animate-fade-in-up">
-                    <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Portfolio</p>
-                    <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">Projects</h1>
-                    <p className="mt-3 text-base-content/60 max-w-xl">
-                        A selection of personal and professional projects spanning frontend, backend, and full-stack
-                        development.
-                    </p>
+                <div className="mb-8 flex flex-col items-start justify-between gap-5 animate-fade-in-up sm:flex-row sm:items-end">
+                    <div>
+                        <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Portfolio</p>
+                        <h2 id="projects-heading" className="text-4xl sm:text-5xl font-bold tracking-tight">
+                            Projects
+                        </h2>
+                        <p className="mt-3 text-base-content/60 max-w-xl">
+                            Selected product, platform, and open-source work from my public GitHub repositories.
+                        </p>
+                    </div>
+                    <Button asChild variant="outline" className="shrink-0">
+                        <a href="https://github.com/frank-mendez" target="_blank" rel="noopener noreferrer">
+                            <GithubIcon className="h-4 w-4" />
+                            View all repositories
+                        </a>
+                    </Button>
                 </div>
                 <Separator className="mb-12" />
 
@@ -337,10 +420,10 @@ const Projects = () => {
                         <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-1">
                             Featured Projects
                         </p>
-                        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight flex items-center gap-2">
+                        <h3 className="text-2xl sm:text-3xl font-bold tracking-tight flex items-center gap-2">
                             Case Studies
                             <Code className="h-5 w-5 text-primary/60" />
-                        </h2>
+                        </h3>
                     </div>
 
                     <div className="flex flex-col gap-6">
@@ -356,7 +439,7 @@ const Projects = () => {
                         <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-1">
                             Additional Work
                         </p>
-                        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">More Work</h2>
+                        <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">More Work</h3>
                     </div>
 
                     <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
@@ -366,7 +449,7 @@ const Projects = () => {
                     </div>
                 </section>
             </div>
-        </AppLayout>
+        </section>
     )
 }
 

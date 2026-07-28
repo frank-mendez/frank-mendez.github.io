@@ -14,22 +14,22 @@ frameworks and have contributed to open source projects.
 
 ## Features
 
--   Light/dark mode toggle with daisyUI theme controller
--   Animated hero backgrounds (Retro Grid for dark, Underwater for light)
--   shadcn/ui component system (Card, Button, Badge, Sheet, Input, Textarea, Label, Separator)
--   lucide-react icons throughout
--   Inter font + DM Sans utility class
--   Mobile-responsive sticky navbar with slide-in Sheet drawer
--   Book a Call CTA with Cal.com integration
--   Responsive design using TailwindCSS
--   Pre-commit hooks with Husky
--   Linting with ESLint
--   Formatting with Prettier
--   Unit testing with React Testing Library and Vitest
--   React Router (hash-based) for GitHub Pages navigation
--   GitHub Pages deployment
--   AI chat endpoint integration (`/api/chat`)
--   Contact form API integration (`/api/contact`)
+- Light/dark mode toggle with daisyUI theme controller
+- Animated hero backgrounds (Retro Grid for dark, Underwater for light)
+- shadcn/ui component system (Card, Button, Badge, Sheet, Input, Textarea, Label, Separator)
+- lucide-react icons throughout
+- Inter font + DM Sans utility class
+- Mobile-responsive sticky navbar with slide-in Sheet drawer
+- Book a Call CTA with Cal.com integration
+- Responsive design using TailwindCSS
+- Pre-commit hooks with Husky
+- Linting with ESLint
+- Formatting with Prettier
+- Unit testing with React Testing Library and Vitest
+- React Router (hash-based) for GitHub Pages navigation
+- GitHub Pages deployment
+- AI chat endpoint integration (`/api/chat`)
+- Contact form API integration (`/api/contact`)
 
 ## Tech Stack
 
@@ -40,7 +40,7 @@ frameworks and have contributed to open source projects.
 | Icons         | lucide-react                                                            |
 | UI Primitives | @radix-ui/react-dialog, @radix-ui/react-separator, @radix-ui/react-slot |
 | Utilities     | clsx, tailwind-merge, class-variance-authority                          |
-| Routing       | react-router-dom v6 (hash-based for GitHub Pages)                       |
+| Routing       | React Router v8 (hash-based for GitHub Pages)                           |
 | Testing       | Vitest + React Testing Library + happy-dom                              |
 | Deployment    | GitHub Pages via gh-pages                                               |
 
@@ -69,6 +69,12 @@ src/
 
 ## Run Locally
 
+Requires Node.js 22.13 or newer. pnpm 11.17 is pinned in `package.json`; enable Corepack once before installing:
+
+```bash
+corepack enable
+```
+
 Clone the project
 
 ```bash
@@ -84,13 +90,13 @@ Go to the project directory
 Install dependencies
 
 ```bash
-  npm install
+  pnpm install
 ```
 
 Start the server
 
 ```bash
-  npm run dev
+  pnpm dev
 ```
 
 ## Running Tests
@@ -98,7 +104,7 @@ Start the server
 To run tests, run the following command
 
 ```bash
-  npm run test
+  pnpm test
 ```
 
 ## Analytics Setup
@@ -115,25 +121,25 @@ Analytics auto-initializes only when `VITE_GA_MEASUREMENT_ID` is present.
 
 Chatbot and contact form submissions are handled by the Frank backend service:
 
--   Base URL: `https://frank-bot.vercel.app`
--   Chat endpoint: `POST /api/chat`
--   Contact endpoint: `POST /api/contact`
+- Base URL: `https://frank-bot.vercel.app`
+- Chat endpoint: `POST /api/chat`
+- Contact endpoint: `POST /api/contact`
 
 Frontend service files:
 
--   `src/services/chatService.ts`
--   `src/services/contactService.ts`
+- `src/services/chatService.ts`
+- `src/services/contactService.ts`
 
 ## Deployment
 
 To deploy this project run
 
 ```bash
-  npm run deploy
+  pnpm deploy
 ```
 
 ## Contributing
 
 Contributions are always welcome!
 
--   Suggestions and feedback are always welcome! Please create an issue.
+- Suggestions and feedback are always welcome! Please create an issue.

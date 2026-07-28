@@ -2,27 +2,42 @@ import { useEffect, useState } from 'react'
 import { trackEvent } from '../services/analyticsService'
 
 const THEME_STORAGE_KEY = 'theme'
+type Theme = 'light' | 'dark'
 
-const getInitialTheme = (): 'light' | 'dark' => {
+const getStoredTheme = (): Theme | null => {
+    try {
+        const storedTheme = localStorage.getItem(THEME_STORAGE_KEY)
+        return storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : null
+    } catch {
+        return null
+    }
+}
+
+const getInitialTheme = (): Theme => {
     if (typeof window === 'undefined') {
         return 'dark'
     }
 
-    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY)
-    if (storedTheme === 'light' || storedTheme === 'dark') {
+    const storedTheme = getStoredTheme()
+    if (storedTheme) {
         return storedTheme
     }
 
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    return prefersDark ? 'dark' : 'light'
+    const documentTheme = document.documentElement.dataset.theme
+    return documentTheme === 'light' || documentTheme === 'dark' ? documentTheme : 'dark'
 }
 
 const ThemeSwitcher = () => {
-    const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme)
+    const [theme, setTheme] = useState<Theme>(getInitialTheme)
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme)
-        localStorage.setItem(THEME_STORAGE_KEY, theme)
+
+        try {
+            localStorage.setItem(THEME_STORAGE_KEY, theme)
+        } catch {
+            // The theme still works when storage is blocked by browser privacy settings.
+        }
     }, [theme])
 
     const isDark = theme === 'dark'

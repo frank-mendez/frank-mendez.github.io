@@ -1,29 +1,85 @@
 import AppLayout from '../../layout/AppLayout.tsx'
 import { Button } from '../../components/ui/button'
 import { Badge } from '../../components/ui/badge'
-import { Mail, ArrowRight, Check } from 'lucide-react'
-import { GitHub, LinkedIn } from '@mui/icons-material'
-import { Link } from 'react-router-dom'
+import { ArrowRight, BriefcaseBusiness, Check, Mail } from 'lucide-react'
+import { GithubIcon } from '../../components/ui/brand-icons'
+import About from '../about/About.tsx'
+import Projects from '../projects/Projects.tsx'
+import Contact from '../contact/Contact.tsx'
 
 const techCategories = [
     {
         label: 'Frontend',
-        skills: ['React', 'TypeScript', 'Next.js', 'Angular', 'TailwindCSS', 'Zustand', 'Redux', 'TanStack Query', 'Vite', 'shadcn/ui'],
+        skills: ['React', 'TypeScript', 'Next.js', 'Angular', 'Tailwind CSS', 'shadcn/ui', 'Framer Motion', 'Vite'],
         primary: true,
     },
     {
-        label: 'Backend',
-        skills: ['Node.js', 'NestJS', 'PostgreSQL', 'MongoDB', 'Firebase', 'Supabase', 'MikroORM', 'Prisma', 'WebSockets', 'REST APIs'],
+        label: 'Backend & APIs',
+        skills: [
+            'Node.js',
+            'NestJS',
+            'Go',
+            'Fastify',
+            'Express',
+            'REST APIs',
+            'WebSockets',
+            'OpenAI SDK',
+            'Serverless APIs',
+        ],
         primary: false,
     },
     {
-        label: 'DevOps & Cloud',
-        skills: ['AWS', 'Docker', 'GitHub Actions', 'Azure', 'CI/CD', 'Vercel', 'Nginx'],
+        label: 'Data & State',
+        skills: [
+            'PostgreSQL',
+            'MongoDB',
+            'Supabase',
+            'Firebase',
+            'Redis',
+            'TanStack Query',
+            'Zustand',
+            'Redux',
+            'Prisma',
+            'MikroORM',
+            'Drizzle',
+            'TypeORM',
+        ],
         primary: false,
     },
     {
-        label: 'Testing',
-        skills: ['Vitest', 'Jest', 'Cypress', 'Testing Library', 'Mocha', 'Playwright'],
+        label: 'Cloud & DevOps',
+        skills: [
+            'AWS',
+            'Docker',
+            'Kubernetes',
+            'GitHub Actions',
+            'Azure',
+            'CI/CD',
+            'Vercel',
+            'Nginx',
+            'Sentry',
+            'Grafana',
+        ],
+        primary: false,
+    },
+    {
+        label: 'Testing & Quality',
+        skills: [
+            'Vitest',
+            'Jest',
+            'Playwright',
+            'Cypress',
+            'Mocha',
+            'Testing Library',
+            'Storybook',
+            'SonarCloud',
+            'ESLint',
+        ],
+        primary: false,
+    },
+    {
+        label: 'AI & Developer Tools',
+        skills: ['Claude Code', 'OpenAI API', 'LLM Integrations', 'Model Context Protocol', 'AI-Assisted Development'],
         primary: false,
     },
 ]
@@ -44,7 +100,10 @@ const Home = () => {
         <AppLayout>
             <main>
                 {/* Hero Section */}
-                <section className="hero-gradient-bg dot-grid-bg relative min-h-[calc(100vh-3.5rem)] flex items-center">
+                <section
+                    id="top"
+                    className="hero-gradient-bg dot-grid-bg relative min-h-[calc(100vh-3.5rem)] scroll-mt-14 flex items-center"
+                >
                     <div className="relative container mx-auto px-4 sm:px-6 py-20">
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             {/* Text content */}
@@ -84,17 +143,15 @@ const Home = () => {
 
                                 {/* CTA buttons */}
                                 <div className="flex flex-wrap gap-3 animate-fade-in-up animation-delay-400">
-                                    <Link to="/projects">
-                                        <Button size="lg" className="font-semibold">
+                                    <Button asChild size="lg" className="font-semibold">
+                                        <a href="#projects">
                                             View Projects
                                             <ArrowRight className="h-4 w-4" />
-                                        </Button>
-                                    </Link>
-                                    <Link to="/contact">
-                                        <Button size="lg" variant="outline">
-                                            Get in Touch
-                                        </Button>
-                                    </Link>
+                                        </a>
+                                    </Button>
+                                    <Button asChild size="lg" variant="outline">
+                                        <a href="#contact">Get in Touch</a>
+                                    </Button>
                                 </div>
 
                                 {/* Social links */}
@@ -106,7 +163,7 @@ const Home = () => {
                                         className="p-2 rounded-lg text-base-content/50 hover:text-base-content hover:bg-base-content/10 transition-colors"
                                         aria-label="GitHub"
                                     >
-                                        <GitHub sx={{ fontSize: 20 }} />
+                                        <GithubIcon className="h-5 w-5" />
                                     </a>
                                     <a
                                         href="https://www.linkedin.com/in/frank-mendez-47b62090/"
@@ -115,7 +172,7 @@ const Home = () => {
                                         className="p-2 rounded-lg text-base-content/50 hover:text-base-content hover:bg-base-content/10 transition-colors"
                                         aria-label="LinkedIn"
                                     >
-                                        <LinkedIn sx={{ fontSize: 20 }} />
+                                        <BriefcaseBusiness className="h-5 w-5" />
                                     </a>
                                     <a
                                         href="mailto:frankmendezresources@gmail.com"
@@ -141,13 +198,18 @@ const Home = () => {
                     </div>
                 </section>
 
+                <About />
+
                 {/* Technical Skills Section */}
-                <section className="bg-base-200">
+                <section id="skills" className="scroll-mt-14 bg-base-200" aria-labelledby="skills-heading">
                     <div className="container mx-auto px-4 sm:px-6 py-16">
                         {/* Section header */}
                         <div className="mx-auto max-w-3xl text-center mb-10 animate-fade-in-up">
                             <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-2">Stack</p>
-                            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-base-content">
+                            <h2
+                                id="skills-heading"
+                                className="text-3xl sm:text-4xl font-bold tracking-tight text-base-content"
+                            >
                                 Technical Skills
                             </h2>
                             <p className="mt-3 text-base-content/60 text-sm sm:text-base">
@@ -156,7 +218,7 @@ const Home = () => {
                         </div>
 
                         {/* Tech categories grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in-up animation-delay-100">
+                        <div className="grid grid-cols-1 gap-8 animate-fade-in-up animation-delay-100 sm:grid-cols-2 lg:grid-cols-3">
                             {techCategories.map((category) => (
                                 <div key={category.label}>
                                     <p className="text-xs font-semibold uppercase tracking-wider text-base-content/50 mb-3">
@@ -209,6 +271,9 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
+
+                <Projects />
+                <Contact />
             </main>
         </AppLayout>
     )
