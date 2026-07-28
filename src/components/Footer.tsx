@@ -1,8 +1,7 @@
-import { Mail } from 'lucide-react'
+import { BriefcaseBusiness, Mail } from 'lucide-react'
 import { BLOG_URL } from '../constants/links'
-import { GitHub, LinkedIn } from '@mui/icons-material'
-import { Link } from 'react-router-dom'
 import { Separator } from './ui/separator'
+import { GithubIcon } from './ui/brand-icons'
 
 const Footer = () => {
     return (
@@ -23,7 +22,7 @@ const Footer = () => {
                                 aria-label="GitHub"
                                 className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-300 transition-colors"
                             >
-                                <GitHub sx={{ fontSize: 16 }} />
+                                <GithubIcon className="h-4 w-4" />
                             </a>
                             <a
                                 href="https://www.linkedin.com/in/frank-mendez-47b62090/"
@@ -32,7 +31,7 @@ const Footer = () => {
                                 aria-label="LinkedIn"
                                 className="p-2 rounded-md text-base-content/60 hover:text-base-content hover:bg-base-300 transition-colors"
                             >
-                                <LinkedIn sx={{ fontSize: 16 }} />
+                                <BriefcaseBusiness className="h-4 w-4" />
                             </a>
                             <a
                                 href="mailto:frankmendezresources@gmail.com"
@@ -51,17 +50,17 @@ const Footer = () => {
                         </p>
                         <nav className="flex flex-col gap-2" aria-label="Footer navigation">
                             {[
-                                { label: 'About', to: '/about' },
-                                { label: 'Projects', to: '/projects' },
-                                { label: 'Contact', to: '/contact' },
-                            ].map(({ label, to }) => (
-                                <Link
-                                    key={to}
-                                    to={to}
+                                { label: 'About', href: '#about' },
+                                { label: 'Projects', href: '#projects' },
+                                { label: 'Contact', href: '#contact' },
+                            ].map(({ label, href }) => (
+                                <a
+                                    key={href}
+                                    href={href}
                                     className="text-sm text-base-content/60 hover:text-base-content transition-colors w-fit"
                                 >
                                     {label}
-                                </Link>
+                                </a>
                             ))}
                             <a
                                 href={BLOG_URL}
@@ -80,17 +79,13 @@ const Footer = () => {
                             Built with
                         </p>
                         <ul className="flex flex-col gap-2">
-                            {[
-                                'React + Vite',
-                                'TypeScript',
-                                'Tailwind CSS',
-                                'daisyUI',
-                                'Deployed on GitHub Pages',
-                            ].map((item) => (
-                                <li key={item} className="text-sm text-base-content/60">
-                                    {item}
-                                </li>
-                            ))}
+                            {['React + Vite', 'TypeScript', 'Tailwind CSS', 'daisyUI', 'Deployed on GitHub Pages'].map(
+                                (item) => (
+                                    <li key={item} className="text-sm text-base-content/60">
+                                        {item}
+                                    </li>
+                                )
+                            )}
                         </ul>
                     </div>
                 </div>

@@ -8,12 +8,12 @@ Core responsibilities of AI agents interacting with this repo include refactorin
 
 ## 🚀 Tech Stack
 
--   **Language:** TypeScript
--   **Framework:** React + Vite
--   **Styling:** Tailwind CSS 4 with daisyUI 5
--   **Testing:** Vitest + React Testing Library
--   **CI/Lint:** ESLint + Prettier + Husky pre-commit hooks
--   **Deployment:** GitHub Pages
+- **Language:** TypeScript
+- **Framework:** React + Vite
+- **Styling:** Tailwind CSS 4 with daisyUI 5
+- **Testing:** Vitest + React Testing Library
+- **CI/Lint:** ESLint + Prettier + Husky pre-commit hooks
+- **Deployment:** GitHub Pages
 
 ## 🛠 Environment Setup
 
@@ -21,21 +21,21 @@ These are the commands an agent can use (exact strings).
 
 ```bash
 # Setup
-npm install
+pnpm install
 
 # Local dev server
-npm run dev
+pnpm dev
 
 # Lint and format
-npm run lint
-npm run format
+pnpm lint
+pnpm format
 
 # Run tests
-npm run test
+pnpm test
 
 # Build for production
-npm run build
+pnpm build
 
 # Deploy to GitHub Pages
-npm run deploy
+pnpm deploy
 ```

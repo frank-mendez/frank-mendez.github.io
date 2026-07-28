@@ -38,7 +38,7 @@ const setCanonicalLink = (href: string) => {
 
 export const applyRouteMetadata = (pathname: string) => {
     const seo = getSeoByPath(pathname)
-    const canonicalUrl = getCanonicalUrl(pathname)
+    const canonicalUrl = getCanonicalUrl()
 
     document.title = seo.title
     setMetaByName('description', seo.description)
