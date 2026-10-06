@@ -1,1 +1,1 @@
-export const BLOG_URL = 'https://blog.frankmendez.site/blog'
+export const BLOG_URL = 'https://www.thepracticalengineer.online/'

@@ -45,7 +45,7 @@ const projects: Project[] = [
         solution:
             'Built loan schedules, e-signed contracts, automated email and SMS reminders, partner funds, reports, and bank reconciliation.',
         impact: 'Centralized the complete lending workflow while automating repetitive borrower and partner operations.',
-        techStack: ['Next.js 15', 'TypeScript', 'Supabase', 'TanStack Query', 'Zustand', 'Sentry'],
+        techStack: ['Next.js 15', 'TypeScript', 'Supabase', 'TanStack Query', 'Zustand', 'Tailwind CSS'],
         detailsUrl: 'https://mfklending.vercel.app',
         repoUrl: 'https://github.com/frank-mendez/mfklending',
         tags: ['Fintech', 'Production', 'Supabase'],
@@ -100,7 +100,7 @@ const projects: Project[] = [
         solution: '',
         impact: '',
         techStack: ['Next.js', 'Supabase', 'TipTap', 'OpenAI', 'Tailwind CSS', 'Vitest'],
-        detailsUrl: 'https://blog.frankmendez.site/',
+        detailsUrl: 'https://www.thepracticalengineer.online/',
         repoUrl: 'https://github.com/frank-mendez/nextjs-blog-cms',
         tags: ['CMS', 'AI', 'Supabase'],
     },
@@ -392,7 +392,12 @@ function MoreProjectCard({ project, index }: { project: Project; index: number }
 
 const Projects = () => {
     return (
-        <section id="projects" className="scroll-mt-14 bg-base-100" aria-labelledby="projects-heading">
+        <section
+            id="project-archive"
+            className="fm-project-archive scroll-mt-14 bg-base-100"
+            data-theme="light"
+            aria-labelledby="projects-heading"
+        >
             <div className="container mx-auto px-4 sm:px-6 py-16">
                 {/* Page header */}
                 <div className="mb-8 flex flex-col items-start justify-between gap-5 animate-fade-in-up sm:flex-row sm:items-end">
