@@ -58,7 +58,7 @@ export function CaseStudyCard({
 }) {
     return (
         <article className="fm-case">
-            <div className="fm-preview" aria-label={`${title} product illustration`}>
+            <div className="fm-preview" role="group" aria-label={`${title} product illustration`}>
                 {children}
             </div>
             <div className="fm-case-details">
@@ -86,7 +86,7 @@ export function CaseStudyCard({
                             target="_blank"
                             rel="noopener noreferrer"
                             className="fm-live"
-                            aria-label={`Visit ${title}`}
+                            aria-label={`Visit product: ${title}`}
                             onClick={() => trackEvent('project_click', { project: title, destination: live })}
                         >
                             Visit product ↗

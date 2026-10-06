@@ -7,33 +7,20 @@
 @import 'tw-animate-css';
 @plugin '@tailwindcss/typography';
 @plugin 'daisyui' {
-    themes:
-        light,
-        dark --default --prefersdark;
-}
-
-@plugin "daisyui/theme" {
-    name: 'dark';
-    default: true;
-    prefersdark: true;
-    color-scheme: dark;
-    --color-base-100: #0f0f0f;
-    --color-base-200: #161616;
-    --color-base-300: #1e1e1e;
-    --color-base-content: #e5e5e5;
-    --color-primary: #6366f1;
-    --color-primary-content: #ffffff;
+    themes: light --default;
 }
 
 @plugin "daisyui/theme" {
     name: 'light';
+    default: true;
+    prefersdark: false;
     color-scheme: light;
-    --color-base-100: #fbfbfe;
-    --color-base-200: #f3f4f9;
-    --color-base-300: #e8eaf2;
-    --color-base-content: #11131a;
-    --color-primary: #4f46e5;
-    --color-primary-content: #ffffff;
+    --color-base-100: #f7f5ed;
+    --color-base-200: #fefdf7;
+    --color-base-300: #d1d6c9;
+    --color-base-content: #0c1614;
+    --color-primary: #143d33;
+    --color-primary-content: #fbfbf5;
 }
 
 @theme {
@@ -44,8 +31,8 @@ body {
     font-family: var(--font-sans);
     min-width: 320px;
     min-height: 100vh;
-    background-color: var(--color-base-100, #0f0f0f);
-    color: var(--color-base-content, #e5e5e5);
+    background-color: var(--color-base-100, #f7f5ed);
+    color: var(--color-base-content, #0c1614);
 }
 
 #root {
@@ -1048,8 +1035,4 @@ html {
 
 .fm-project-archive .text-base-content\/50 {
     color: var(--fm-muted);
-}
-.fm-project-archive .shrink-0 {
-    flex-shrink: 1;
-    min-width: 0;
 }

@@ -235,7 +235,7 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
                     <div className="flex-1 min-w-0">
                         <h4 className="text-xl sm:text-2xl font-bold tracking-tight leading-tight">{project.title}</h4>
                     </div>
-                    <div className="flex flex-wrap gap-2 shrink-0">
+                    <div className="flex min-w-0 flex-wrap gap-2">
                         <Badge variant="outline" className="text-xs font-medium border-primary/30 text-primary">
                             {project.type}
                         </Badge>
@@ -341,7 +341,7 @@ function MoreProjectCard({ project, index }: { project: Project; index: number }
         >
             <div className="flex items-start justify-between gap-2">
                 <h4 className="text-base font-semibold leading-snug">{project.title}</h4>
-                <Badge variant="outline" className="shrink-0 text-xs font-medium border-primary/30 text-primary">
+                <Badge variant="outline" className="min-w-0 text-xs font-medium border-primary/30 text-primary">
                     {project.type}
                 </Badge>
             </div>
@@ -410,7 +410,7 @@ const Projects = () => {
                             Selected product, platform, and open-source work from my public GitHub repositories.
                         </p>
                     </div>
-                    <Button asChild variant="outline" className="shrink-0">
+                    <Button asChild variant="outline">
                         <a href="https://github.com/frank-mendez" target="_blank" rel="noopener noreferrer">
                             <GithubIcon className="h-4 w-4" />
                             View all repositories

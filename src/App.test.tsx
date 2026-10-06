@@ -56,6 +56,15 @@ describe('Portfolio redesign', () => {
             'href',
             'https://www.thepracticalengineer.online/'
         )
+        expect(screen.getByRole('link', { name: 'Visit product: Grow With Me' })).toHaveAttribute(
+            'href',
+            'https://www.growwithme.baby'
+        )
+        expect(screen.getByRole('link', { name: 'Visit product: MFK Lending' })).toHaveAttribute(
+            'href',
+            'https://mfklending.vercel.app'
+        )
+        expect(screen.getByRole('group', { name: 'Grow With Me product illustration' })).toBeInTheDocument()
         expect(screen.getByRole('link', { name: 'Email Frank' })).toHaveAttribute(
             'href',
             'mailto:frankmendezresources@gmail.com'
