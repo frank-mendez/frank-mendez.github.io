@@ -45,7 +45,7 @@ const projects: Project[] = [
         solution:
             'Built loan schedules, e-signed contracts, automated email and SMS reminders, partner funds, reports, and bank reconciliation.',
         impact: 'Centralized the complete lending workflow while automating repetitive borrower and partner operations.',
-        techStack: ['Next.js 15', 'TypeScript', 'Supabase', 'TanStack Query', 'Zustand', 'Sentry'],
+        techStack: ['Next.js 15', 'TypeScript', 'Supabase', 'TanStack Query', 'Zustand', 'Tailwind CSS'],
         detailsUrl: 'https://mfklending.vercel.app',
         repoUrl: 'https://github.com/frank-mendez/mfklending',
         tags: ['Fintech', 'Production', 'Supabase'],
@@ -100,7 +100,7 @@ const projects: Project[] = [
         solution: '',
         impact: '',
         techStack: ['Next.js', 'Supabase', 'TipTap', 'OpenAI', 'Tailwind CSS', 'Vitest'],
-        detailsUrl: 'https://blog.frankmendez.site/',
+        detailsUrl: 'https://www.thepracticalengineer.online/',
         repoUrl: 'https://github.com/frank-mendez/nextjs-blog-cms',
         tags: ['CMS', 'AI', 'Supabase'],
     },
@@ -235,7 +235,7 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
                     <div className="flex-1 min-w-0">
                         <h4 className="text-xl sm:text-2xl font-bold tracking-tight leading-tight">{project.title}</h4>
                     </div>
-                    <div className="flex flex-wrap gap-2 shrink-0">
+                    <div className="flex min-w-0 flex-wrap gap-2">
                         <Badge variant="outline" className="text-xs font-medium border-primary/30 text-primary">
                             {project.type}
                         </Badge>
@@ -341,7 +341,7 @@ function MoreProjectCard({ project, index }: { project: Project; index: number }
         >
             <div className="flex items-start justify-between gap-2">
                 <h4 className="text-base font-semibold leading-snug">{project.title}</h4>
-                <Badge variant="outline" className="shrink-0 text-xs font-medium border-primary/30 text-primary">
+                <Badge variant="outline" className="min-w-0 text-xs font-medium border-primary/30 text-primary">
                     {project.type}
                 </Badge>
             </div>
@@ -392,7 +392,12 @@ function MoreProjectCard({ project, index }: { project: Project; index: number }
 
 const Projects = () => {
     return (
-        <section id="projects" className="scroll-mt-14 bg-base-100" aria-labelledby="projects-heading">
+        <section
+            id="project-archive"
+            className="fm-project-archive scroll-mt-14 bg-base-100"
+            data-theme="light"
+            aria-labelledby="projects-heading"
+        >
             <div className="container mx-auto px-4 sm:px-6 py-16">
                 {/* Page header */}
                 <div className="mb-8 flex flex-col items-start justify-between gap-5 animate-fade-in-up sm:flex-row sm:items-end">
@@ -405,7 +410,7 @@ const Projects = () => {
                             Selected product, platform, and open-source work from my public GitHub repositories.
                         </p>
                     </div>
-                    <Button asChild variant="outline" className="shrink-0">
+                    <Button asChild variant="outline">
                         <a href="https://github.com/frank-mendez" target="_blank" rel="noopener noreferrer">
                             <GithubIcon className="h-4 w-4" />
                             View all repositories

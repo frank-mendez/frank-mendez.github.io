@@ -10,14 +10,24 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
         applyRouteMetadata('/')
         trackPageView('/', document.title)
 
-        const sectionId = window.location.hash.slice(1)
-        if (sectionId) {
-            document.getElementById(sectionId)?.scrollIntoView?.()
+        const legacySections: Record<string, string> = {
+            '/': 'top',
+            '/about': 'approach',
+            '/projects': 'work',
+            '/contact': 'contact',
         }
+        const scrollToHash = () => {
+            const hash = window.location.hash.slice(1)
+            const sectionId = legacySections[hash] ?? hash
+            if (sectionId) document.getElementById(sectionId)?.scrollIntoView?.()
+        }
+        scrollToHash()
+        window.addEventListener('hashchange', scrollToHash)
+        return () => window.removeEventListener('hashchange', scrollToHash)
     }, [])
 
     return (
-        <div className="min-h-screen w-full bg-base-100 text-base-content">
+        <div className="fm-portfolio min-h-screen w-full">
             <Navbar />
             {children}
             <Footer />

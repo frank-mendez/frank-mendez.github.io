@@ -9,12 +9,12 @@ describe('seoService', () => {
         const canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null
         const ogTitle = document.querySelector('meta[property="og:title"]')
 
-        expect(document.title).toBe('Frank Mendez | Frontend Engineer')
+        expect(document.title).toBe('Frank Mendez | Senior Software Engineer')
         expect(description).toHaveAttribute(
             'content',
-            'Frontend engineer portfolio of Frank Mendez featuring React, TypeScript, and product-focused web projects.'
+            'Senior software engineer Frank Mendez builds reliable products with React, TypeScript, Node.js, and thoughtful full-stack delivery.'
         )
         expect(canonical?.href).toBe('https://frank-mendez.github.io/')
-        expect(ogTitle).toHaveAttribute('content', 'Frank Mendez | Frontend Engineer')
+        expect(ogTitle).toHaveAttribute('content', 'Frank Mendez | Senior Software Engineer')
     })
 })

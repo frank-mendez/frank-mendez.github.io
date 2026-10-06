@@ -7,9 +7,9 @@ export type RouteSeo = {
 }
 
 const HOME_SEO: RouteSeo = {
-    title: 'Frank Mendez | Frontend Engineer',
+    title: 'Frank Mendez | Senior Software Engineer',
     description:
-        'Frontend engineer portfolio of Frank Mendez featuring React, TypeScript, and product-focused web projects.',
+        'Senior software engineer Frank Mendez builds reliable products with React, TypeScript, Node.js, and thoughtful full-stack delivery.',
 }
 
 export const ROUTE_SEO: Record<string, RouteSeo> = {

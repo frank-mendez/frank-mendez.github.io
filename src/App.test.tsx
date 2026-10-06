@@ -1,84 +1,142 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import '@testing-library/jest-dom/vitest'
 import App from './App'
+import { sendContact } from './services/contactService'
 
-describe('App component', () => {
-    it('renders the portfolio as one page with anchored sections', () => {
+vi.mock('./services/contactService', () => ({ sendContact: vi.fn().mockResolvedValue({ ok: true }) }))
+
+afterEach(() => {
+    window.history.replaceState(null, '', '/')
+    vi.clearAllMocks()
+})
+
+describe('Portfolio redesign', () => {
+    it('renders the Figma sections in order with one main heading', () => {
         const { container } = render(<App />)
-
         expect(container.querySelectorAll('h1')).toHaveLength(1)
-        expect(
-            screen.getByRole('heading', {
-                level: 1,
-                name: /Senior Software Engineer building scalable systems and elegant UIs/i,
-            })
-        ).toBeInTheDocument()
-
-        const about = container.querySelector('#about')
-        const projects = container.querySelector('#projects')
-        const contact = container.querySelector('#contact')
-
-        expect(about).toBeInTheDocument()
-        expect(projects).toBeInTheDocument()
-        expect(contact).toBeInTheDocument()
-        expect(within(about as HTMLElement).getByRole('heading', { name: 'Frank R. Mendez' })).toBeInTheDocument()
-        expect(within(projects as HTMLElement).getByRole('heading', { name: 'Projects' })).toBeInTheDocument()
-        expect(
-            within(contact as HTMLElement).getByRole('heading', { name: "Let's build something great" })
-        ).toBeInTheDocument()
+        expect(screen.getByRole('heading', { level: 1, name: 'I build software teams can trust.' })).toBeInTheDocument()
+        expect([...container.querySelectorAll('main > section')].map((section) => section.id)).toEqual([
+            'top',
+            'work',
+            'approach',
+            'experience',
+            'contact',
+        ])
+        expect(screen.getByRole('heading', { name: 'Own the whole slice' })).toBeInTheDocument()
+        expect(screen.getByRole('heading', { name: 'Virtido AG' })).toBeInTheDocument()
     })
 
-    it('uses section anchors instead of route links', () => {
-        render(<App />)
-
+    it('uses working section anchors and verified project destinations', () => {
+        const { container } = render(<App />)
         const navigation = screen.getByRole('navigation', { name: 'Main navigation' })
-
-        expect(within(navigation).getByRole('link', { name: 'About' })).toHaveAttribute('href', '#about')
-        expect(within(navigation).getByRole('link', { name: 'Projects' })).toHaveAttribute('href', '#projects')
-        expect(within(navigation).getByRole('link', { name: 'Contact' })).toHaveAttribute('href', '#contact')
-        expect(screen.getByRole('link', { name: 'View Projects' })).toHaveAttribute('href', '#projects')
-        expect(screen.getByRole('link', { name: 'Get in Touch' })).toHaveAttribute('href', '#contact')
+        for (const [label, id] of [
+            ['Work', 'work'],
+            ['Approach', 'approach'],
+            ['Experience', 'experience'],
+            ['Contact', 'contact'],
+        ]) {
+            expect(within(navigation).getByRole('link', { name: label })).toHaveAttribute('href', `#${id}`)
+            expect(container.querySelector(`#${id}`)).toBeInTheDocument()
+        }
+        expect(screen.getByRole('link', { name: 'Explore selected work' })).toHaveAttribute('href', '#work')
+        expect(screen.getByRole('link', { name: 'Grow With Me' })).toHaveAttribute(
+            'href',
+            'https://github.com/frank-mendez/grow-with-me'
+        )
+        expect(screen.getByRole('link', { name: 'MFK Lending' })).toHaveAttribute(
+            'href',
+            'https://github.com/frank-mendez/mfklending'
+        )
+        expect(screen.getByRole('link', { name: 'PulseChat' })).toHaveAttribute(
+            'href',
+            'https://github.com/frank-mendez/pulse-chat-'
+        )
+        expect(screen.getByRole('link', { name: 'thepracticalengineer.online' })).toHaveAttribute(
+            'href',
+            'https://www.thepracticalengineer.online/'
+        )
+        expect(screen.getByRole('link', { name: 'Visit product: Grow With Me' })).toHaveAttribute(
+            'href',
+            'https://www.growwithme.baby'
+        )
+        expect(screen.getByRole('link', { name: 'Visit product: MFK Lending' })).toHaveAttribute(
+            'href',
+            'https://mfklending.vercel.app'
+        )
+        expect(screen.getByRole('group', { name: 'Grow With Me product illustration' })).toBeInTheDocument()
+        expect(screen.getByRole('link', { name: 'Email Frank' })).toHaveAttribute(
+            'href',
+            'mailto:frankmendezresources@gmail.com'
+        )
     })
 
-    it('showcases the current GitHub repositories', () => {
-        const { container } = render(<App />)
+    it('closes the mobile navigation after choosing a section', async () => {
+        render(<App />)
+        fireEvent.click(screen.getByRole('button', { name: 'Open menu' }))
+        const navigation = await screen.findByRole('navigation', { name: 'Mobile navigation' })
+        fireEvent.click(within(navigation).getByRole('link', { name: 'Experience' }))
+        await waitFor(() =>
+            expect(screen.queryByRole('navigation', { name: 'Mobile navigation' })).not.toBeInTheDocument()
+        )
+        await waitFor(() => expect(document.activeElement).toBe(document.getElementById('experience')))
+    })
 
-        expect(screen.getByRole('heading', { name: 'Grow With Me' })).toBeInTheDocument()
-        expect(screen.getByRole('heading', { name: 'MFK Lending Corp' })).toBeInTheDocument()
-        expect(screen.getByRole('heading', { name: 'PulseChat' })).toBeInTheDocument()
+    it('preserves the project archive and avoids duplicate ids', async () => {
+        const { container } = render(<App />)
+        const details = container.querySelector('details')!
+        details.open = true
         expect(screen.getByRole('heading', { name: 'Food Delivery Observability' })).toBeInTheDocument()
-        expect(screen.getByRole('heading', { name: 'Car Systems Explorer' })).toBeInTheDocument()
-
-        expect(container.querySelector('a[href="https://github.com/frank-mendez/grow-with-me"]')).toBeInTheDocument()
-        expect(container.querySelector('a[href="https://github.com/frank-mendez/mfklending"]')).toBeInTheDocument()
-        expect(container.querySelector('a[href="https://github.com/frank-mendez/pulse-chat-"]')).toBeInTheDocument()
-        expect(screen.queryByRole('heading', { name: 'Real-Time Chat Platform' })).not.toBeInTheDocument()
+        fireEvent.click(screen.getByRole('button', { name: 'Send a project brief ↗' }))
+        await screen.findByRole('dialog')
+        const ids = [...document.querySelectorAll('[id]')].map((element) => element.id)
+        expect(new Set(ids).size).toBe(ids.length)
     })
 
-    it('includes the LinkedIn-aligned technical capabilities', () => {
-        const { container } = render(<App />)
-        const skills = container.querySelector('#skills')
+    it('keeps the contact form submission working from the invitation', async () => {
+        render(<App />)
+        fireEvent.click(screen.getByRole('button', { name: 'Send a project brief ↗' }))
+        const dialog = await screen.findByRole('dialog')
+        fireEvent.change(within(dialog).getByLabelText(/full name/i), { target: { value: 'Test client' } })
+        fireEvent.change(within(dialog).getByLabelText(/email address/i), { target: { value: 'client@example.com' } })
+        fireEvent.change(within(dialog).getByLabelText(/project brief/i), {
+            target: { value: 'Build a useful product.' },
+        })
+        fireEvent.submit(dialog.querySelector('form')!)
+        await waitFor(() =>
+            expect(sendContact).toHaveBeenCalledWith(
+                expect.objectContaining({
+                    name: 'Test client',
+                    email: 'client@example.com',
+                    message: 'Build a useful product.',
+                })
+            )
+        )
+    })
 
-        expect(skills).toBeInTheDocument()
-        expect(within(skills as HTMLElement).getByText('Go')).toBeInTheDocument()
-        expect(within(skills as HTMLElement).getByText('Kubernetes')).toBeInTheDocument()
-        expect(within(skills as HTMLElement).getByText('Claude Code')).toBeInTheDocument()
-        expect(within(skills as HTMLElement).getByText('OpenAI API')).toBeInTheDocument()
+    it.each([
+        ['/about', 'approach'],
+        ['/projects', 'work'],
+        ['/contact', 'contact'],
+    ])('resolves the legacy hash route #%s', (hash, id) => {
+        window.history.replaceState(null, '', `/#${hash}`)
+        const scrollIntoView = vi.fn()
+        const original = HTMLElement.prototype.scrollIntoView
+        HTMLElement.prototype.scrollIntoView = scrollIntoView
+        render(<App />)
+        expect(scrollIntoView).toHaveBeenCalled()
+        expect(scrollIntoView.mock.instances[0]).toBe(document.getElementById(id))
+        HTMLElement.prototype.scrollIntoView = original
     })
 
     it('shows a back-to-top control above the chat launcher after scrolling', async () => {
         render(<App />)
         Object.defineProperty(window, 'scrollY', { configurable: true, value: 700 })
-
         fireEvent.scroll(window)
-
-        const backToTop = await waitFor(() => screen.getByRole('link', { name: 'Back to top' }))
+        const backToTop = await screen.findByRole('link', { name: 'Back to top' })
         const chatLauncher = screen.getByRole('button', { name: 'Open chat about Frank' })
-
         expect(backToTop).toHaveAttribute('href', '#top')
         expect(backToTop.compareDocumentPosition(chatLauncher) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
-
         Object.defineProperty(window, 'scrollY', { configurable: true, value: 0 })
     })
 })

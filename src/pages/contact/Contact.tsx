@@ -45,7 +45,7 @@ const Contact = () => {
     }
 
     return (
-        <section id="contact" className="scroll-mt-14" aria-labelledby="contact-heading">
+        <section id="contact-form" className="scroll-mt-14" aria-labelledby="contact-form-heading">
             {/* Booking CTA Banner */}
             <div className="bg-primary text-primary-content">
                 <div className="container mx-auto px-4 sm:px-6 py-10">
@@ -85,7 +85,7 @@ const Contact = () => {
                 <div className="container mx-auto px-4 sm:px-6 py-14">
                     <div className="mb-8">
                         <p className="text-xs uppercase tracking-widest text-primary font-semibold mb-2">Contact</p>
-                        <h2 id="contact-heading" className="text-4xl sm:text-5xl font-bold tracking-tight">
+                        <h2 id="contact-form-heading" className="text-4xl sm:text-5xl font-bold tracking-tight">
                             Let's build something great
                         </h2>
                         <p className="mt-3 text-base-content/60 max-w-xl">
