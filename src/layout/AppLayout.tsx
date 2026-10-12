@@ -12,7 +12,7 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
 
         const legacySections: Record<string, string> = {
             '/': 'top',
-            '/about': 'approach',
+            '/about': 'about',
             '/projects': 'work',
             '/contact': 'contact',
         }

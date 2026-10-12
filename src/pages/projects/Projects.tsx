@@ -395,7 +395,7 @@ const Projects = () => {
         <section
             id="project-archive"
             className="fm-project-archive scroll-mt-14 bg-base-100"
-            data-theme="light"
+            data-theme="dark"
             aria-labelledby="projects-heading"
         >
             <div className="container mx-auto px-4 sm:px-6 py-16">

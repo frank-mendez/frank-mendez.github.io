@@ -1,317 +1,486 @@
 import AppLayout from '../../layout/AppLayout'
-import {
-    ActionButton,
-    CapabilityCard,
-    CaseStudyCard,
-    MetadataPill,
-    SectionHeading,
-} from '../../components/PortfolioElements'
-import { BLOG_URL } from '../../constants/links'
-import Contact from '../contact/Contact'
+import FeaturedProjects from '../../components/FeaturedProjects'
+import ContactFormLink from '../../components/ContactFormLink'
 import Projects from '../projects/Projects'
-import { DialogTitle, DialogDescription } from '@radix-ui/react-dialog'
-import { Sheet, SheetContent, SheetTrigger } from '../../components/ui/sheet'
-import { useState } from 'react'
-import { Button } from '../../components/ui/button'
-
-const asset = (name: string) => `/images/portfolio/${name}.svg`
-const orbitLayers = [
-    { name: 'orbit-outer', x: 34, y: 34 },
-    { name: 'orbit-middle', x: 81, y: 81 },
-    { name: 'orbit-inner', x: 127, y: 127 },
-    { name: 'core', x: 163, y: 163 },
-    { name: 'signal-product', x: 205, y: 26 },
-    { name: 'signal-system', x: 382, y: 206 },
-    { name: 'signal-system', x: 53, y: 317 },
-    { name: 'signal-interface', x: 364, y: 342 },
-]
-
-function EngineeringSignal() {
-    return (
-        <div className="fm-signal-wrapper">
-            <div
-                className="fm-signal"
-                role="img"
-                aria-label="From first pixel to production: systems, interface, and delivery"
-            >
-                <div className="fm-signal-canvas">
-                    {orbitLayers.map((layer, index) => (
-                        <img key={index} src={asset(layer.name)} alt="" style={{ left: layer.x, top: layer.y }} />
-                    ))}
-                    <span className="fm-signal-monogram">FM</span>
-                    <span className="fm-meta fm-signal-caption">
-                        FROM FIRST PIXEL
-                        <br />
-                        TO PRODUCTION
-                    </span>
-                    <span className="fm-meta fm-signal-systems">SYSTEMS</span>
-                    <span className="fm-meta fm-signal-interface">INTERFACE</span>
-                    <span className="fm-meta fm-signal-delivery">DELIVERY</span>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-function ContactFormLink() {
-    const [open, setOpen] = useState(false)
-    return (
-        <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-                <Button className="fm-text-link" variant="link">
-                    Send a project brief ↗
-                </Button>
-            </SheetTrigger>
-            <SheetContent className="fm-contact-form" data-theme="light">
-                <DialogTitle className="sr-only">Send Frank a project brief</DialogTitle>
-                <DialogDescription className="sr-only">
-                    Share your project details using the contact form or book a discovery call.
-                </DialogDescription>
-                <Contact />
-            </SheetContent>
-        </Sheet>
-    )
-}
 
 const Home = () => (
     <AppLayout>
         <main id="main" tabIndex={-1}>
-            <section id="top" tabIndex={-1} className="fm-hero" aria-labelledby="hero-heading">
-                <div className="fm-container">
-                    <div className="fm-availability">
-                        <MetadataPill>OPEN TO REMOTE SENIOR TEAMS</MetadataPill>
-                        <p className="fm-meta">CAGAYAN DE ORO · GMT+8</p>
-                        <p className="fm-meta">10+ YEARS IN PRODUCTION</p>
-                    </div>
-                    <div className="fm-hero-main">
-                        <div className="fm-hero-copy">
+            <section id="top" tabIndex={-1} className="pf-hero" aria-labelledby="hero-heading">
+                <div className="pf-wrap">
+                    <div className="pf-hero-grid">
+                        <div>
+                            <span className="pf-eyebrow">Senior software engineer</span>
                             <h1 id="hero-heading">
-                                I build software
-                                <br />
-                                teams can trust.
+                                Hi, I’m <span>Frank.</span>
+                                <br />I build with purpose.
                             </h1>
-                            <p className="fm-callout">
-                                I connect polished interfaces to reliable systems—and stay close to the product, the
-                                team, and the details that make it ship.
+                            <p className="pf-hero-sub">
+                                Thoughtful interfaces.
+                                <br />
+                                Dependable systems.
                             </p>
-                            <div className="fm-hero-actions">
-                                <ActionButton href="#work">Explore selected work</ActionButton>
-                                <a href="#approach">
-                                    Get to know me <span aria-hidden="true">↓</span>
+                            <p className="pf-intro pf-muted">
+                                10+ years building React applications, design systems, and the backend APIs that make
+                                them work.
+                            </p>
+                            <div className="pf-actions">
+                                <a className="pf-button pf-primary" href="#work">
+                                    View selected work <span aria-hidden="true">↗</span>
+                                </a>
+                                <a className="pf-button" href="https://github.com/frank-mendez">
+                                    Explore GitHub <span aria-hidden="true">↗</span>
                                 </a>
                             </div>
-                            <p className="fm-meta fm-hero-proof">
-                                PRODUCT THINKING · FRONTEND SYSTEMS · FULL-STACK DELIVERY
-                            </p>
+                            <div className="pf-stack-inline">
+                                <span className="pf-caption">TECHNOLOGIES I WORK WITH</span>
+                                <div className="pf-chips">
+                                    <span className="pf-chip">React</span>
+                                    <span className="pf-chip">TypeScript</span>
+                                    <span className="pf-chip">Next.js</span>
+                                    <span className="pf-chip">Node.js</span>
+                                    <span className="pf-chip">AWS</span>
+                                </div>
+                            </div>
                         </div>
-                        <EngineeringSignal />
+                        <div className="pf-portrait-stage">
+                            <img
+                                className="pf-archipelago"
+                                src="/images/portfolio/philippines.svg"
+                                alt=""
+                                aria-hidden="true"
+                            />
+                            <img src="/images/frank2.jpg" alt="Frank Mendez" width="285" height="351" />
+                            <div className="pf-code-card">
+                                <div className="pf-top">
+                                    engineering.ts <span className="pf-green">●</span>
+                                </div>
+                                <span className="pf-purple">const</span>
+                                {' approach = {'}
+                                <br />
+                                &nbsp;interfaces: <span className="pf-gold">'thoughtful'</span>,<br />
+                                &nbsp;systems: <span className="pf-gold">'dependable'</span>,<br />
+                                &nbsp;delivery: <span className="pf-gold">'with care'</span>
+                                <br />
+                                {'};'}
+                            </div>
+                            <span className="pf-location">
+                                Fulltime husband to Rhoie and Fulltime daddy to Fleurhora
+                            </span>
+                        </div>
                     </div>
-                    <div className="fm-positioning fm-meta">
-                        <p>SENIOR SOFTWARE ENGINEER</p>
-                        <p>React · TypeScript · Node.js · Go</p>
-                        <p>Collaborative by default. Accountable through release.</p>
+                    <div className="pf-trustline">
+                        <span>
+                            Currently building at <b>Virtido AG</b>
+                        </span>
+                        <span>Frontend architecture · Full-stack TypeScript · Product delivery</span>
                     </div>
                 </div>
             </section>
-            <section id="work" tabIndex={-1} className="fm-work" aria-labelledby="work-heading">
-                <span id="projects" className="fm-anchor-alias" />
-                <div className="fm-container">
-                    <SectionHeading
-                        id="work-heading"
-                        marker="SELECTED WORK / 03"
-                        intro="A few examples where the interface, the architecture, and the day-to-day workflow all had to work as one."
-                    >
-                        Products with real
-                        <br />
-                        constraints and users.
-                    </SectionHeading>
-                    <div className="fm-cases">
-                        <CaseStudyCard
-                            title="Grow With Me"
-                            category="PRODUCT / FULL STACK"
-                            summary="A pregnancy journey built for the moments between appointments: week-by-week visuals, voice memories, kick tracking, and a mood garden, backed by Supabase."
-                            stack="Next.js 16 · TypeScript · Supabase · Tailwind CSS · Vitest"
-                            repo="https://github.com/frank-mendez/grow-with-me"
-                            live="https://www.growwithme.baby"
-                        >
-                            <div className="fm-preview-grow">
-                                <div className="fm-journey">
-                                    <p className="fm-meta">GROW WITH ME / JOURNEY OVERVIEW</p>
-                                    <p className="fm-stat">Week 24</p>
-                                    <p>Small moments, remembered.</p>
-                                    <div className="fm-progress" aria-hidden="true">
-                                        <span />
-                                    </div>
-                                </div>
-                                <div className="fm-preview-panel fm-mood">
-                                    <p className="fm-meta">MOOD GARDEN</p>
-                                    <div className="fm-mood-markers" aria-hidden="true">
-                                        <span />
-                                        <span />
-                                        <span />
-                                        <span />
-                                    </div>
-                                    <p>Voice notes · kick tracking · a week at a time</p>
-                                </div>
-                            </div>
-                        </CaseStudyCard>
-                        <CaseStudyCard
-                            title="MFK Lending"
-                            category="FINTECH / WORKFLOW SYSTEM"
-                            summary="Turned fragmented lending operations into one dependable workspace for loan schedules, e-signed contracts, automated reminders, partner funds, reporting, and bank reconciliation."
-                            stack="Next.js · TypeScript · Supabase · TanStack Query · Tailwind CSS"
-                            repo="https://github.com/frank-mendez/mfklending"
-                            live="https://mfklending.vercel.app"
-                        >
-                            <div className="fm-preview-lending">
-                                <div className="fm-operations">
-                                    <p className="fm-meta">MFK LENDING / OPERATIONS</p>
-                                    <p className="fm-preview-title">
-                                        One view.
-                                        <br />
-                                        Every step.
-                                    </p>
-                                    <p>A clearer path from application to reconciliation.</p>
-                                </div>
-                                <div className="fm-preview-panel fm-workflow">
-                                    <p className="fm-meta">LENDING WORKFLOW</p>
-                                    {[
-                                        'Loan schedule',
-                                        'E-signed contract',
-                                        'Borrower reminders',
-                                        'Bank reconciliation',
-                                    ].map((item) => (
-                                        <div className="fm-workflow-row" key={item}>
-                                            <span aria-hidden="true" className="fm-status-dot" />
-                                            <span>{item}</span>
-                                            <span className="fm-meta fm-muted">READY</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </CaseStudyCard>
-                        <CaseStudyCard
-                            title="PulseChat"
-                            category="REAL-TIME / SYSTEM DESIGN"
-                            summary="A typed monorepo for chat beyond the demo: shared Zod contracts, secure sessions, reconnect behavior, and a clear path from local testing to PostgreSQL and distributed messaging."
-                            stack="React · Fastify · WebSockets · PostgreSQL · Drizzle · Turborepo"
-                            repo="https://github.com/frank-mendez/pulse-chat-"
-                        >
-                            <div className="fm-preview-chat">
-                                <div className="fm-preview-panel fm-conversation">
-                                    <p className="fm-meta"># product-room</p>
-                                    <p>Reconnect path is looking good.</p>
-                                    <p>Shared contract is in.</p>
-                                    <p className="fm-muted">Message the team…</p>
-                                </div>
-                                <div className="fm-architecture">
-                                    <p className="fm-meta">DESIGNED TO EVOLVE</p>
-                                    <p>SESSION → CONTRACTS → PERSISTENCE</p>
-                                    <div className="fm-architecture-nodes">
-                                        {['AUTH', 'ZOD', 'DB'].map((node) => (
-                                            <span className="fm-meta" key={node}>
-                                                {node}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </CaseStudyCard>
+            <section className="pf-section" id="about" tabIndex={-1}>
+                <span id="approach" className="pf-anchor-alias" tabIndex={-1} />
+                <div className="pf-wrap pf-about-grid">
+                    <div>
+                        <span className="pf-eyebrow">About me</span>
+                        <h2>
+                            Practical Execution.
+                            <br />
+                            Pragmatic Decisions.
+                        </h2>
+                        <p className="pf-muted">
+                            I’m a software engineer based in Cagayan de Oro, Philippines. I turn complex workflows into
+                            useful interfaces and reliable applications.
+                        </p>
+                        <p className="pf-muted">
+                            Beyond the code, I’m proudly Filipino, a husband, a dad to a daughter, and a cat dad to
+                            four. I’m the youngest in a family of six and an avid gamer who spends much of his free time
+                            playing. Red Dead Redemption 2 is my all-time favorite.
+                        </p>
+                        <a href="#experience" className="pf-text-link">
+                            Explore my experience <span aria-hidden="true">→</span>
+                        </a>
                     </div>
-                    <details className="fm-more-projects">
-                        <summary>Explore more projects ↗</summary>
+                    <div className="pf-facts">
+                        <div className="pf-fact">
+                            <strong>
+                                <span className="pf-icon">↗</span>10+ years
+                            </strong>
+                            <small>Software development experience</small>
+                        </div>
+                        <div className="pf-fact">
+                            <strong>
+                                <span className="pf-icon">⌘</span>Full stack
+                            </strong>
+                            <small>From interface to API</small>
+                        </div>
+                        <div className="pf-fact">
+                            <strong>
+                                <span className="pf-icon">◇</span>Product focus
+                            </strong>
+                            <small>Clear, useful workflows</small>
+                        </div>
+                        <div className="pf-fact">
+                            <strong>
+                                <span className="pf-icon">◎</span>Philippines
+                            </strong>
+                            <small>Cagayan de Oro · UTC+8</small>
+                        </div>
+                    </div>
+                </div>
+                <div className="pf-wrap pf-reading" aria-labelledby="reading-heading">
+                    <div className="pf-section-head">
+                        <div>
+                            <span className="pf-eyebrow">Always learning</span>
+                            <h3 id="reading-heading">Books &amp; reading materials.</h3>
+                        </div>
+                        <p className="pf-muted">Ideas on software craft, system design, and how teams deliver.</p>
+                    </div>
+                    <ul className="pf-reading-books">
+                        <li>
+                            <span className="pf-reading-number" aria-hidden="true">
+                                01
+                            </span>
+                            <div>
+                                <h4>Clean Code</h4>
+                                <p>Software craftsmanship</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span className="pf-reading-number" aria-hidden="true">
+                                02
+                            </span>
+                            <div>
+                                <h4>Designing Data-Intensive Applications</h4>
+                                <p>Martin Kleppmann · Distributed systems</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span className="pf-reading-number" aria-hidden="true">
+                                03
+                            </span>
+                            <div>
+                                <h4>Designing Web APIs: Building APIs That Developers Love</h4>
+                                <p>API design &amp; developer experience</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span className="pf-reading-number" aria-hidden="true">
+                                04
+                            </span>
+                            <div>
+                                <h4>The Phoenix Project</h4>
+                                <p>DevOps &amp; team delivery</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div className="pf-reading-online">
+                        <span>From the community</span>
+                        <a href="https://www.thepracticalengineer.online/" target="_blank" rel="noopener noreferrer">
+                            The Practical Engineer <span aria-hidden="true">↗</span>
+                        </a>
+                        <a href="https://medium.com/" target="_blank" rel="noopener noreferrer">
+                            Medium <span aria-hidden="true">↗</span>
+                        </a>
+                        <a href="https://dev.to/" target="_blank" rel="noopener noreferrer">
+                            DEV Community <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <section className="pf-section" id="skills" tabIndex={-1}>
+                <div className="pf-wrap">
+                    <div className="pf-section-head">
+                        <div>
+                            <span className="pf-eyebrow">Technical toolkit</span>
+                            <h2>The tools behind the work.</h2>
+                        </div>
+                        <p className="pf-muted">
+                            A practical stack for building, testing, and shipping dependable products.
+                        </p>
+                    </div>
+                    <div className="pf-skills">
+                        <div className="pf-skill">
+                            <h3>01 · Frontend</h3>
+                            <ul className="pf-tech-list">
+                                <li>
+                                    <img src="/images/tech/react.svg" alt="" width="20" height="20" loading="lazy" />
+                                    <span>React</span>
+                                </li>
+                                <li>
+                                    <img
+                                        src="/images/tech/typescript.svg"
+                                        alt=""
+                                        width="20"
+                                        height="20"
+                                        loading="lazy"
+                                    />
+                                    <span>TypeScript</span>
+                                </li>
+                                <li>
+                                    <img
+                                        src="/images/tech/nextdotjs.svg"
+                                        alt=""
+                                        width="20"
+                                        height="20"
+                                        loading="lazy"
+                                    />
+                                    <span>Next.js</span>
+                                </li>
+                                <li>
+                                    <img
+                                        src="/images/tech/tailwindcss.svg"
+                                        alt=""
+                                        width="20"
+                                        height="20"
+                                        loading="lazy"
+                                    />
+                                    <span>Tailwind CSS</span>
+                                </li>
+                                <li>
+                                    <img src="/images/tech/zustand.svg" alt="" width="20" height="20" loading="lazy" />
+                                    <span>Zustand</span>
+                                </li>
+                                <li>
+                                    <img
+                                        src="/images/tech/reactquery.svg"
+                                        alt=""
+                                        width="20"
+                                        height="20"
+                                        loading="lazy"
+                                    />
+                                    <span>TanStack Query</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="pf-skill">
+                            <h3>02 · Backend</h3>
+                            <ul className="pf-tech-list">
+                                <li>
+                                    <img
+                                        src="/images/tech/nodedotjs.svg"
+                                        alt=""
+                                        width="20"
+                                        height="20"
+                                        loading="lazy"
+                                    />
+                                    <span>Node.js</span>
+                                </li>
+                                <li>
+                                    <img src="/images/tech/nestjs.svg" alt="" width="20" height="20" loading="lazy" />
+                                    <span>NestJS</span>
+                                </li>
+                                <li>
+                                    <img
+                                        src="/images/tech/postgresql.svg"
+                                        alt=""
+                                        width="20"
+                                        height="20"
+                                        loading="lazy"
+                                    />
+                                    <span>PostgreSQL</span>
+                                </li>
+                                <li>
+                                    <img src="/images/tech/supabase.svg" alt="" width="20" height="20" loading="lazy" />
+                                    <span>Supabase</span>
+                                </li>
+                                <li>
+                                    <img src="/images/tech/mongodb.svg" alt="" width="20" height="20" loading="lazy" />
+                                    <span>MongoDB</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="pf-skill">
+                            <h3>03 · Cloud &amp; delivery</h3>
+                            <ul className="pf-tech-list">
+                                <li>
+                                    <img
+                                        src="/images/tech/amazonwebservices.svg"
+                                        alt=""
+                                        width="20"
+                                        height="20"
+                                        loading="lazy"
+                                    />
+                                    <span>AWS</span>
+                                </li>
+                                <li>
+                                    <img src="/images/tech/docker.svg" alt="" width="20" height="20" loading="lazy" />
+                                    <span>Docker</span>
+                                </li>
+                                <li>
+                                    <img
+                                        src="/images/tech/githubactions.svg"
+                                        alt=""
+                                        width="20"
+                                        height="20"
+                                        loading="lazy"
+                                    />
+                                    <span>GitHub Actions</span>
+                                </li>
+                                <li>
+                                    <img src="/images/tech/azure.svg" alt="" width="20" height="20" loading="lazy" />
+                                    <span>Azure</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="pf-skill">
+                            <h3>04 · Testing</h3>
+                            <ul className="pf-tech-list">
+                                <li>
+                                    <img src="/images/tech/vitest.svg" alt="" width="20" height="20" loading="lazy" />
+                                    <span>Vitest</span>
+                                </li>
+                                <li>
+                                    <img src="/images/tech/jest.svg" alt="" width="20" height="20" loading="lazy" />
+                                    <span>Jest</span>
+                                </li>
+                                <li>
+                                    <img src="/images/tech/cypress.svg" alt="" width="20" height="20" loading="lazy" />
+                                    <span>Cypress</span>
+                                </li>
+                                <li>
+                                    <img
+                                        src="/images/tech/testinglibrary.svg"
+                                        alt=""
+                                        width="20"
+                                        height="20"
+                                        loading="lazy"
+                                    />
+                                    <span>Testing Library</span>
+                                </li>
+                                <li>
+                                    <img
+                                        src="/images/tech/playwright.svg"
+                                        alt=""
+                                        width="20"
+                                        height="20"
+                                        loading="lazy"
+                                    />
+                                    <span>Playwright</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="pf-section" id="work" tabIndex={-1}>
+                <div className="pf-wrap">
+                    <div className="pf-section-head">
+                        <div>
+                            <span className="pf-eyebrow">Featured projects</span>
+                            <h2>Selected work.</h2>
+                        </div>
+                        <p className="pf-muted">Business workflows, publishing tools, and frontend experiences.</p>
+                    </div>
+                    <FeaturedProjects />
+                    <div className="pf-support">
+                        <p>More engineering explorations</p>
+                        <div className="pf-support-links">
+                            <a href="https://github.com/frank-mendez/grow-with-me">Grow With Me ↗</a>
+                            <a href="https://github.com/frank-mendez/chatmesh">Chatmesh ↗</a>
+                            <a href="https://github.com/frank-mendez/pulse-chat-">Pulse Chat ↗</a>
+                            <a href="https://github.com/frank-mendez/food-delivery-observability">
+                                Food Delivery Observability ↗
+                            </a>
+                        </div>
+                    </div>
+                    <details className="pf-archive">
+                        <summary>Explore all projects</summary>
                         <Projects />
                     </details>
                 </div>
             </section>
-            <section id="approach" tabIndex={-1} className="fm-approach" aria-labelledby="approach-heading">
-                <span id="about" className="fm-anchor-alias" />
-                <span id="skills" className="fm-anchor-alias" />
-                <div className="fm-container">
-                    <SectionHeading
-                        id="approach-heading"
-                        marker="HOW I SHOW UP"
-                        intro="I care about the quality of the code and the quality of the collaboration that gets it shipped."
-                    >
-                        Thoughtful in the details.
-                        <br />
-                        Useful in the room.
-                    </SectionHeading>
-                    <div className="fm-capabilities">
-                        <CapabilityCard index="01" title="Own the whole slice">
-                            Move from interface decisions to API contracts while keeping one user goal in view.
-                        </CapabilityCard>
-                        <CapabilityCard index="02" title="Leave room to grow">
-                            Use clear types, shared patterns, useful tests, and handoffs that make change easier.
-                        </CapabilityCard>
-                        <CapabilityCard index="03" title="Pull the team forward">
-                            Bring options, ask early, share context, and take ownership through release.
-                        </CapabilityCard>
+            <section className="pf-section" id="experience" tabIndex={-1}>
+                <div className="pf-wrap">
+                    <div className="pf-section-head">
+                        <div>
+                            <span className="pf-eyebrow">Recent experience</span>
+                            <h2>Built alongside good teams.</h2>
+                        </div>
+                    </div>
+                    <div className="pf-career">
+                        <article className="pf-job">
+                            <div className="pf-date">SEPTEMBER 2024 — PRESENT</div>
+                            <div className="pf-company-heading">
+                                <span className="pf-company-logo pf-company-logo-virtido">
+                                    <img
+                                        src="/images/companies/virtido.svg"
+                                        alt=""
+                                        width="96"
+                                        height="40"
+                                        loading="lazy"
+                                    />
+                                </span>
+                                <h3>Virtido AG</h3>
+                            </div>
+                            <p>
+                                Supporting Swiss clients with software development and product delivery using React,
+                                TypeScript, Node.js, and AWS.
+                            </p>
+                        </article>
+                        <article className="pf-job">
+                            <div className="pf-date">OCTOBER 2021 — SEPTEMBER 2024</div>
+                            <div className="pf-company-heading">
+                                <span className="pf-company-logo pf-company-logo-arcanys">
+                                    <img
+                                        src="/images/companies/arcanys.png"
+                                        alt=""
+                                        width="96"
+                                        height="40"
+                                        loading="lazy"
+                                    />
+                                </span>
+                                <h3>Arcanys</h3>
+                            </div>
+                            <p>
+                                Delivering lease-management experiences and full-stack features for global clients with
+                                React, TypeScript, and AWS.
+                            </p>
+                        </article>
+                        <article className="pf-job">
+                            <div className="pf-date">FEBRUARY 2021 — SEPTEMBER 2021</div>
+                            <div className="pf-company-heading">
+                                <span className="pf-company-logo pf-company-logo-aerapass">
+                                    <img
+                                        src="/images/companies/aerapass.svg"
+                                        alt=""
+                                        width="110"
+                                        height="40"
+                                        loading="lazy"
+                                    />
+                                </span>
+                                <h3>Aerapass</h3>
+                            </div>
+                            <p>
+                                Built fintech features including KYC workflows and multi-currency transactions within
+                                Scrum teams.
+                            </p>
+                        </article>
+                        <article className="pf-job">
+                            <div className="pf-date">FEBRUARY 2020 — FEBRUARY 2021</div>
+                            <div className="pf-company-heading">
+                                <span className="pf-company-initials" aria-hidden="true">
+                                    EA
+                                </span>
+                                <h3>Empower Associates</h3>
+                            </div>
+                            <p>
+                                Rebuilt the recruiter platform UI and integrated REST APIs for candidate data workflows.
+                            </p>
+                        </article>
                     </div>
                 </div>
             </section>
-            <section id="experience" tabIndex={-1} className="fm-experience" aria-labelledby="experience-heading">
-                <div className="fm-container">
-                    <SectionHeading
-                        id="experience-heading"
-                        marker="EXPERIENCE"
-                        intro="Currently at Virtido AG, supporting Swiss clients with product development and delivery. Previously at Arcanys and teams spanning fintech, recruiting, and industrial software."
-                    >
-                        A decade of shipped
-                        <br />
-                        software.
-                    </SectionHeading>
-                    <ol className="fm-timeline">
-                        {[
-                            ['2024 — NOW', 'Virtido AG', 'Swiss clients · Enterprise SaaS · React · Node.js · AWS'],
-                            ['2021 — 2024', 'Arcanys', 'Lease management experiences and full-stack product features'],
-                            [
-                                '2014 — 2021',
-                                'Earlier chapters',
-                                'Aerapass · Empower Associates · Heaviside Group · Arnlea Systems',
-                            ],
-                        ].map(([period, company, description]) => (
-                            <li key={company}>
-                                <p className="fm-meta">{period}</p>
-                                <div>
-                                    <h3>{company}</h3>
-                                    <p>{description}</p>
-                                </div>
-                            </li>
-                        ))}
-                    </ol>
-                </div>
-            </section>
-            <section id="contact" tabIndex={-1} className="fm-contact" aria-labelledby="contact-heading">
-                <div className="fm-container">
-                    <div className="fm-contact-copy">
-                        <p className="fm-meta">LET’S BUILD SOMETHING USEFUL</p>
-                        <h2 id="contact-heading">
-                            Build the next
-                            <br />
-                            useful thing.
-                        </h2>
-                        <p className="fm-intro">
-                            I’m open to remote senior engineering teams that value ownership, thoughtful product work,
-                            and steady collaboration.
-                        </p>
-                        <ActionButton href="mailto:frankmendezresources@gmail.com">Email Frank</ActionButton>
+            <section className="pf-section" id="contact" tabIndex={-1}>
+                <div className="pf-wrap pf-contact">
+                    <div>
+                        <span className="pf-eyebrow">Get in touch</span>
+                        <h2>Have something in mind?</h2>
+                        <p>Let’s talk about your product, your team, and the software you want to build.</p>
                     </div>
-                    <div className="fm-contact-details">
-                        <MetadataPill>CAGAYAN DE ORO · GMT+8</MetadataPill>
-                        <a href="mailto:frankmendezresources@gmail.com">frankmendezresources@gmail.com</a>
-                        <a
-                            href="https://www.linkedin.com/in/frank-mendez-47b62090/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            linkedin.com/in/frank-mendez-47b62090
-                        </a>
-                        <a href={BLOG_URL} target="_blank" rel="noopener noreferrer">
-                            thepracticalengineer.online
-                        </a>
-                        <ContactFormLink />
-                    </div>
+                    <a className="pf-button pf-primary" href="mailto:frankmendezresources@gmail.com">
+                        Start a conversation <span aria-hidden="true">↗</span>
+                    </a>
+                    <ContactFormLink />
                 </div>
             </section>
         </main>

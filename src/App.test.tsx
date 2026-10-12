@@ -12,63 +12,68 @@ afterEach(() => {
 })
 
 describe('Portfolio redesign', () => {
-    it('renders the Figma sections in order with one main heading', () => {
+    it('presents one main heading and preserves the professional portfolio sections', () => {
         const { container } = render(<App />)
         expect(container.querySelectorAll('h1')).toHaveLength(1)
-        expect(screen.getByRole('heading', { level: 1, name: 'I build software teams can trust.' })).toBeInTheDocument()
+        expect(
+            screen.getByRole('heading', { level: 1, name: 'Hi, I’m Frank. I build with purpose.' })
+        ).toBeInTheDocument()
         expect([...container.querySelectorAll('main > section')].map((section) => section.id)).toEqual([
             'top',
+            'about',
+            'skills',
             'work',
-            'approach',
             'experience',
             'contact',
         ])
-        expect(screen.getByRole('heading', { name: 'Own the whole slice' })).toBeInTheDocument()
         expect(screen.getByRole('heading', { name: 'Virtido AG' })).toBeInTheDocument()
+        expect(screen.getByRole('img', { name: 'Frank Mendez' })).toHaveAttribute('src', '/images/frank2.jpg')
     })
 
-    it('uses working section anchors and verified project destinations', () => {
+    it('connects section navigation, featured repositories, and the preserved project archive', () => {
         const { container } = render(<App />)
         const navigation = screen.getByRole('navigation', { name: 'Main navigation' })
         for (const [label, id] of [
             ['Work', 'work'],
-            ['Approach', 'approach'],
+            ['About', 'about'],
+            ['Skills', 'skills'],
             ['Experience', 'experience'],
             ['Contact', 'contact'],
         ]) {
             expect(within(navigation).getByRole('link', { name: label })).toHaveAttribute('href', `#${id}`)
             expect(container.querySelector(`#${id}`)).toBeInTheDocument()
         }
-        expect(screen.getByRole('link', { name: 'Explore selected work' })).toHaveAttribute('href', '#work')
-        expect(screen.getByRole('link', { name: 'Grow With Me' })).toHaveAttribute(
-            'href',
-            'https://github.com/frank-mendez/grow-with-me'
-        )
+        expect(screen.getByRole('link', { name: 'View selected work' })).toHaveAttribute('href', '#work')
         expect(screen.getByRole('link', { name: 'MFK Lending' })).toHaveAttribute(
             'href',
             'https://github.com/frank-mendez/mfklending'
         )
-        expect(screen.getByRole('link', { name: 'PulseChat' })).toHaveAttribute(
+        expect(screen.getByRole('link', { name: 'Blog CMS' })).toHaveAttribute(
             'href',
-            'https://github.com/frank-mendez/pulse-chat-'
+            'https://github.com/thepracticalengineer/nextjs-blog-cms'
         )
-        expect(screen.getByRole('link', { name: 'thepracticalengineer.online' })).toHaveAttribute(
+        expect(screen.getByRole('link', { name: 'Movie Browser' })).toHaveAttribute(
             'href',
-            'https://www.thepracticalengineer.online/'
+            'https://github.com/frank-mendez/movie-browser'
         )
-        expect(screen.getByRole('link', { name: 'Visit product: Grow With Me' })).toHaveAttribute(
+        expect(screen.getByRole('link', { name: /Grow With Me/ })).toHaveAttribute(
             'href',
-            'https://www.growwithme.baby'
+            'https://github.com/frank-mendez/grow-with-me'
         )
-        expect(screen.getByRole('link', { name: 'Visit product: MFK Lending' })).toHaveAttribute(
+        expect(screen.getByRole('group', { name: 'MFK Lending concept illustration' })).toBeInTheDocument()
+    })
+
+    it('opens and closes the MFK case study without changing page navigation', async () => {
+        render(<App />)
+        fireEvent.click(screen.getByRole('button', { name: 'View case study ↗' }))
+        const dialog = await screen.findByRole('dialog', { name: 'MFK Lending case study' })
+        expect(within(dialog).getByRole('link', { name: /View repository/ })).toHaveAttribute(
             'href',
-            'https://mfklending.vercel.app'
+            'https://github.com/frank-mendez/mfklending'
         )
-        expect(screen.getByRole('group', { name: 'Grow With Me product illustration' })).toBeInTheDocument()
-        expect(screen.getByRole('link', { name: 'Email Frank' })).toHaveAttribute(
-            'href',
-            'mailto:frankmendezresources@gmail.com'
-        )
+        expect(within(dialog).getByRole('heading', { name: 'Track the essentials' })).toBeInTheDocument()
+        fireEvent.click(within(dialog).getByRole('button', { name: 'Close' }))
+        await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
     })
 
     it('closes the mobile navigation after choosing a section', async () => {
@@ -115,7 +120,7 @@ describe('Portfolio redesign', () => {
     })
 
     it.each([
-        ['/about', 'approach'],
+        ['/about', 'about'],
         ['/projects', 'work'],
         ['/contact', 'contact'],
     ])('resolves the legacy hash route #%s', (hash, id) => {
