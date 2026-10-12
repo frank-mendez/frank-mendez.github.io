@@ -3,10 +3,10 @@ import { describe, expect, it } from 'vitest'
 import { getSeoByPath } from './constants/seo'
 
 describe('Static portfolio bootstrap', () => {
-    it('sets a fixed light theme before scripts run, regardless of saved preferences', () => {
-        expect(html).toContain('<html lang="en" data-theme="light">')
+    it('sets a fixed dark theme before scripts run, regardless of saved preferences', () => {
+        expect(html).toContain('<html lang="en" data-theme="dark">')
         expect(html).not.toContain('localStorage')
-        expect(html).toContain('<meta name="theme-color" content="#f7f5ed"')
+        expect(html).toContain('<meta name="theme-color" content="#080d18"')
     })
 
     it('keeps static SEO aligned with runtime metadata', () => {
