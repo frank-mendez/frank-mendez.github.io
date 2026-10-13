@@ -33,15 +33,9 @@ export const useFrankChat = (): UseFrankChatResult => {
     }
 
     const toggleOpen = () => {
-        setIsOpen((prev) => {
-            const next = !prev
-
-            trackEvent('chatbot_toggle', {
-                is_open: next,
-            })
-
-            return next
-        })
+        const next = !isOpen
+        setIsOpen(next)
+        trackEvent('chatbot_toggle', { is_open: next })
     }
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {

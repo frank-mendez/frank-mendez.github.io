@@ -109,13 +109,24 @@ To run tests, run the following command
 
 ## Analytics Setup
 
-Create a `.env` file in the project root and add your GA4 measurement ID:
+Analytics is disabled during `pnpm dev` and normal automated tests. Production builds
+read `VITE_GA_MEASUREMENT_ID`; absent or invalid IDs disable the tag and all events.
+The GitHub Pages workflow supplies the verified public ID `G-WJNGK7ZYQF` to both
+production build steps (GA4 property `463878951`, web stream `9840783319`).
+
+For a local production-build check, use a dedicated test stream:
 
 ```bash
-VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+VITE_GA_MEASUREMENT_ID=G-YOURTESTID VITE_GA_DEBUG=true pnpm build
+pnpm preview
 ```
 
-Analytics auto-initializes only when `VITE_GA_MEASUREMENT_ID` is present.
+Environment variables are baked into the build, so changing them requires rebuilding.
+Do not set the production ID in development or test configuration. Debug mode is
+opt-in and is omitted from the GitHub Pages build.
+
+See [the analytics guide](docs/analytics.md) for event definitions, GA Admin settings,
+privacy considerations, key events, and the network/Realtime verification checklist.
 
 ## Backend API Integration
 
